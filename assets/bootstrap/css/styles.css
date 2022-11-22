@@ -1,0 +1,42 @@
+.card3 {
+    position: relative;
+    width: 300px;
+    height: 254px;
+    background: #66BFBF;
+    border-radius: 40px 0 40px 0;
+}
+
+.card4 {
+    position: relative;
+    width: 300px;
+    height: 254px;
+    background: #66bfbf;
+    border-radius: 40px 0 40px 0;
+}
+
+.card5 {
+    position: relative;
+    width: 300px;
+    height: 254px;
+    background: #66bfbf;
+    border-radius: 40px 0 40px 0;
+}
+
+#p2 {
+    text-align: center;
+    color: black;
+}
+#p3 {
+    text-align: center;
+    color: white;
+}
+#p1
+{
+    text-align: center;
+    font-weight: bold;
+    color: black;
+
+}
+#texter { 
+    text-align: center;
+}

@@ -1,30 +1,38 @@
 .card3 {
     position: relative;
+    text-align: center;
     width: 300px;
     height: 254px;
     background: #66BFBF;
     border-radius: 40px 0 40px 0;
+   margin: 0 auto 0 40px;
 }
 
 .card4 {
     position: relative;
+    text-align: center;
     width: 300px;
     height: 254px;
     background: #66bfbf;
     border-radius: 40px 0 40px 0;
+    margin: 0 auto 0 40px;
 }
 
 .card5 {
     position: relative;
+    text-align: center;
     width: 300px;
     height: 254px;
     background: #66bfbf;
     border-radius: 40px 0 40px 0;
+    margin: 0 auto 0 40px;
 }
 
 #p2 {
     text-align: center;
     color: black;
+    text-decoration: none;
+
 }
 #p3 {
     text-align: center;
@@ -35,8 +43,13 @@
     text-align: center;
     font-weight: bold;
     color: black;
+    text-decoration: none;
 
 }
 #texter { 
     text-align: center;
+}
+.proton 
+{
+    color: #66BFBF;
 }

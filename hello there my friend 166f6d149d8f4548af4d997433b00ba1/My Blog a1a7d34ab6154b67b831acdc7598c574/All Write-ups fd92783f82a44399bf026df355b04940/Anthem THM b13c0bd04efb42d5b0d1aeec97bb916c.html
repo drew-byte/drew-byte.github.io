@@ -1,0 +1,784 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Anthem : THM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b13c0bd0-4efb-42d5-b0d1-aeec97bb916c" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/d3387857fc40a19afd406e7034e0bfa0.gif"/></div><h1 class="page-title">Anthem : THM</h1><p class="page-description"></p></header><div class="page-body"><p id="179d0341-3596-47d0-b9d0-954e8697a508" class="">Write-Ups by : drew-byte</p><h2 id="7a8367dd-2ff5-4947-a7c4-4c0cbaa74bbc" class="">Connection</h2><ul id="da7c2a31-5bef-4647-9db5-0b3108abaff5" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by the thm</li></ul><ul id="1fb20b67-6b21-40e4-a49a-0d17d83cf41a" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><pre id="491d5825-39cc-4f92-9e0d-46f40748400b" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $cd Desktop
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn shanetydraw.ovpn</code></pre><hr id="72ad7977-4940-4190-92a0-3d6d19c565ea"/><h2 id="96c081e3-ac98-40f7-bebb-5381497c3671" class="">Let&#x27;s run nmap and check what ports are open.</h2><p id="bc2c0bb6-ce29-42e5-808f-f71553ffad1b" class="">ANSWER : No answer needed </p><h2 id="487b1b98-4d85-40d1-bb6a-9d4d71353d71" class="">What port is for the web server?</h2><pre id="4a566ad9-fce2-4c66-94c0-ce60a1d45da0" class="code code-wrap"><code>┌─[✗]─[drew@parrot]─[~]
+└──╼ $nmap -p 0-4000 10.10.58.205 -T4
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-05-24 21:51 PST
+Nmap scan report for 10.10.58.205 (10.10.58.205)
+Host is up (0.39s latency).
+Not shown: 3999 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+80/tcp   open  http
+3389/tcp open  ms-wbt-server
+
+Nmap done: 1 IP address (1 host up) scanned in 41.96 seconds</code></pre><p id="f437af6f-2a5e-434a-9fea-e4182c717abc" class="">ANSWER : 80</p><h2 id="f4798669-95b2-40f0-9a5c-06f49dcc0586" class="">What port is for remote desktop service?</h2><p id="5b25ea54-a15f-46ee-ad25-97ceb79add83" class="">ANSWER : 3389</p><h2 id="1f4c098d-5529-45de-a7b1-f6960a2c2c85" class="">What is a possible password in one of the pages web crawlers check for?</h2><ul id="c745857b-194b-408d-ae0a-9e7eb43706b6" class="bulleted-list"><li style="list-style-type:disc">Setup reverse proxy</li></ul><pre id="842af32e-e8f6-4168-baf9-30b7b8be4be1" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $sudo nano /etc/hosts
+[sudo] password for drew:</code></pre><ul id="04ac03e5-8f92-4416-850c-0d06bc80c12c" class="bulleted-list"><li style="list-style-type:disc">Input the &lt;ip&gt; and the name for the &lt;ip&gt;</li></ul><pre id="745933c6-c653-4d41-b033-7ab025e79b5e" class="code code-wrap"><code># Host addresses
+127.0.0.1  localhost
+127.0.1.1  parrot
+::1        localhost ip6-localhost ip6-loopback
+ff02::1    ip6-allnodes
+ff02::2    ip6-allrouters
+# Others
+
+10.10.58.205 anthem.com</code></pre><ul id="3704fc48-8b70-4fba-b8eb-647fd085ad01" class="bulleted-list"><li style="list-style-type:disc">Search in browser the <a href="http://10.10.58.205/">http://10.10.58.205</a></li></ul><figure id="6067b9b3-c350-44d7-9f57-d35eafea6666" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled.png"><img style="width:888px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled.png"/></a></figure><ul id="84edad05-5c97-4435-8fcb-56f3d2073581" class="bulleted-list"><li style="list-style-type:disc">Now I use gobuster to find hidden directories</li></ul><pre id="6bb7d0d7-e44e-4432-b42a-54edb5b1875e" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $gobuster dir -u http://10.10.58.205 -w /usr/share/wordlists/dirb/common.txt
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.58.205
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Timeout:                 10s
+===============================================================
+2023/05/24 22:13:37 Starting gobuster in directory enumeration mode
+===============================================================
+/archive              (Status: 301) [Size: 118] [--&gt; /]
+/Archive              (Status: 301) [Size: 118] [--&gt; /]
+/authors              (Status: 200) [Size: 4070]       
+/blog                 (Status: 200) [Size: 5394]       
+/Blog                 (Status: 200) [Size: 5394]       
+/categories           (Status: 200) [Size: 3541]       
+Progress: 1022 / 4615 (22.15%)                        [ERROR] 2023/05/24 22:16:12 [!] Get &quot;http://10.10.58.205/con&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Progress: 1056 / 4615 (22.88%)                        [ERROR] 2023/05/24 22:16:28 [!] Get &quot;http://10.10.58.205/cool&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+[ERROR] 2023/05/24 22:16:29 [!] Get &quot;http://10.10.58.205/copies&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+[ERROR] 2023/05/24 22:16:29 [!] Get &quot;http://10.10.58.205/copy&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Progress: 1059 / 4615 (22.95%)                        [ERROR] 2023/05/24 22:16:29 [!] Get &quot;http://10.10.58.205/copyright&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Progress: 1060 / 4615 (22.97%)                        [ERROR] 2023/05/24 22:16:29 [!] Get &quot;http://10.10.58.205/copyright-policy&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Progress: 1061 / 4615 (22.99%)                        [ERROR] 2023/05/24 22:16:30 [!] Get &quot;http://10.10.58.205/corba&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+[ERROR] 2023/05/24 22:16:30 [!] Get &quot;http://10.10.58.205/core&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Progress: 1063 / 4615 (23.03%)                        [ERROR] 2023/05/24 22:16:30 [!] Get &quot;http://10.10.58.205/coreg&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+[ERROR] 2023/05/24 22:16:30 [!] Get &quot;http://10.10.58.205/corp&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+[ERROR] 2023/05/24 22:16:31 [!] Get &quot;http://10.10.58.205/corpo&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+/install              (Status: 302) [Size: 126] [--&gt; /umbraco/]
+Progress: 2749 / 4615 (59.57%)                                [ERROR] 2023/05/24 22:21:37 [!] Get &quot;http://10.10.58.205/nul&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+Progress: 3171 / 4615 (68.71%)                                [ERROR] 2023/05/24 22:23:18 [!] Get &quot;http://10.10.58.205/prn&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+/robots.txt           (Status: 200) [Size: 192]                
+/RSS                  (Status: 200) [Size: 1873]               
+/rss                  (Status: 200) [Size: 1873]               
+/search               (Status: 200) [Size: 3468]               
+/Search               (Status: 200) [Size: 3468]               
+/sitemap              (Status: 200) [Size: 1041]               
+/SiteMap              (Status: 200) [Size: 1041]               
+/tags                 (Status: 200) [Size: 3594]               
+Progress: 4242 / 4615 (91.92%)                                [ERROR] 2023/05/24 22:25:48 [!] Get &quot;http://10.10.58.205/umbraco&quot;: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+                                                               
+===============================================================
+2023/05/24 22:27:46 Finished</code></pre><ul id="f53bd7d8-0948-438d-a404-5942fcf24c17" class="bulleted-list"><li style="list-style-type:disc">Now I see a txt file in the directory so I paste it to my browser and this is the output</li></ul><figure id="035289d4-085f-42df-9223-8a2ad56e3cfd" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%201.png"><img style="width:888px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%201.png"/></a></figure><p id="466b9b7a-0d6c-4e05-92ef-3e6d196f797d" class="">ANSWER : UmbracoIsTheBest!</p><h2 id="4b2b632e-ad72-4ce7-b22e-ca18be7c91fa" class="">What CMS is the website using?</h2><ul id="cf86f8e9-1fc9-42ec-996b-20bdf4403756" class="bulleted-list"><li style="list-style-type:disc">I dont find any clue but i have a guess that the CMS is umbraco since there is so many directories named after the umbraco and the other directory of umbraco is unaccess </li></ul><p id="4d0c08a5-cf34-40fb-a430-c02d9306cc87" class="">ANSWER : Umbraco</p><h2 id="61e5c867-7c41-4f07-af10-a2775d1ae175" class="">What is the domain of the website?</h2><ul id="148afb8a-5cc7-4999-b5d4-0a66d4d19aae" class="bulleted-list"><li style="list-style-type:disc">In the footer there is the copyright</li></ul><figure id="e78119ac-d90c-44d3-b750-6ed81ef7ddf1" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%202.png"><img style="width:891px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%202.png"/></a></figure><p id="30abe8bf-d60d-4be9-bc73-d24eb0ebe8d3" class="">ANSWER : anthem.com</p><h2 id="5988d43e-655c-447b-b0e8-a55cf5dd8d62" class="">What&#x27;s the name of the Administrator?</h2><ul id="4a7a2037-0ec4-4fcf-b504-ea32aec6b3a5" class="bulleted-list"><li style="list-style-type:disc">I searched all directories to find the administrator and I find this poem</li></ul><figure id="1a874e3e-1cb8-425d-a58a-d52388ed0cd5" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%203.png"><img style="width:891px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%203.png"/></a></figure><ul id="d377f759-9ff1-49f6-b5d3-44db7f5ae173" class="bulleted-list"><li style="list-style-type:disc">When I search who is the author of the poem</li></ul><figure id="77f4b2b4-0ae7-472e-811e-5e380adc4a2d" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%204.png"><img style="width:891px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%204.png"/></a></figure><p id="c2b49bb7-af5c-4385-996d-a0d224462903" class="">ANSWER : Solomon Grundy</p><h2 id="fbfee22e-c74a-4e38-a279-6eae7531e99c" class="">Can we find find the email address of the administrator?</h2><ul id="3fd27fb7-40fe-4827-bee3-8f6ba988c84c" class="bulleted-list"><li style="list-style-type:disc">As I find a clue in <a href="http://anthem.com/archive/we-are-hiring/">http://anthem.com/archive/we-are-hiring/</a> </li></ul><figure id="163fd61c-3f3c-417c-9fd4-8d3f217da409" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%205.png"><img style="width:891px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%205.png"/></a></figure><p id="23c3e641-156a-473e-8a85-3997a5189ba3" class="">the email is set by first letters of name</p><p id="30814ff2-bf22-47ef-baaf-a06c3775819c" class="">ANSWER : SG@anthem.com</p><h2 id="146680ef-e853-4273-9138-f48926869351" class="">Our beloved admin left some flags behind that we require to gather before we proceed to the next task.</h2><ul id="dc76b6b3-fbc1-489b-b6bc-4f2bc65d4e23" class="bulleted-list"><li style="list-style-type:disc">I view page source all directory and ctrl + f “thm” to find the flags</li></ul><h2 id="14da20c8-0639-41eb-af67-f7fdafca0d0b" class="">Flag 1</h2><figure id="a291c10d-cfdf-4710-a992-5a35c12e5adc" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%206.png"><img style="width:891px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%206.png"/></a></figure><p id="9a834b66-8a6f-408d-9f91-e25c3119462c" class="">ANSWER : THM{L0L_WH0_US3S_M3T4}</p><h2 id="e19de67e-f3a5-464e-8f39-480edda443d1" class="">Flag 2</h2><figure id="6d7b0c32-b23b-43f5-995d-b79373709225" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%207.png"><img style="width:891px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%207.png"/></a></figure><p id="d933e29c-566c-4e3d-a0fd-2f69f0dc5cd3" class="">ANSWER : THM{G!T_G00D}</p><h2 id="1bdf4c39-9333-40fe-a244-6f126e2bf586" class="">Flag 3</h2><ul id="ffa7dad2-01c0-4bbd-869a-83d752a5f70d" class="bulleted-list"><li style="list-style-type:disc">In flag 3 I see it in the directory not in viewsource of the directory</li></ul><figure id="9281494f-b90e-4809-bc6e-c2e423b2fd67" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%208.png"><img style="width:916px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%208.png"/></a></figure><p id="07416a4a-64fd-4b9d-b966-95936932e3cb" class="">ANSWER : THM{L0L_WH0_D15}</p><h2 id="a8a5dfb1-0af1-49f8-9551-7ea8e334c302" class="">Flag 4</h2><figure id="5a5802d2-d89f-48a4-a7bb-64d1eb345d60" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%209.png"><img style="width:891px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%209.png"/></a></figure><p id="1a4c8445-1d11-4ce3-bcda-4beb101dcf9f" class="">ANSWER : THM{AN0TH3R_M3TA}</p><h2 id="459106ba-e9cf-4759-ac63-b93bc56143f9" class="">Let&#x27;s figure out the username and password to log in to the box.(The box is not on a domain)</h2><ul id="23bd19cd-9cf7-4272-b1bc-bcebd0ac6633" class="bulleted-list"><li style="list-style-type:disc">To access the file we see that the open box is Remote Desktop Protocol (RDP) so I’ve search how to access it and this is the code </li></ul><pre id="1f4ba0de-45f1-441b-99c9-dabc68ba2437" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $rdesktop -u sg 10.10.58.205
+
+ATTENTION! The server uses and invalid security certificate which can not be trusted for
+the following identified reasons(s);
+
+ 1. Certificate issuer is not trusted by this system.
+
+     Issuer: CN=WIN-LU09299160F
+
+
+Review the following certificate info before you trust it to be added as an exception.
+If you do not trust the certificate the connection atempt will be aborted:
+
+    Subject: CN=WIN-LU09299160F
+     Issuer: CN=WIN-LU09299160F
+ Valid From: Tue May 23 21:37:23 2023
+         To: Wed Nov 22 21:37:23 2023
+
+  Certificate fingerprints:
+
+       sha1: 3e19bbb820f06b12b7ec281343bf22b445d1221b
+     sha256: baf5656972dbbe3c6c02f7089dcf9497bf585a93f2eca80fbfd927bb42ca818c
+
+
+Do you trust this certificate (yes/no)? yes
+Failed to initialize NLA, do you have correct Kerberos TGT initialized ?
+Core(warning): Certificate received from server is NOT trusted by this system, an exception has been added by the user to trust this specific certificate.
+Connection established using SSL.
+Protocol(warning): process_pdu_logon(), Unhandled login infotype 1
+Core(warning): Certificate received from server is NOT trusted by this system, an exception has been added by the user to trust this specific certificate.
+Failed to initialize NLA, do you have correct Kerberos TGT initialized ?
+Core(warning): Certificate received from server is NOT trusted by this system, an exception has been added by the user to trust this specific certificate.
+Connection established using SSL.
+Protocol(warning): process_pdu_logon(), Unhandled login infotype 1
+Clipboard(error): xclip_handle_SelectionNotify(), unable to find a textual target to satisfy RDP clipboard text request
+Clipboard(error): xclip_handle_SelectionNotify(), unable to find a textual target to satisfy RDP clipboard text request
+Clipboard(error): xclip_handle_SelectionNotify(), unable to find a textual target to satisfy RDP clipboard text request
+Clipboard(error): xclip_handle_SelectionNotify(), unable to find a textual target to satisfy RDP clipboard text request</code></pre><ul id="96766455-f674-4345-bf67-6373ce79d467" class="bulleted-list"><li style="list-style-type:disc">As the data I’ve been gathered the username is “sg” and the password is “UmbracoIsTheBest!”</li></ul><figure id="43c7c215-9342-4112-ac8d-a8cf581a26e4" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2010.png"><img style="width:934px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2010.png"/></a></figure><ul id="80fbee0a-885f-4034-a9ec-44f8d3c30822" class="bulleted-list"><li style="list-style-type:disc">Now I have access to the RDP</li></ul><p id="15f857a9-7f7c-432c-9212-dd5751d6fc05" class="">ANSWER : No answer needed</p><h2 id="95f188ff-476e-4c41-8621-7b2de1e54e41" class="">Gain initial access to the machine, what is the contents of user.txt?</h2><figure id="e375bbf6-adc7-49ad-a023-33037bed641f" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2011.png"><img style="width:921px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2011.png"/></a></figure><p id="583702ab-b3a2-4970-b213-5b07a6f06ba0" class="">ANSWER : THM{N00T_NO0T}</p><h2 id="2089f42a-3e79-4598-a04b-5820e3ae5662" class="">Can we spot the admin password?</h2><ul id="84099758-24b3-4133-ad46-57194a793148" class="bulleted-list"><li style="list-style-type:disc">To do that we need to access the administrator the hint is the file is hidden so i clicked view at the top side of the explorer to see to see the hidden files and i see that in the backup folder there is a txt file that i cant access</li></ul><figure id="133f9f19-c0f9-4c9b-82e1-18d4b1eaeb40" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2012.png"><img style="width:921px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2012.png"/></a></figure><ul id="e814697d-995b-486a-8d57-c2cba5f3966d" class="bulleted-list"><li style="list-style-type:disc">So i need to bypass it I right clicked it “properties/security” and I clicked edit and after that I clicked add and into the the object name I input the username “sg” and press ok</li></ul><figure id="47fb6e9d-0f0b-431d-9324-669d8b8a457f" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2013.png"><img style="width:921px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2013.png"/></a></figure><p id="0e7571f8-442f-49c0-88cc-0e2211f1b904" class="">and after that I clicked the full control at the checkboxes and click apply and ok</p><figure id="67b84d8a-22ab-4577-b43c-79d0bf64e772" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2014.png"><img style="width:921px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2014.png"/></a></figure><ul id="e999c0f1-a4da-45d5-920c-5534be6ccd06" class="bulleted-list"><li style="list-style-type:disc">Now I can access the content of the txt file</li></ul><p id="14b4a4c4-21d3-4690-a789-99081d32b34c" class="">ANSWER : ChangeMeBaby1MoreTime</p><figure id="6cc042c2-ef5d-4ffe-a5b1-97f71f10c410" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2015.png"><img style="width:921px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2015.png"/></a></figure><h2 id="5ecd7ac4-036f-4a22-a137-54c91c1e2f0e" class="">Escalate your privileges to root, what is the contents of root.txt?</h2><ul id="6422f1fc-64d1-4476-98be-2fb47689510e" class="bulleted-list"><li style="list-style-type:disc">I Input the password “ChangeMeBaby1MoreTime” and in the directory of Administrator I’ve type root to find the root.txt</li></ul><figure id="a7fb6d80-6c7b-45fb-9dcf-b16a0f15d1c4" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2016.png"><img style="width:921px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2016.png"/></a></figure><p id="4628f3ff-668f-42b9-84c7-411e77187f79" class="">and this is the content</p><figure id="52e4c196-d688-4622-a631-f34e9ef30d97" class="image"><a href="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2017.png"><img style="width:921px" src="Anthem%20THM%20b13c0bd04efb42d5b0d1aeec97bb916c/Untitled%2017.png"/></a></figure><p id="b05841ca-2e22-41cf-b3ac-b19e45f98f5c" class="">ANSWER : THM{Y0U_4R3_1337}</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

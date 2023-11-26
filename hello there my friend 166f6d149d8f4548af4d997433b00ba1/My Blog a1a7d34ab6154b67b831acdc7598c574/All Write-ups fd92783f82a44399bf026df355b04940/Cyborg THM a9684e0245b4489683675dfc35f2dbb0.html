@@ -1,0 +1,763 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Cyborg : THM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a9684e02-45b4-4896-8367-5dfc35f2dbb0" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/6cc3e134a104210f90367c6557e42b6e.jpeg"/></div><h1 class="page-title">Cyborg : THM</h1><p class="page-description"></p></header><div class="page-body"><p id="daede355-f0c2-40a2-8859-f0733d2be82b" class="">Write-Ups by : drew-byte</p><p id="b583d883-810b-4dee-b167-c802defeaf34" class="">Connection</p><ul id="0878d1a7-49c9-4203-b174-5c4eaf94a213" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by the thm</li></ul><ul id="52074f4b-6461-4774-a2e4-bbc8817f147d" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><pre id="87cf1092-db05-46a4-b480-fa7faee835a0" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $cd Desktop
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn shanetydraw.ovpn</code></pre><hr id="772a9390-6c46-4a6a-8960-6219c348c574"/><h2 id="94bd316c-f054-422a-a44b-9decae96e0a0" class="">Scan the machine, how many ports are open?</h2><ul id="3712da86-3744-437e-9120-e3e5711961c8" class="bulleted-list"><li style="list-style-type:disc">nmap the ip</li></ul><pre id="9e00bf60-2fde-431a-bc5d-24e6f76f0bf7" class="code code-wrap"><code>┌─[✗]─[root@parrot]─[/home/drew/Desktop]
+└──╼ #nmap -AF 10.10.201.125
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-06-07 23:09 PST
+Nmap scan report for 10.10.201.125 (10.10.201.125)
+Host is up (0.38s latency).
+Not shown: 98 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 dbb270f307ac32003f81b8d03a89f365 (RSA)
+|   256 68e6852f69655be7c6312c8e4167d7ba (ECDSA)
+|_  256 562c7992ca23c3914935fadd697ccaab (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Apache2 Ubuntu Default Page: It works
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.93%E=4%D=6/7%OT=22%CT=7%CU=40156%PV=Y%DS=4%DC=T%G=Y%TM=64809DC9
+OS:%P=x86_64-pc-linux-gnu)SEQ(SP=F9%GCD=1%ISR=10E%TI=Z%CI=Z%II=I%TS=A)OPS(O
+OS:1=M508ST11NW6%O2=M508ST11NW6%O3=M508NNT11NW6%O4=M508ST11NW6%O5=M508ST11N
+OS:W6%O6=M508ST11)WIN(W1=F4B3%W2=F4B3%W3=F4B3%W4=F4B3%W5=F4B3%W6=F4B3)ECN(R
+OS:=Y%DF=Y%T=40%W=F507%O=M508NNSNW6%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%
+OS:RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y
+OS:%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R
+OS:%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=
+OS:40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S
+OS:)
+
+Network Distance: 4 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT       ADDRESS
+1   121.92 ms 10.4.0.1 (10.4.0.1)
+2   ... 3
+4   378.14 ms 10.10.201.125 (10.10.201.125)
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 43.65 seconds</code></pre><p id="2ea0b6d5-ec74-4094-90bf-cbf8ac678fa4" class="">
+</p><ul id="005d5737-ebbd-49f8-bb17-4b7ffa8211d6" class="bulleted-list"><li style="list-style-type:disc">I tried to use gobuster to find the hidden directory in the ip</li></ul><pre id="8d5eb2c8-c262-4797-8360-61b9d3552cab" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $gobuster dir -u http://10.10.201.125/ -w /usr/share/wordlists/dirb/common.txt -r
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.201.125/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirb/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Follow Redirect:         true
+[+] Timeout:                 10s
+===============================================================
+2023/06/07 20:57:56 Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 278]
+/.htaccess            (Status: 403) [Size: 278]
+/.htpasswd            (Status: 403) [Size: 278]
+/admin                (Status: 200) [Size: 5771]
+/etc                  (Status: 200) [Size: 928] 
+/index.html           (Status: 200) [Size: 11321]
+/server-status        (Status: 403) [Size: 278]  
+                                                 
+===============================================================
+2023/06/07 21:01:01 Finished
+===============================================================</code></pre><ul id="d3fcfecd-865f-453a-b980-5f3b4f78d403" class="bulleted-list"><li style="list-style-type:disc">I go to the /etc first</li></ul><figure id="213b7105-f23d-42c2-9160-156a4bd7a0de" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled.png"><img style="width:968px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled.png"/></a></figure><figure id="372bfbc7-0a55-44c6-bec0-9fa4e55f0d5a" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%201.png"><img style="width:968px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%201.png"/></a></figure><figure id="19ea12c8-2016-4c78-a6fc-63199eee1554" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%202.png"><img style="width:968px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%202.png"/></a></figure><ul id="2faa2719-d916-4972-9e0e-37a3b4db430f" class="bulleted-list"><li style="list-style-type:disc">I hashed the password using john</li></ul><figure id="f0606719-291b-404b-909d-76efb13db102" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%203.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%203.png"/></a></figure><ul id="2d7d7580-711f-4b69-adff-4e9f8adbda65" class="bulleted-list"><li style="list-style-type:disc">Oh yes this is an account but where???? let’s check the other directory</li></ul><p id="9d467a03-04a1-4149-8ead-f3cf422bfa71" class="">PASSWORD = squidward</p><figure id="cbb6521c-b8ec-48ce-8c3e-b9a82082e3bc" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%204.png"><img style="width:968px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%204.png"/></a></figure><ul id="61c00b39-0e5c-42a6-b181-c3496b61422f" class="bulleted-list"><li style="list-style-type:disc">Lemme save this to my note I think this is another clue and last go to the admin page</li></ul><figure id="1657f5a1-63e4-4bdb-831b-c1c93e7152bf" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%205.png"><img style="width:968px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%205.png"/></a></figure><figure id="1d4a6467-1aaf-4f9d-9289-783c50ca4951" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%206.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%206.png"/></a></figure><ul id="cf5f0ff6-ffb6-4845-83a6-ec9b4b38f844" class="bulleted-list"><li style="list-style-type:disc">I CAN DOWNLOAD A FILE WHAT IS THIS?</li></ul><figure id="fd617937-ede8-4c20-bafc-9ec406f4f30e" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%207.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%207.png"/></a></figure><ul id="b28c6b87-0c63-45c2-94f4-da55427a025e" class="bulleted-list"><li style="list-style-type:disc">There it is</li></ul><figure id="ef56840b-ec7c-470c-8bd3-c4568ae9ab06" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%208.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%208.png"/></a></figure><ul id="f0ff01c3-906c-4fe6-844d-489c78f15e16" class="bulleted-list"><li style="list-style-type:disc">After I see the readme file in the top I downloaded the borgbackup before that I tried searchsploit and metasploit in this version but I got nothing</li></ul><pre id="6ca9963d-6db5-4aac-b7c5-ff6f03a27ec5" class="code code-wrap"><code>
+┌─[✗]─[root@parrot]─[/home/drew/Desktop]
+└──╼ #borg list home/field/dev/final_archive
+Enter passphrase for key /home/drew/Desktop/home/field/dev/final_archive: 
+music_archive                        Tue, 2020-12-29 22:00:38 [f789ddb6b0ec108d130d16adebf5713c29faf19c44cad5e1eeb8ba37277b1c82]
+</code></pre><figure id="6c905300-95a1-46ab-9149-fee7cf973137" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%209.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%209.png"/></a></figure><ul id="cc3df4a5-2bbd-4037-a6e8-6edd7e579d94" class="bulleted-list"><li style="list-style-type:disc">the music_archive is not here so let’s extract it</li></ul><pre id="5a5f385b-0bf9-4fba-8094-2efa4572d9d4" class="code code-wrap"><code>┌─[✗]─[drew@parrot]─[~/Downloads]
+└──╼ $borg extract /home/field/dev/final_archive::music_archive
+Repository /home/field/dev/final_archive does not exist.
+┌─[✗]─[drew@parrot]─[~/Downloads]
+└──╼ $borg extract home/field/dev/final_archive::music_archive
+Enter passphrase for key /home/drew/Downloads/home/field/dev/final_archive: 
+┌─[drew@parrot]─[~/Downloads]
+└──╼ $</code></pre><figure id="ebd4d5d6-0430-428f-86d3-59ca5ad06d98" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%2010.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%2010.png"/></a></figure><figure id="ab5d6f88-cfdf-40e0-ae5c-160ce1fbcf44" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%2011.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%2011.png"/></a></figure><ul id="3f26778d-b265-41ec-ac1e-37ee5ff04d43" class="bulleted-list"><li style="list-style-type:disc">Oh I think this is the ssh account</li></ul><ul id="c88fa0d7-cd8b-4e04-af9d-b54d0e93ef72" class="bulleted-list"><li style="list-style-type:disc">user.txt</li></ul><figure id="944427e9-cfa9-48ac-b009-6055993d263d" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%2012.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%2012.png"/></a></figure><h2 id="638c780e-325f-4c56-958e-c283af4928ea" class="">What service is running on port 22?</h2><p id="9d8cd9c0-8f71-4d79-ab41-0ce8c000aaa5" class="">ANSWER : SSH</p><h2 id="60f71f73-20bc-4362-bf99-68169ab02456" class="">What service is running on port 80?</h2><p id="70a9f26b-0db9-44cb-bb1c-2f1588aa087e" class="">ANSWER : HTTP</p><h2 id="d5cc145f-3f3d-4832-ab53-7d1e32c89ead" class="">What is the user.txt flag?</h2><p id="23f659c3-1eb7-4dee-afc7-3150f9790e5f" class="">ANSWER : flag{1_hop3_y0u_ke3p_th3_arch1v3s_saf3}</p><h2 id="8886e3de-2565-4c3e-9a39-6974c33b482a" class="">What is the root.txt flag?</h2><figure id="1eaebc39-0588-46b0-a16f-d349d6cecbf1" class="image"><a href="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%2013.png"><img style="width:977px" src="Cyborg%20THM%20a9684e0245b4489683675dfc35f2dbb0/Untitled%2013.png"/></a></figure><ul id="2166967f-5f9d-4211-afad-c2a727960893" class="bulleted-list"><li style="list-style-type:disc">This is the path that highlighted after I use sudo -l it says that I don’t need password but I need permission to this file so I try this command</li></ul><pre id="34e14d45-308a-4fb4-9b1e-358fb4da9c91" class="code code-wrap"><code>chmod 777 /etc/mp3backups/backup.sh
+bash /etc/mp3backups/backup.sh
+
+&quot;and here it is&quot;
+root@ubuntu:/etc/mp3backups# cat /root/root.txt
+flag{Than5s_f0r_play1ng_H0p£_y0u_enJ053d}
+root@ubuntu:/etc/mp3backups#</code></pre><p id="de01001b-7720-4ad7-978a-236c4d8b5346" class="">ANSWER : flag{Than5s_f0r_play1ng_H0p£_y0u_enJ053d}</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

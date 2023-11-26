@@ -1,0 +1,823 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Break Out The Cage : THM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="42fa4317-b526-43cd-9ea2-7e09135695ed" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/29ef13afaef5de5b8f1a27653f9d7a2d.jpeg"/></div><h1 class="page-title"><strong>Break Out The Cage : THM</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="b4b31aa0-26cc-4c8b-9f5e-8f1731e3bffd" class="">Write-Ups by : drew-byte</p><h2 id="7c5f0005-e450-4bf2-b1e6-7e818a2dd5c9" class="">Connection</h2><ul id="9bb23893-a9ff-4d25-a3ac-b47813ae7d40" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by the thm</li></ul><ul id="926f402b-4f90-425f-ba8b-2b3cd13951a2" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><pre id="4f5ccf5c-f51c-4806-8053-7974c8b4e367" class="code code-wrap"><code>┌─[drew@parrot]─[~]
+└──╼ $cd Desktop
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn shanetydraw.ovpn</code></pre><hr id="cddbce6b-7269-498a-9696-ff3c5ae5c29d"/><h2 id="c82e9757-00e4-4f3b-97ac-3c09fa3836a6" class="">What is Weston&#x27;s password?</h2><ul id="0be00676-a6f8-401d-8209-790fb30e2e4e" class="bulleted-list"><li style="list-style-type:disc">nmap result</li></ul><pre id="b90e3fd5-a904-41f6-9e41-303e14a5d86b" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $nmap -AF 10.10.208.175
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-06-09 22:05 PST
+Nmap scan report for 10.10.208.175 (10.10.208.175)
+Host is up (0.38s latency).
+Not shown: 97 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.4.26.128
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 1
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-r--r--    1 0        0             396 May 25  2020 dad_tasks
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 ddfd8894f8c8d11b51e37df81ddd823e (RSA)
+|   256 3eba38632b8d1c6813d505ba7aaed93b (ECDSA)
+|_  256 c0a6a364441ecf475f85f61f784c59d8 (ED25519)
+80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-title: Nicholas Cage Stories
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel</code></pre><ul id="9420bf5f-0855-4efb-84de-89d168089a37" class="bulleted-list"><li style="list-style-type:disc">gobuster result</li></ul><pre id="2fe664f0-f959-4290-9eb8-e9910e34f015" class="code code-wrap"><code>/html
+/server-status
+/scripts
+/contracts</code></pre><ul id="1e45afe5-61b6-4423-81e6-dc78467f6b58" class="bulleted-list"><li style="list-style-type:disc">FTP access anonymous:anonymous</li></ul><pre id="3c79ad53-ec64-4e8d-9e06-29c95cd314b6" class="code code-wrap"><code>┌─[drew@parrot]─[~/Desktop]
+└──╼ $ftp 10.10.208.175
+Connected to 10.10.208.175.
+220 (vsFTPd 3.0.3)
+Name (10.10.208.175:drew): anonymous
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls -la
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+drwxr-xr-x    2 0        0            4096 May 25  2020 .
+drwxr-xr-x    2 0        0            4096 May 25  2020 ..
+-rw-r--r--    1 0        0             396 May 25  2020 dad_tasks
+226 Directory send OK.
+ftp&gt; get dad_tasks
+local: dad_tasks remote: dad_tasks
+200 PORT command successful. Consider using PASV.
+150 Opening BINARY mode data connection for dad_tasks (396 bytes).
+226 Transfer complete.
+396 bytes received in 0.08 secs (5.1218 kB/s)
+ftp&gt; exit</code></pre><ul id="31c0c0ee-e2f0-4578-9990-f23d17c2c8fb" class="bulleted-list"><li style="list-style-type:disc">The file is</li></ul><figure id="6132cb14-a6e7-4741-bfda-9e55b4c3b5db" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled.png"><img style="width:960px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled.png"/></a></figure><ul id="3a53627b-3cd4-4a07-add5-ca8585fd63a2" class="bulleted-list"><li style="list-style-type:disc">I need to convert this to a readable text the I got is this</li></ul><figure id="97578097-f057-4705-94f0-e1e96df94757" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%201.png"><img style="width:545px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%201.png"/></a></figure><p id="54317286-e029-40b1-a7b2-ab84965c1dea" class="">rot13</p><figure id="6d161218-3611-436e-9932-49bf3b0b0930" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%202.png"><img style="width:1490px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%202.png"/></a></figure><ul id="9bf9157d-245a-4457-aeba-150c66b6d463" class="bulleted-list"><li style="list-style-type:disc">I need to decrypt this</li></ul><figure id="387d3ac6-2441-4258-a9c5-abc38757584a" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%203.png"><img style="width:866px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%203.png"/></a></figure><ul id="d9539ec0-d22f-45d2-8479-452e36fddf50" class="bulleted-list"><li style="list-style-type:disc">If the converter needs a key this is my findings</li></ul><figure id="13a58575-abf1-4896-8f44-84acea969183" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%204.png"><img style="width:871px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%204.png"/></a></figure><figure id="fe160ee7-d9ea-472f-8c38-d5c93a196c89" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%205.png"><img style="width:871px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%205.png"/></a></figure><p id="8719eb80-6a2d-4232-8c02-6a174495b5b8" class="">ANSWER : Mydadisghostrideraintthatcoolnocausehesonfirejokes</p><h2 id="4e304125-fff7-447c-af54-b8e363e50701" class="">What&#x27;s the user flag?</h2><ul id="6b1df864-de29-415a-843f-3858e892fa14" class="bulleted-list"><li style="list-style-type:disc">Now let’s access the weston ssh </li></ul><figure id="00f308e6-22ad-47fa-87ac-8da9b7e3d1e9" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%206.png"><img style="width:871px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%206.png"/></a></figure><ul id="386ca53e-a6d7-4f69-aefb-5dbb285ea049" class="bulleted-list"><li style="list-style-type:disc">I can’t find out what is the privilege escalation in this even if I’m using the command sudo -l so I used a linpeas and pspy64 to be sure so I used a python server to get this 2 files</li></ul><figure id="9c947406-33a9-4e2a-880b-34747f86210a" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%207.png"><img style="width:899px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%207.png"/></a></figure><p id="87840d8a-cef9-4a9a-a569-c9233cdd819f" class="">and this is my host terminal</p><figure id="3576a1be-f65a-4448-8da1-803ac338eab9" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%208.png"><img style="width:899px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%208.png"/></a></figure><p id="f28e6990-eb9e-48c2-bf22-d56283ba552a" class="">now let’s scan the system</p><ul id="9521fcd7-4f9c-444d-86d0-69e860a79b37" class="bulleted-list"><li style="list-style-type:disc">My linpeas.sh does not have any juicy stuff so I try pspy64</li></ul><figure id="fe45be8c-61c5-4fe5-ad0d-9d2d3a8a7a2a" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%209.png"><img style="width:899px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%209.png"/></a></figure><ul id="20be5ed8-c124-4c22-a9fa-525d779c6f16" class="bulleted-list"><li style="list-style-type:disc">Now I see the /opt/.dads_script/spread_the_quotes.py is running the code </li></ul><figure id="e57a8b82-87c3-4f36-a643-08fb98981d89" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%2010.png"><img style="width:899px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%2010.png"/></a></figure><ul id="e6bf186e-af79-44e5-81de-a3133592ad4a" class="bulleted-list"><li style="list-style-type:disc">It’s opening a file and let’s insert a reverse shell in the .quotes</li></ul><figure id="a881344e-fb6f-4a19-9ae7-34beafde3c74" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%2011.png"><img style="width:1653px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%2011.png"/></a></figure><ul id="e03857ef-e9d5-413d-baae-007853adff4b" class="bulleted-list"><li style="list-style-type:disc">Now we just need to wait to run the specific code in our .quotes</li></ul><figure id="d2188187-3f25-46ce-824c-0632dc4dc311" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%2012.png"><img style="width:929px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%2012.png"/></a></figure><ul id="28b862fd-dbb7-4e28-8268-5bc04342fe55" class="bulleted-list"><li style="list-style-type:disc">Now we are connected now I have 2 files</li></ul><pre id="f8a359a7-5cf3-4432-8014-ae24341b1332" class="code code-wrap"><code>$ cat Super_Duper_Checklist
+1 - Increase acting lesson budget by at least 30%
+2 - Get Weston to stop wearing eye-liner
+3 - Get a new pet octopus
+4 - Try and keep current wife
+5 - Figure out why Weston has this etched into his desk: THM{M37AL_0R_P3N_T35T1NG}</code></pre><p id="a4cde169-46cc-464c-b6bb-6e5cdc20a21a" class="">ANSWER : THM{M37AL_0R_P3N_T35T1NG}</p><p id="33fd4e85-6a7a-4d70-8086-1ee6405da650" class="">What&#x27;s the root flag?</p><pre id="1a0c87f3-47eb-45f8-8025-022a16f22b49" class="code code-wrap"><code>$ cat email_1
+From - SeanArcher@BigManAgents.com
+To - Cage@nationaltreasure.com
+
+Hey Cage!
+
+There&#x27;s rumours of a Face/Off sequel, Face/Off 2 - Face On. It&#x27;s supposedly only in the
+planning stages at the moment. I&#x27;ve put a good word in for you, if you&#x27;re lucky we 
+might be able to get you a part of an angry shop keeping or something? Would you be up
+for that, the money would be good and it&#x27;d look good on your acting CV.
+
+Regards
+
+Sean Archer
+-----------------------------------------------
+$ cat email_2
+From - Cage@nationaltreasure.com
+To - SeanArcher@BigManAgents.com
+
+Dear Sean
+
+We&#x27;ve had this discussion before Sean, I want bigger roles, I&#x27;m meant for greater things.
+Why aren&#x27;t you finding roles like Batman, The Little Mermaid(I&#x27;d make a great Sebastian!),
+the new Home Alone film and why oh why Sean, tell me why Sean. Why did I not get a role in the
+new fan made Star Wars films?! There was 3 of them! 3 Sean! I mean yes they were terrible films.
+I could of made them great... great Sean.... I think you&#x27;re missing my true potential.
+
+On a much lighter note thank you for helping me set up my home server, Weston helped too, but
+not overally greatly. I gave him some smaller jobs. Whats your username on here? Root?
+
+Yours
+
+Cage
+-----------------------------------------------
+$ cat email_3
+From - Cage@nationaltreasure.com
+To - Weston@nationaltreasure.com
+
+Hey Son
+
+Buddy, Sean left a note on his desk with some really strange writing on it. I quickly wrote
+down what it said. Could you look into it please? I think it could be something to do with his
+account on here. I want to know what he&#x27;s hiding from me... I might need a new agent. Pretty
+sure he&#x27;s out to get me. The note said:
+
+hauinspsyanileph
+
+The guy also seems obsessed with my face lately. He came him wearing a mask of my face...
+was rather odd. Imagine wearing his ugly face.... I wouldnt be able to FACE that!! 
+hahahahahahahahahahahahahahahaahah get it Weston! FACE THAT!!!! hahahahahahahhaha
+ahahahhahaha. Ahhh Face it... he&#x27;s just odd. 
+
+Regards
+
+The Legend - Cage</code></pre><ul id="851adad0-46d3-4e78-8edb-07429d3fbed5" class="bulleted-list"><li style="list-style-type:disc">Gibberish text at email_3 “haiinspsyanileph” let’s try use this to the vigenere-cipher using this key “FACE” in the email_3</li></ul><figure id="c985aac5-bb71-4f07-ad49-d1725d9c9567" class="image"><a href="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%2013.png"><img style="width:677px" src="Break%20Out%20The%20Cage%20THM%2042fa4317b52643cd9ea27e09135695ed/Untitled%2013.png"/></a></figure><ul id="93fc77d5-31b3-4ff7-a351-1809942cc536" class="bulleted-list"><li style="list-style-type:disc">Password to root? “cageisnotalegend”</li></ul><ul id="b0049529-0adc-43bd-821d-06314802fd0d" class="bulleted-list"><li style="list-style-type:disc">Now let’s root “su root” I see a 2 email in “/email_backup”</li></ul><pre id="9b61efd2-8e3a-4541-b8be-3d3dc73977d3" class="code code-wrap"><code>cat email_1
+From - SeanArcher@BigManAgents.com
+To - master@ActorsGuild.com
+
+Good Evening Master
+
+My control over Cage is becoming stronger, I&#x27;ve been casting him into worse and worse roles.
+Eventually the whole world will see who Cage really is! Our masterplan is coming together
+master, I&#x27;m in your debt.
+
+Thank you
+
+Sean Archer
+root@national-treasure:~/email_backup# cat email_2
+cat email_2
+From - master@ActorsGuild.com
+To - SeanArcher@BigManAgents.com
+
+Dear Sean
+
+I&#x27;m very pleased to here that Sean, you are a good disciple. Your power over him has become
+strong... so strong that I feel the power to promote you from disciple to crony. I hope you
+don&#x27;t abuse your new found strength. To ascend yourself to this level please use this code:
+
+THM{8R1NG_D0WN_7H3_C493_L0N9_L1V3_M3}
+
+Thank you
+
+Sean Archer</code></pre><p id="73322fd0-8e35-4b55-a688-fca76ac94092" class="">ANSWER : THM{8R1NG_D0WN_7H3_C493_L0N9_L1V3_M3}</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

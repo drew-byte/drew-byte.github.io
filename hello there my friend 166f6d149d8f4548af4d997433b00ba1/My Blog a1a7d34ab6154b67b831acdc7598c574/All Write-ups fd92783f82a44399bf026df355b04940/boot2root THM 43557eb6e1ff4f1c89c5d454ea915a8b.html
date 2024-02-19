@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>boot2root : THM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="43557eb6-e1ff-4f1c-89c5-d454ea915a8b" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://tryhackme-images.s3.amazonaws.com/room-icons/80d16a6756c805903806f7ecbdd80f6d.jpeg"/></div><h1 class="page-title">boot2root : THM</h1><p class="page-description"></p></header><div class="page-body"><p id="74887418-fd7b-45d4-b62c-b5f3b50d0845" class="">Write Ups by : drew-byte</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Connection</summary><div class="indented"><ul id="4ef857a3-d6ce-4e59-ba76-3c97912fd2c2" class="bulleted-list"><li style="list-style-type:disc">Download the ovpn provided by THM</li></ul><ul id="59049566-888c-47fc-8fc7-b1f74b23ea9f" class="bulleted-list"><li style="list-style-type:disc">Run the ovpn</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="edf8bbc4-c899-4031-a54b-3dd27ae742d2" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">┌─[drew@parrot]─[~]
+└──╼ $cd Desktop/
+┌─[drew@parrot]─[~/Desktop]
+└──╼ $sudo openvpn drewbyte.ovpn</code></pre></div></details><hr id="6144c375-aefb-42a8-9220-67ed6950c809"/><h2 id="f53bd106-cc89-4670-8054-f5a305cd6c6c" class="">What is the user flag?</h2><ul id="94a43389-8dfd-4805-b122-591f47c8d82c" class="bulleted-list"><li style="list-style-type:disc">nmap result</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ffc0ad51-6dc4-4d50-8473-8787787f1034" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 34:0e:fe:06:12:67:3e:a4:eb:ab:7a:c4:81:6d:fe:a9 (RSA)
+|   256 49:61:1e:f4:52:6e:7b:29:98:db:30:2d:16:ed:f4:8b (ECDSA)
+|_  256 b8:60:c4:5b:b7:b2:d0:23:a0:c7:56:59:5c:63:1e:c4 (ED25519)
+80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-title: House of danak
+|_http-server-header: Apache/2.4.29 (Ubuntu)</code></pre><ul id="959c5571-ba43-45c9-95c7-5e4c150fff98" class="bulleted-list"><li style="list-style-type:disc">We can’t open the ssh because we don’t know the username first let’s check the port 80</li></ul><figure id="13cae15f-c82f-48f5-83c8-ed7d3574ce25" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled.png"><img style="width:1274px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled.png"/></a></figure><p id="13f0408a-5e3f-4aa0-9470-db60cba307a6" class="">A game website let’s investigate and run the fuzz command while investigating</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6e7efe94-c6c3-4075-98b2-4ff67a8ec451" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">┌──(kali㉿kali)-[~]
+└─$ ffuf -u http://10.10.97.74/FUZZ -w /usr/share/wordlists/dirb/big.txt
+
+[Status: 403, Size: 276, Words: 20, Lines: 10, Duration: 4661ms]
+    * FUZZ: .htpasswd
+
+[Status: 403, Size: 276, Words: 20, Lines: 10, Duration: 4735ms]
+    * FUZZ: .htaccess
+
+[Status: 200, Size: 33, Words: 3, Lines: 4, Duration: 339ms]
+    * FUZZ: robots.txt
+
+[Status: 301, Size: 311, Words: 20, Lines: 10, Duration: 341ms]
+    * FUZZ: secret
+
+[Status: 403, Size: 276, Words: 20, Lines: 10, Duration: 340ms]
+    * FUZZ: server-status
+
+[Status: 301, Size: 312, Words: 20, Lines: 10, Duration: 339ms]
+    * FUZZ: uploads
+
+:: Progress: [20469/20469] :: Job [1/1] :: 117 req/sec :: Duration: [0:03:06] :: Errors: 0 ::</code></pre><ul id="a5bc2de2-b764-4c18-a229-e7617f2b020c" class="bulleted-list"><li style="list-style-type:disc">While I run my fuzz command I inspect the website and I see a username named john</li></ul><figure id="2cd110bc-cb13-42c7-9a59-a1eb2b45a5e9" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%201.png"><img style="width:1275px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%201.png"/></a></figure><ul id="7f51a656-3950-420a-8296-e5b296c75cd7" class="bulleted-list"><li style="list-style-type:disc">I think this is the username for ssh</li></ul><ul id="e2704c9e-9e8c-44bf-b6fc-ef74e5b00ea7" class="bulleted-list"><li style="list-style-type:disc">We will next visit the robots.txt as in the output of ffuf command</li></ul><figure id="a05184a5-97e5-4292-be5b-2e91ed6dc49c" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%202.png"><img style="width:518px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%202.png"/></a></figure><ul id="36daff82-260a-4c13-b29e-182ae39bdcd7" class="bulleted-list"><li style="list-style-type:disc">Let’s go to the upload directory</li></ul><figure id="8b4acf5c-9d46-4e88-a358-abe322374d35" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%203.png"><img style="width:553px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%203.png"/></a></figure><ul id="6e8e8f05-a1ad-490d-82cb-c0810547be73" class="bulleted-list"><li style="list-style-type:disc">The content of dict.lst is</li></ul><figure id="454d866f-3e35-43b1-b6d3-300c5436a294" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%204.png"><img style="width:537px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%204.png"/></a></figure><ul id="66b06797-0573-482b-b3dc-1519269d8d5c" class="bulleted-list"><li style="list-style-type:disc">We will grab the dict.lst because this is a wordlists next to check is the manifesto.</li></ul><figure id="efe112b4-c622-403e-a9b6-8d1f67236e0e" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%205.png"><img style="width:717px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%205.png"/></a></figure><ul id="142ebcea-5b69-452c-9b70-42ec4eaaa98c" class="bulleted-list"><li style="list-style-type:disc">Check the image file</li></ul><figure id="00131400-f39e-45dc-ab9b-2a5e9ae27178" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%206.png"><img style="width:831px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%206.png"/></a></figure><ul id="522051a5-5f39-4906-b6ac-98d79432a19a" class="bulleted-list"><li style="list-style-type:disc">Nothings special now we need to go back to ffuf result and visit the secret directory</li></ul><figure id="170d1baa-9ad2-4ad0-aba2-a06d036792c3" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%207.png"><img style="width:500px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%207.png"/></a></figure><figure id="79645b26-9751-4fe9-960f-72abd5a44766" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%208.png"><img style="width:529px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%208.png"/></a></figure><ul id="395b3969-33b4-44be-8914-2a10ce03e7b3" class="bulleted-list"><li style="list-style-type:disc">This is a RSA key for ssh we need to grab this too, to get the file dict.lst and secretKey we need to get the url and use the command wget</li></ul><figure id="ba43dfba-8aaf-48a6-b729-bd9a902c2641" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%209.png"><img style="width:1271px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%209.png"/></a></figure><ul id="2e868f42-c598-4fe5-9cd7-d3fd039dd0e9" class="bulleted-list"><li style="list-style-type:disc">The username is john and we have an RSA now we will use ssh2john to access the ssh to crack it we will use the wordlists of dict.lst</li></ul><figure id="777db9b5-64d2-47ba-8b5d-7c9b647ba109" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2010.png"><img style="width:1049px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2010.png"/></a></figure><ul id="73aee116-9083-406c-8944-cd37a583fe54" class="bulleted-list"><li style="list-style-type:disc">Now the password is letmein</li></ul><figure id="1470d09b-e2b9-455d-871b-10dadf3c0143" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2011.png"><img style="width:833px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2011.png"/></a></figure><ul id="6bad0a3d-b96f-4fe9-be0b-a6d4f9f80c1f" class="bulleted-list"><li style="list-style-type:disc">The user.txt is in here</li></ul><figure id="c7e0f2bb-d34f-4fc4-a944-468db866829d" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2012.png"><img style="width:637px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2012.png"/></a></figure><p id="71f30ab4-bfb0-4119-961e-4b376ce55f70" class="">ANSWER : a5c2ff8b9c2e3d4fe9d4ff2f1a5a6e7e</p><h2 id="84907b89-2509-4417-b211-c9c29ccf854b" class="">What is the root flag?</h2><ul id="9c0c6226-7339-4eab-9430-cf25aeb76583" class="bulleted-list"><li style="list-style-type:disc">I tried to use sudo -l and of course the password for ssh and sudo password is different now i will use linpeas to investigate</li></ul><figure id="7e30fbe8-8b04-4e6b-a3d1-e2886c47172d" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2013.png"><img style="width:523px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2013.png"/></a></figure><ul id="bc65dd6e-bc16-4a75-8ee0-4ff5f2ad2065" class="bulleted-list"><li style="list-style-type:disc">Wget this file</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ba06af5a-21aa-4eae-95ea-48c1c683a0b5" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh</code></pre><ul id="7499831b-aa8d-47af-81c9-dfb3cb8ab65e" class="bulleted-list"><li style="list-style-type:disc">Create Python server to share the linpeas from host to ssh</li></ul><p id="d48e29f5-cb8e-4d3d-bc8d-3a2454eb57fe" class="">Host</p><figure id="0f946179-f33d-4778-98f8-015a61f385a5" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2014.png"><img style="width:906px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2014.png"/></a></figure><p id="a9196d6f-0365-438b-a486-d2da6971693d" class="">Ssh</p><figure id="06e14310-a681-4c16-b64b-cf0f0480a16e" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2015.png"><img style="width:1266px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2015.png"/></a></figure><ul id="6aaf59c4-0bb2-4829-acc8-60722bd799f6" class="bulleted-list"><li style="list-style-type:disc">Execute the linpeas.sh</li></ul><figure id="089e0fa9-f2f2-4f3c-a339-dece996ad5f7" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2016.png"><img style="width:1321px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2016.png"/></a></figure><ul id="841ae1b0-c59d-4550-ae85-431b0504037d" class="bulleted-list"><li style="list-style-type:disc">lxd? hmmmm let’s investigate more</li></ul><figure id="fbb6c05c-3ff1-4eab-b087-8b54f2baebc1" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2017.png"><img style="width:1252px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2017.png"/></a></figure><ul id="983f2bb8-0ffd-454f-a384-d298c0dad0c9" class="bulleted-list"><li style="list-style-type:disc">another one</li></ul><figure id="933b5c81-4d3e-44e9-803b-8403cc74d2ea" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2018.png"><img style="width:945px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2018.png"/></a></figure><ul id="d25dd92b-2474-4a94-9368-37fb9b559933" class="bulleted-list"><li style="list-style-type:disc">Im pretty sure that lxd is all we need to get the root</li></ul><ul id="cf61edda-7e61-40e0-9f63-7495d0e9dab1" class="bulleted-list"><li style="list-style-type:disc">I see this on internet now this is my guide</li></ul><figure id="eda1f643-918e-4d32-8c35-34661009451a"><a href="https://www.hackingarticles.in/lxd-privilege-escalation/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Lxd Privilege Escalation - Hacking Articles</div><div class="bookmark-description">In this post we are going to describes how an account on the system that is a member of the lxd group is able to</div></div><div class="bookmark-href"><img src="https://www.hackingarticles.in/favicon.ico" class="icon bookmark-icon"/>https://www.hackingarticles.in/lxd-privilege-escalation/</div></div><img src="https://1.bp.blogspot.com/-_CB2pZPg8m0/XaHYIWKJAHI/AAAAAAAAg5U/yGRt4Ph86BInmKTHukRJiqCayDgo0_D3ACLcBGAsYHQ/s1600/0.png" class="bookmark-image"/></a></figure><figure id="55f7ba3a-b3df-4dc2-a78d-41bee22e6b84" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2019.png"><img style="width:962px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2019.png"/></a></figure><ul id="6e0b7e17-c5d6-4873-9098-a05b1c2ee52e" class="bulleted-list"><li style="list-style-type:disc">Check the file using browser now let’s grab the url or directory to download it to the ssh</li></ul><figure id="9eaae663-923f-4139-afc8-14375a256ae4" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2020.png"><img style="width:815px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2020.png"/></a></figure><ul id="a1305d09-002d-49b5-8743-5f5d785f6f86" class="bulleted-list"><li style="list-style-type:disc">Getting the file</li></ul><figure id="0f7c38c1-d7c1-44b2-baf6-f4d478fe5ea2" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2021.png"><img style="width:1067px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2021.png"/></a></figure><ul id="3b3a3c81-7aad-4310-b7b1-26bb43f31dc9" class="bulleted-list"><li style="list-style-type:disc">The next instruction is </li></ul><figure id="c2fbb6ff-04e7-4068-80c4-78cf9d4ef78f" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2022.png"><img style="width:965px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2022.png"/></a></figure><ul id="abcf3dc6-88ff-41f4-ab0a-daa2241309f4" class="bulleted-list"><li style="list-style-type:disc">Now I’m rooted</li></ul><figure id="e9c576dc-19ac-4eef-977d-b1f5f10c082a" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2023.png"><img style="width:1232px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2023.png"/></a></figure><ul id="7e3866e1-2c13-42b2-ae3e-0f253abbf8b1" class="bulleted-list"><li style="list-style-type:disc">In instruction the root folder of the ssh is in mnt</li></ul><figure id="d8e9d770-fb99-4d07-8030-b96314846b89" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2024.png"><img style="width:917px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2024.png"/></a></figure><ul id="2bc3906b-f8a5-451c-83b8-42d942560081" class="bulleted-list"><li style="list-style-type:disc">The answer is in /mnt/root/root/root.txt</li></ul><figure id="a2432322-df17-4bde-a1bd-50a34facc83a" class="image"><a href="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2025.png"><img style="width:1158px" src="boot2root%20THM%2043557eb6e1ff4f1c89c5d454ea915a8b/Untitled%2025.png"/></a></figure><p id="82824a5d-827f-40fd-9e9e-cefc42d65345" class="">ANSWER : 2e337b8c9f3aff0c2b3e8d4e6a7c88fc</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Sample blog post to learn markdown tips
-subtitle: There's lots to learn!
+title: GuideM Cyber Defense Professional
+subtitle: GuideM's Certification
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
-tags: [test]
+tags: [cert]
 comments: true
 mathjax: true
-author: Bill Smith
+author: drew
 ---
 
 {: .box-success}

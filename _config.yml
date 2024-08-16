@@ -10,7 +10,7 @@
 ############################
 
 # Name of website
-# title: ""
+title: "drewbyte"
 
 # Your name to show in the footer
 author: drewbyte
@@ -22,13 +22,13 @@ author: drewbyte
 navbar-links:
   About Me: "a scr1pt k1dd1e"
   Reports:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
+    - Pentest Report of Lanval: ""
+    - Pentest Report of Vicar: ""
   Certifications:
-    - ATA: ""
     - GCDP: "" 
     - CBBH: ""
     - PNPT: ""
+    - GCPT: ""
     - CPTS: ""
   Writeups:
     
@@ -92,7 +92,7 @@ social-network-links:
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
-rss-description: This website is a virtual proof that I'm awesome
+# rss-description: This website is a virtual proof that I'm awesome
 
 ###########################
 # --- General options --- #

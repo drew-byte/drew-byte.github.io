@@ -10,7 +10,7 @@
 ############################
 
 # Name of website
-title: drewbyte
+# title: ""
 
 # Your name to show in the footer
 author: drewbyte
@@ -21,10 +21,17 @@ author: drewbyte
 
 navbar-links:
   About Me: "a scr1pt k1dd1e"
-  Resources:
+  Reports:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Certifications:
+    - ATA: ""
+    - GCDP: "" 
+    - CBBH: ""
+    - PNPT: ""
+    - CPTS: ""
+  Writeups:
+    
 
 ################
 # --- Logo --- #

@@ -27,8 +27,8 @@ navbar-links:
     - ATD: "/_posts/2024-01-19-ATD"
     - CCTH: "/_posts/2024-12-21-CCTH"
   Writeups: 
-    - How to create a red team lab?: "/Ongoing.html"
-    - How to create a blue team lab?: "/Ongoing.html"
+    - How to create a red team lab?: "Ongoing.html"
+    - How to create a blue team lab?: "Ongoing.html"
     
 
 ################

@@ -21,14 +21,12 @@ author: drewbyte
 
 navbar-links:
   About Me: "a scr1pt k1dd1e"
-  Reports:
-    - Pentest Report of Lanval: ""
-    - Pentest Report of Vicar: ""
   Certifications:
     - GCDP: "" 
     - CBBH: ""
-    - PNPT: ""
+    - ATD: ""
     - GCPT: ""
+    - CCTH: ""
     - CPTS: ""
   Writeups:
     

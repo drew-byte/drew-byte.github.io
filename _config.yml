@@ -22,13 +22,13 @@ author: drewbyte
 navbar-links:
   About Me: "a scr1pt k1dd1e"
   Certifications:
-    - GCDP: "" 
-    - CBBH: ""
-    - ATD: ""
-    - CCTH: ""
+    - GCDP: "/_posts/2024-8-31-GCDP" 
+    - CBBH: "/_posts/2024-12-28-CBBH"
+    - ATD: "/_posts/2024-01-19-ATD"
+    - CCTH: "/_posts/2024-12-21-CCTH"
   Writeups: 
-    - How to create a red team lab?: ""
-    - How to create a blue team lab?: ""
+    - How to create a red team lab?: "/Ongoing.html"
+    - How to create a blue team lab?: "/Ongoing.html"
     
 
 ################

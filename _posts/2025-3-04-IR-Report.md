@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Incident Report - Infostealer
+title: ClickFix Campaign - Infostealer
 subtitle: 2025
 cover-img: /assets/img/infostealer.jpg
 thumbnail-img: /assets/img/malware.png
 share-img: /assets/img/path.jpg
-tags: [ir report]
+tags: [report]
 author: drew
 ---
 
 {: .box-success}
-This is my incident report regarding the Infostealer campaign known as the Click-Fix Campaign.
+This is my incident report regarding the Infostealer campaign known as the FakeCaptcha/Click-Fix Campaign.
 
 
 ## Background

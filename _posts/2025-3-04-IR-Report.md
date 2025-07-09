@@ -22,7 +22,6 @@ Further investigation led to the discovery of an obfuscated script that had been
 Analysis linked the script to a known malware family—Lumma Stealer, a type of infostealer designed to exfiltrate sensitive information from infected systems. The infection vector was traced to a deceptive CAPTCHA page. The user, believing it to be legitimate, followed the instructions on the site, which likely triggered the malicious script in the background.
 
 This event is part of a broader social engineering campaign known as the Click-Fix Campaign, which lures users into executing malicious code under the guise of system fixes or CAPTCHA verification.
-
 ![](/assets/img/flow.png){: .mx-auto.d-block :}
 
 
@@ -54,12 +53,8 @@ A website containing .enx files is considered malicious as these files are often
 
 The user searched for the hrlink in the browser using Bing and noticed that it redirected multiple times until landing on a fake CAPTCHA that contained Infostealer.
 
-{: .box-note}
-
-**Red Fill:**  Malicious Domains / Gambling Websites 
-**Yellow Fill:** FakeCaptcha 
-
 ~~~
+URL:
 hxxps://objectstorage.ap-singapore-2.oraclecloud.com/n/ax4mqlu25efi/b/lakmewbkt/o/bidgo-loadfun-wait.html 
 ~~~
 
@@ -86,11 +81,14 @@ The IP associated with non-existent .com.ph domains that redirect to other websi
 
 {: .box-note}
 
-**Conclusion:**  A user attempted to visit myhrlink-[XXXX].com.ph by typing it into their browser. However, since this domain does not exist, they were redirected to various directories due to the presence of bouncy.php on the server handling the request. 
+## Conclusion
+
+A user attempted to visit myhrlink-[XXXX].com.ph by typing it into their browser. However, since this domain does not exist, they were redirected to various directories due to the presence of bouncy.php on the server handling the request. 
 
 This redirection mechanism led them to a malicious webpage, which displayed a fake CAPTCHA prompt. Believing it to be legitimate, the user interacted with it, unknowingly executing malicious code. 
 
 As a result, they became a victim of Lumma Stealer, an infostealer malware designed to extract sensitive data such as credentials, browser cookies, and cryptocurrency wallet information.
+
 
 ## Indicator of Compromise (IOC)
 

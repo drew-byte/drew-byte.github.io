@@ -92,16 +92,16 @@ As a result, they became a victim of Lumma Stealer, an infostealer malware desig
 
 ## Indicator of Compromise (IOC)
 
-MD5
+**MD5:**
 0ab97b928b1bf593a589ded5a5b41ad4     
 
-SHA1    
+**SHA1:**    
 29b22a793f748370fd2c4c518f1439b07ff57e53 
 
-SHA256                                 
+**SHA256:**                                
 00e700677b9af738305e2093f09347b90f97b75de4bb0c744c0e4fff9e4ada8d 
 
-URL
+**URL:**
 hxxps[://]k1[.]curlinessgiddysmile[.]shop/Erratic1Crank1Banshee1Drainpipe[.]enx
 hxxps[://]ishadowquest[.]shop/rewri[.]mp4
 hxxps[://]espardo[.]shop/mishtikloa[.]mp4

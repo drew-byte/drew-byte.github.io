@@ -5,7 +5,7 @@ subtitle: 2025
 cover-img: /assets/img/infostealer.jpg
 thumbnail-img: /assets/img/malware.png
 share-img: /assets/img/path.jpg
-tags: [exam]
+tags: [ir report]
 author: drew
 ---
 

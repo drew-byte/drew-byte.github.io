@@ -10,7 +10,7 @@ author: drew
 ---
 
 {: .box-success}
-This is my incident report regarding the Infostealer campaign known as the FakeCaptcha/Click-Fix Campaign.
+This Report is regarding to the Infostealer campaign known as the FakeCaptcha/Click-Fix Campaign.
 
 
 ## Background

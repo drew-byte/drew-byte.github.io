@@ -103,7 +103,9 @@ As a result, they became a victim of Lumma Stealer, an infostealer malware desig
 
 **URL:**
 hxxps[://]k1[.]curlinessgiddysmile[.]shop/Erratic1Crank1Banshee1Drainpipe[.]enx
+
 hxxps[://]ishadowquest[.]shop/rewri[.]mp4
+
 hxxps[://]espardo[.]shop/mishtikloa[.]mp4
 
 

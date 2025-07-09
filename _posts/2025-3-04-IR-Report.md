@@ -22,14 +22,8 @@ Further investigation led to the discovery of an obfuscated script that had been
 Analysis linked the script to a known malware family—Lumma Stealer, a type of infostealer designed to exfiltrate sensitive information from infected systems. The infection vector was traced to a deceptive CAPTCHA page. The user, believing it to be legitimate, followed the instructions on the site, which likely triggered the malicious script in the background.
 
 This event is part of a broader social engineering campaign known as the Click-Fix Campaign, which lures users into executing malicious code under the guise of system fixes or CAPTCHA verification.
+
 ![](/assets/img/flow.png){: .mx-auto.d-block :}
-
-
-## The Alert
-
-![](/assets/img/powershellexecution.png){: .mx-auto.d-block :}
-
-This is the content of the PowerShell execution that the team identified. Within the script, they discovered an XOR-encrypted section, which required decryption for further analysis.
 
 ## Technical Findings
 

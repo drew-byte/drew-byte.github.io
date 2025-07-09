@@ -22,7 +22,6 @@ Further investigation led to the discovery of an obfuscated script that had been
 Analysis linked the script to a known malware family—Lumma Stealer, a type of infostealer designed to exfiltrate sensitive information from infected systems. The infection vector was traced to a deceptive CAPTCHA page. The user, believing it to be legitimate, followed the instructions on the site, which likely triggered the malicious script in the background.
 
 This event is part of a broader social engineering campaign known as the Click-Fix Campaign, which lures users into executing malicious code under the guise of system fixes or CAPTCHA verification.
-
 ![](/assets/img/flow.png){: .mx-auto.d-block :}
 
 ## Technical Findings
@@ -58,7 +57,7 @@ hxxps://objectstorage.ap-singapore-2.oraclecloud.com/n/ax4mqlu25efi/b/lakmewbkt/
 
 This webpage hosts Infostealer, a well-known information-stealing malware designed to exfiltrate sensitive data such as login credentials, browser cookies, cryptocurrency wallets, and system information. The site is part of a malicious redirection chain, where users searching for a specific link (e.g., hrlink) are redirected multiple times before landing on a deceptive fake CAPTCHA page. 
 
-![](/assets/img/correctandwrong.png){: .mx-auto.d-block :}
+![](/assets/img/correct.png){: .mx-auto.d-block :}
 
 
 The user followed the steps provided by the fakecaptcha.

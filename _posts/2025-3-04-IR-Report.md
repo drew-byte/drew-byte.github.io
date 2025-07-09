@@ -79,7 +79,6 @@ The IP associated with non-existent .com.ph domains that redirect to other websi
 
 ![](/assets/img/hits2.png){: .mx-auto.d-block :}
 
-{: .box-note}
 
 ## Conclusion
 

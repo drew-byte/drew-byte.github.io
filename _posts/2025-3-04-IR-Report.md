@@ -4,7 +4,7 @@ title: ClickFix Campaign - Infostealer
 subtitle: 2025
 cover-img: /assets/img/infostealer.jpg
 thumbnail-img: /assets/img/malware.png
-share-img: /assets/img/path.jpg
+share-img: /assets/img/malware.png
 tags: [report]
 author: drew
 ---

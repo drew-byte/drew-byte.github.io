@@ -133,11 +133,11 @@ Now open a controlled environment where you can perform malware analysis and run
 
 ## Indicators of Compromise (IOCs)
 
-| Hash (MD5/SHA1/SHA256)                            | URL                                                                                      |
-|---------------------------------------------------|-------------------------------------------------------------------------------------------|
-| 0ab97b928b1bf593a589ded5a5b41ad4                  | hxxps[://]k1[.]curlinessgiddysmile[.]shop/Erratic1Crank1Banshee1Drainpipe[.]enx          |
-| 29b22a793f748370fd2c4c518f1439b07ff57e53          | hxxps[://]ishadowquest[.]shop/rewri[.]mp4                                                |
-| 00e700677b9af738305e2093f09347b90f97b75de4bb0c744c0e4fff9e4ada8d | hxxps[://]espardo[.]shop/mishtikloa[.]mp4                                  |
+| Hash | URL |
+| :---- | :--- |
+| 0ab97b928b1bf593a589ded5a5b41ad4 | hxxps[://]k1[.]curlinessgiddysmile[.]shop/Erratic1Crank1Banshee1Drainpipe[.]enx |
+| 29b22a793f748370fd2c4c518f1439b07ff57e53 | hxxps[://]ishadowquest[.]shop/rewri[.]mp4 |
+| 00e700677b9af738305e2093f09347b90f97b75de4bb0c744c0e4fff9e4ada8d | hxxps[://]espardo[.]shop/mishtikloa[.]mp4 |
 
 
 

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Redirection of Non-Existent .ph and .com.ph Domains via bouncy.php to Fake CAPTCHA and Scam Sites
-subtitle: ClickFix Campaign 2025
+title: Redirection of Non-Existent .ph and .com.ph Domains
+subtitle: From Typo to FakeCaptcha Domain - ClickFix Campaign 2025
 cover-img: /assets/img/infostealer.jpg
 thumbnail-img: /assets/img/malware.png
 share-img: /assets/img/malware.png

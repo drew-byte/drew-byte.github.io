@@ -86,9 +86,6 @@ Attempts to replicate the attack failed as the malicious domain was already offl
 
 ![](/assets/img/attempts.png){: .mx-auto.d-block :}
 
-## Mitre Mapping
-<target>
-
 ## Conclusion
 
 A user attempted to visit myhrlink-[XXXX].com.ph by typing it into their browser. However, since this domain does not exist, they were redirected to various directories due to the presence of bouncy.php on the server handling the request. 
@@ -129,9 +126,7 @@ $decryptedString
 
 Now open a controlled environment where you can perform malware analysis and run the script in PowerShell.
 
-![](/assets/img/decrypted.png)
-
-{: .mx-auto.d-block :}
+![](/assets/img/decrypted.png){: .mx-auto.d-block :}
 
 ## Indicators of Compromise (IOCs)
 

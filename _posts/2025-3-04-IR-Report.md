@@ -1,7 +1,7 @@
 ---
 layout: post
-title: ClickFix Campaign - Infostealer
-subtitle: 2025
+title: Redirection of Non-Existent .com and .com.ph Domains via bouncy.php to Fake CAPTCHA and Scam Sites
+subtitle: ClickFix Campaign 2025
 cover-img: /assets/img/infostealer.jpg
 thumbnail-img: /assets/img/malware.png
 share-img: /assets/img/malware.png
@@ -85,6 +85,9 @@ The user followed the fake CAPTCHA steps as instructed, ultimately completing th
 Attempts to replicate the attack failed as the malicious domain was already offline, preventing further testing.
 
 ![](/assets/img/attempts.png){: .mx-auto.d-block :}
+
+## Mitre Mapping
+<target>
 
 ## Conclusion
 

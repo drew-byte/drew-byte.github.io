@@ -129,7 +129,9 @@ $decryptedString
 
 Now open a controlled environment where you can perform malware analysis and run the script in PowerShell.
 
-![](/assets/img/decrypted.png){: .mx-auto.d-block :}
+![](/assets/img/decrypted.png)
+
+{: .mx-auto.d-block :}
 
 ## Indicators of Compromise (IOCs)
 

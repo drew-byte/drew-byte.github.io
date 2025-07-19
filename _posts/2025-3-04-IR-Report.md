@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ClickFix Campaign - Infostealer
+title: ClickFix Campaign: Redirection of Non-Existent .com and .com.ph Domains via bouncy.php to Fake CAPTCHA and Scam Sites
 subtitle: 2025
 cover-img: /assets/img/infostealer.jpg
 thumbnail-img: /assets/img/malware.png

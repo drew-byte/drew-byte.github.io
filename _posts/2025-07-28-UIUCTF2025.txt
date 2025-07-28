@@ -1,0 +1,441 @@
+---
+layout: post
+title: UIUCTF 2025
+subtitle: Osint, Crypto, Web
+cover-img: /assets/img/uiuctf.png
+thumbnail-img: /assets/img/uiuctf.png
+tags: [writeup]
+author: drew
+---
+
+![](/assets/img/ruler.jpg){: .mx-auto.d-block :}
+
+## OSINT 
+
+![](/assets/img/cherry_blossom.png){: .mx-auto.d-block :}
+
+Download the file and check the image.
+
+![](/assets/img/chalosint1.png){: .mx-auto.d-block :}
+
+As see the cherry blossom its fake, and check the car at kung saan ito nakapwesto, nakapwesto ito sa mataas na lugar pansinin na hindi lang basta basta ito nagpark lang, is this car museum?
+
+As searching for unique car museum i find this gem.
+
+```https://www.dagama.travel/post/14-iconic-car-museums```
+
+![](/assets/img/carmuseum.png){: .mx-auto.d-block :}
+
+The spot can be the possible location, second floor and look at the roof.
+
+![](/assets/img/autoworld.png){: .mx-auto.d-block :}
+
+
+## Web
+
+![](/assets/img/ruler.jpg){: .mx-auto.d-block }
+
+Download the file and inspect the source code.
+
+```
+drew@drew:/mnt/c/Users/drew/Downloads$ tar -xvzf handout.tar.gz
+challenge/
+challenge/Dockerfile
+challenge/src/
+challenge/src/app/
+challenge/src/app/app.tsx
+challenge/src/app/data/
+challenge/src/app/data/modules.ts
+challenge/src/app/pages/
+challenge/src/app/pages/home.tsx
+challenge/src/app/pages/module.tsx
+challenge/src/bun.lock
+challenge/src/index.tsx
+challenge/src/my_jsx/
+challenge/src/my_jsx/index.ts
+challenge/src/my_jsx/jsx-dev-runtime.ts
+challenge/src/package.json
+challenge/src/tsconfig.json
+adminbot/
+adminbot/bun.lock
+adminbot/Dockerfile
+adminbot/index.html
+adminbot/index.ts
+adminbot/package.json
+adminbot/tsconfig.json
+```
+
+As seen in the `Dockerfile`, the application runs `index.tsx` using Bun:
+
+```
+FROM oven/bun:alpine
+
+COPY src/bun.lock src/package.json /src/
+RUN cd /src/ && bun install --frozen-lockfile
+
+COPY ./src/ /src/
+
+USER bun
+WORKDIR /src/
+CMD [ "bun", "index.tsx" ]
+```
+
+---
+
+Looking into `index.tsx`, we find the following route definition:
+
+```ts
+"/module/:id": {
+  GET: (req) => {
+    const moduleId = parseInt(req.params.id);
+    const crewMessage = new URL(req.url).searchParams.get("message");
+
+    return new Response(
+      render(
+        <App>
+          <Module id={moduleId} crewMessage={crewMessage} />
+        </App>
+      ),
+      {
+        headers: { "Content-Type": "text/html; charset=utf-8" },
+      }
+    );
+  },
+},
+```
+
+Here, the application extracts a `message` query parameter from the URL and passes it directly to the `Module` component via `crewMessage`. Since there is no sanitization or escaping, this opens the door to **reflected Cross-Site Scripting (XSS)**.
+
+For example, an attacker could craft the following URL:
+
+```
+/module/1?message=<script>EXPLOIT</script>
+```
+
+Now lets try to inject the vulnerability in this page.
+
+![](/assets/img/ruler1.jpg){: .mx-auto.d-block }
+
+Try to inject an xss payload to display the cookie, Thanks ChatGPT lol.
+
+![](/assets/img/xss.jpg){: .mx-auto.d-block }
+
+Im using webhook to catch the response.
+
+![](/assets/img/webhook.png){: .mx-auto.d-block }
+
+---
+
+## Crypto
+
+![](/assets/img/shortestcrypto1.png){: .mx-auto.d-block }
+
+Download the file and check the python script.
+
+The script is this
+
+```
+from Crypto.Cipher import AES
+from hashlib import md5
+from secret import a,b,c,d, FLAG
+
+assert a**4 + b**4 == c**4 + d**4 + 17 and max(a,b,c,d) < 2e4 and AES.new( f"{a*b*c*d}".zfill(16).encode() , AES.MODE_ECB).encrypt(FLAG).hex() == "41593455378fed8c3bd344827a193bde7ec2044a3f7a3ca6fb77448e9de55155"
+```
+
+We are given a Python script (chal.py) that encrypts a flag using AES-ECB mode with a key derived from four integers a, b, c, and d. These integers satisfy the equation:
+a4+b4=c4+d4+17
+a4+b4=c4+d4+17
+
+with the constraints:
+
+    max⁡(a,b,c,d)<20,000max(a,b,c,d)<20,000
+
+    The AES key is the product a×b×c×da×b×c×d, formatted as a 16-digit string (padded with leading zeros).
+
+Our goal is to:
+
+    Find the correct integers (a,b,c,d)(a,b,c,d) that satisfy the equation.
+
+    Use them to derive the AES key and decrypt the given ciphertext to recover the flag.
+
+Solution Approach
+Step 1: Understanding the Problem
+
+The challenge presents a Diophantine equation (an equation where we seek integer solutions) combined with AES encryption. The key steps are:
+
+    Find (a,b,c,d)(a,b,c,d) such that a4+b4=c4+d4+17a4+b4=c4+d4+17.
+
+    Compute the key as key=zfill(a×b×c×d,16)key=zfill(a×b×c×d,16).
+
+    Decrypt the ciphertext using AES-ECB with this key.
+
+Step 2: Solving the Diophantine Equation
+
+Brute-forcing all possible combinations of (a,b,c,d)(a,b,c,d) up to 20,000 is computationally infeasible (20,000420,0004 possibilities). Instead, we optimize by:
+
+    Precomputing sums of fourth powers for all (a,b)(a,b) pairs.
+
+    Storing them in a dictionary for O(1)O(1) lookups.
+
+    Searching for pairs where:
+    sum(a4+b4)=sum(c4+d4)+17
+    sum(a4+b4)=sum(c4+d4)+17
+
+Step 3: Implementing the Search
+
+We implement the following algorithm:
+
+    Generate all possible (a,b)(a,b) pairs and store their sums in a dictionary.
+
+    For each sum SS, check if S−17S−17 exists in the dictionary.
+
+    If found, verify that all values (a,b,c,d)(a,b,c,d) are < 20,000.
+
+    Compute the product a×b×c×da×b×c×d and use it as the AES key.
+
+Step 4: Decrypting the Flag
+
+Once valid (a,b,c,d)(a,b,c,d) are found:
+
+    Construct the key:
+
+        Pad the product to 16 digits (e.g., 1234 → 0000000000001234).
+
+        Encode it as bytes for AES decryption.
+
+    Decrypt the ciphertext using AES-ECB mode.
+
+    Extract the flag from the decrypted plaintext.
+
+This is the script that can solve the problem
+```
+from Crypto.Cipher import AES
+import time
+import math
+
+print("CTF Crypto Challenge Solver - Large Scale Search")
+print("="*60)
+
+def find_solution_large_scale():
+    """
+    Large scale search for a^4 + b^4 = c^4 + d^4 + 17
+    Using constraint max(a,b,c,d) < 20000
+    """
+    
+    print("Searching with constraint: max(a,b,c,d) < 20000")
+    print("Target equation: a^4 + b^4 = c^4 + d^4 + 17")
+    
+    # Since direct brute force is too slow, use a smarter approach
+    # Build a hash table of fourth power sums for efficient lookup
+    
+    max_val = 5000  # Start with 5000, can increase if needed
+    print(f"Building lookup table for values up to {max_val}...")
+    
+    # Dictionary: sum -> list of (a,b) pairs that produce that sum
+    sum_to_pairs = {}
+    
+    start_time = time.time()
+    count = 0
+    
+    for a in range(1, max_val + 1):
+        a4 = a**4
+        for b in range(a, max_val + 1):  # b >= a to avoid duplicates
+            b4 = b**4
+            sum_val = a4 + b4
+            
+            if sum_val not in sum_to_pairs:
+                sum_to_pairs[sum_val] = []
+            sum_to_pairs[sum_val].append((a, b))
+            count += 1
+            
+            if count % 100000 == 0:
+                elapsed = time.time() - start_time
+                print(f"  Processed {count:,} pairs in {elapsed:.1f}s...")
+    
+    elapsed = time.time() - start_time
+    print(f"Built lookup table with {len(sum_to_pairs):,} unique sums from {count:,} pairs in {elapsed:.1f}s")
+    
+    # Now search for pairs of sums that differ by exactly 17
+    print("Searching for sums that differ by exactly 17...")
+    
+    solutions_found = 0
+    search_start = time.time()
+    
+    for sum_cd in sorted(sum_to_pairs.keys()):
+        target_sum_ab = sum_cd + 17
+        
+        if target_sum_ab in sum_to_pairs:
+            # Found a match!
+            cd_pairs = sum_to_pairs[sum_cd]
+            ab_pairs = sum_to_pairs[target_sum_ab]
+            
+            for (c, d) in cd_pairs:
+                for (a, b) in ab_pairs:
+                    if max(a, b, c, d) < 20000:  # Check constraint
+                        solutions_found += 1
+                        
+                        print(f"\n*** SOLUTION {solutions_found} FOUND ***")
+                        print(f"a={a}, b={b}, c={c}, d={d}")
+                        print(f"Max value: {max(a, b, c, d)}")
+                        
+                        # Verify equation
+                        lhs = a**4 + b**4
+                        rhs = c**4 + d**4 + 17
+                        print(f"Verification: {a}^4 + {b}^4 = {lhs:,}")
+                        print(f"              {c}^4 + {d}^4 + 17 = {rhs:,}")
+                        print(f"              Match: {lhs == rhs}")
+                        
+                        if lhs == rhs:
+                            # Test decryption
+                            key_num = a * b * c * d
+                            key_str = f"{key_num}".zfill(16)
+                            key = key_str.encode()
+                            
+                            print(f"Key: {a} × {b} × {c} × {d} = {key_num:,}")
+                            print(f"Key string: '{key_str}'")
+                            
+                            try:
+                                cipher = AES.new(key, AES.MODE_ECB)
+                                ciphertext = bytes.fromhex("41593455378fed8c3bd344827a193bde7ec2044a3f7a3ca6fb77448e9de55155")
+                                plaintext = cipher.decrypt(ciphertext)
+                                
+                                print(f"Ciphertext: {ciphertext.hex()}")
+                                print(f"Decrypted bytes: {plaintext}")
+                                print(f"Decrypted hex: {plaintext.hex()}")
+                                
+                                # Try to decode
+                                try:
+                                    # Remove padding bytes
+                                    cleaned = plaintext.rstrip(b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10')
+                                    decoded = cleaned.decode('utf-8')
+                                    print(f"🎉 FLAG FOUND: {decoded}")
+                                    return (a, b, c, d, decoded)
+                                except:
+                                    try:
+                                        decoded = plaintext.decode('utf-8', errors='ignore').strip()
+                                        print(f"🎉 FLAG (with errors ignored): {decoded}")
+                                        return (a, b, c, d, decoded)
+                                    except:
+                                        print(f"Could not decode as UTF-8")
+                                        # Try other common encodings
+                                        for encoding in ['ascii', 'latin1']:
+                                            try:
+                                                decoded = plaintext.decode(encoding).strip()
+                                                print(f"Decoded as {encoding}: {decoded}")
+                                                if 'uiuctf' in decoded.lower():
+                                                    print(f"🎉 FLAG FOUND ({encoding}): {decoded}")
+                                                    return (a, b, c, d, decoded)
+                                            except:
+                                                continue
+                                        
+                                        print(f"Manual check needed - raw bytes: {plaintext}")
+                                        return (a, b, c, d, plaintext.hex())
+                                
+                            except Exception as e:
+                                print(f"Decryption error: {e}")
+                        
+                        print("-" * 50)
+    
+    search_elapsed = time.time() - search_start
+    print(f"Search completed in {search_elapsed:.1f}s")
+    
+    if solutions_found == 0:
+        print(f"No solutions found with max value {max_val}")
+        print("Try increasing the search range...")
+        
+        # If no solution found, suggest expanding the range
+        if max_val < 10000:
+            print(f"Expanding search to {max_val * 2}...")
+            return find_solution_expanded(max_val * 2)
+    
+    return None
+
+def find_solution_expanded(new_max):
+    """Expanded search with larger range"""
+    print(f"\n" + "="*60)
+    print(f"EXPANDED SEARCH: max value = {new_max}")
+    print("="*60)
+    
+    # Similar approach but with larger range
+    # This time, let's try a different strategy: fix two values and solve for the others
+    
+    print("Strategy: Fix a,b and solve for c,d...")
+    
+    for a in range(1, min(new_max, 1000)):  # Keep a reasonable for speed
+        if a % 100 == 0:
+            print(f"  Testing a = {a}...")
+            
+        a4 = a**4
+        for b in range(1, min(new_max, 1000)):
+            ab_sum = a4 + b**4
+            target = ab_sum - 17
+            
+            if target <= 0:
+                continue
+            
+            # Find c, d such that c^4 + d^4 = target
+            for c in range(1, new_max):
+                c4 = c**4
+                if c4 >= target:
+                    break
+                
+                remainder = target - c4
+                if remainder <= 0:
+                    continue
+                
+                # Check if remainder is a perfect fourth power
+                d = round(remainder**(1/4))
+                
+                if d > 0 and d < new_max and d**4 == remainder:
+                    print(f"\n*** EXPANDED SOLUTION FOUND ***")
+                    print(f"a={a}, b={b}, c={c}, d={d}")
+                    print(f"Check: {a}^4 + {b}^4 = {a4} + {b**4} = {ab_sum}")
+                    print(f"       {c}^4 + {d}^4 = {c4} + {d**4} = {target}")
+                    print(f"       Difference: {ab_sum - target}")
+                    
+                    if ab_sum == target + 17:
+                        # Test the solution
+                        key_num = a * b * c * d
+                        key_str = f"{key_num}".zfill(16)
+                        key = key_str.encode()
+                        
+                        print(f"Key: {key_num} -> '{key_str}'")
+                        
+                        try:
+                            cipher = AES.new(key, AES.MODE_ECB)
+                            ciphertext = bytes.fromhex("41593455378fed8c3bd344827a193bde7ec2044a3f7a3ca6fb77448e9de55155")
+                            plaintext = cipher.decrypt(ciphertext)
+                            
+                            # Try to decode
+                            try:
+                                decoded = plaintext.decode('utf-8').strip('\x00')
+                                print(f"🎉 EXPANDED FLAG: {decoded}")
+                                return (a, b, c, d, decoded)
+                            except:
+                                decoded = plaintext.hex()
+                                print(f"Hex result: {decoded}")
+                                return (a, b, c, d, decoded)
+                        except Exception as e:
+                            print(f"Error: {e}")
+    
+    return None
+
+# Start the search
+print("Starting large scale search...")
+result = find_solution_large_scale()
+
+if result:
+    if len(result) == 5:
+        a, b, c, d, flag = result
+        print(f"\n🎉 FINAL ANSWER 🎉")
+        print(f"Solution: a={a}, b={b}, c={c}, d={d}")
+        print(f"Flag: {flag}")
+    else:
+        print(f"Solution found but flag decoding issues: {result}")
+else:
+    print("\n❌ No solution found")
+    print("The equation a^4 + b^4 = c^4 + d^4 + 17 might require:")
+    print("1. Even larger search ranges (up to 20,000)")
+    print("2. More sophisticated mathematical approaches")
+    print("3. Parametric solutions from number theory")
+```

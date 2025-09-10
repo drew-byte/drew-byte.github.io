@@ -1,9 +1,9 @@
-name: Build and Deploy
+name: Build and Deploy Jekyll site
 
 on:
   push:
     branches:
-      - main
+      - master  # your branch is master
 
 jobs:
   github-pages:
@@ -12,20 +12,30 @@ jobs:
       contents: read
       pages: write
       id-token: write
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-ruby@v1
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          ruby-version: '3.1'
+          fetch-depth: 0
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+
       - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
-      - name: Build site
-        run: JEKYLL_ENV=production bundle exec jekyll build
-      - name: Deploy to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
+        run: bundle install
+
+      - name: Build site with Jekyll
+        run: bundle exec jekyll build
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./_site
-      - name: Deploy
-        uses: actions/deploy-pages@v4
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

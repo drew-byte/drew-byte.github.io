@@ -94,12 +94,8 @@ theme_mode: dark
 # Notice that once it is assigned, the CDN url
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
-# e.g. 'https://cdn.com'
-#cdn: "https://drew-byte.github.io/assets/img"
-media_subpath: /assets/img
-# the avatar on sidebar, support local or CORS resources
-avatar: "/avatar.jpeg"
-
+cdn: ""   # disable CDN so Jekyll uses local files
+avatar: "/assets/img/avatar.jpeg"
 
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.

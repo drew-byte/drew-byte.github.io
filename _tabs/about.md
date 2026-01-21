@@ -8,7 +8,8 @@ order: 4
 
 Hi, I’m **drew**, a passionate cybersecurity enthusiast and vulnerability analyst. I love **pentesting**, participating in **CTFs**, and exploring new ways to strengthen security systems.  
 
-### My Achievements
+## My Achievements
+### Common Vulnerabilities and Exposures (CVE)
 - I have discovered and reported **CVEs**:  
   - **CVE-2025-10081** – Pet Management System 1.0 unrestricted file upload  
   - **CVE-2025-10088** – Time Tracker 1.0 reflected XSS  
@@ -23,8 +24,18 @@ I hope I can find more interesting CVEs on well knowned softwares or application
 ### Certifications
 - **Cyber Defense Professional (GCDP)** – GuideM  
 - **Certified Web Exploitation Specialist (CWES)** – HackTheBox
+- **ProLab (DANTE)** - HackTheBox
 - **Certified Penetration Tester Specialist (CPTS)** – HackTheBox
-- **Certified Red Team Operator (CRTO)** - Zero Point Security [Ongoing]
+- **Certified Red Team Operator (CRTO)** - Zero Point Security **Status:** Ongoing
+
+### Capture The Flags
+- **University CTF (uCTF)** - Champion
+- **Hack4Gov3 Regionals (H4G3)** - Champion
+- **Hack4Gov3 Nationals (H4G3)** - Champion
+- **CyberSea Games 2024 (CSG)** - 7th Place
+- **ASEAN Cyber Shield Hacking Contest (ACS)** - 15th Place
+- **Holmes CTF 2025** - 341th Place
+- **Tinsel Trouble CTF 2025** - 220th Place
 
 ### Fun Facts
 - I love **anime** and **listening to music**.  

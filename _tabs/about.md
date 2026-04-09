@@ -26,7 +26,13 @@ I hope I can find more interesting CVEs on well knowned softwares or application
 - **Certified Web Exploitation Specialist (CWES)** – HackTheBox
 - **ProLab (DANTE)** - HackTheBox
 - **Certified Penetration Tester Specialist (CPTS)** – HackTheBox
-- **Certified Red Team Operator (CRTO)** - Zero Point Security **Status:** Ongoing
+- **Certified Red Team Operator (CRTO)** - Zero Point Security
+
+### Projects
+- **Vulnerable Web - Easy Challenge** - [Link](https://drew-byte.github.io/web-dev-project/) 2022
+- **IOC Bulk Checker** - [Link](https://github.com/drew-byte/ioc-checker) 2024
+- **XSS-DB** - [Link](https://drew-byte.github.io/xss-db) 2026
+- **CVE & Threat Alerts Scraper** - *Confidential* 2026
 
 ### Capture The Flags
 - **University CTF (uCTF)** - Champion

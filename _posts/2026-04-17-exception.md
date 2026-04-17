@@ -14,7 +14,7 @@ image:
 > **Description**
 {: .box-danger }
 
-A walkthrough of the Exception lab challenge, where an exposed Rocket.Chat instance is exploited through a NoSQL injection vulnerability (CVE-2021-22911) to achieve remote code execution. This write-up covers reconnaissance with Nmap, service discovery, abuse of password reset functionality, token extraction via injection, and privilege escalation to root.
+A walkthrough of the Exception lab challenge, where an exposed `Rocket.Chat` instance is exploited through a `NoSQL injection vulnerability (CVE-2021-22911)` to achieve remote code execution. This write-up covers reconnaissance with Nmap, service discovery, abuse of password reset functionality, token extraction via injection, and privilege escalation to root.
 
 ---
 
@@ -60,7 +60,9 @@ Inside the general channel, I found a user named `localh0ste` who had leaked the
 
 ![exception](/assets/img/exception5.png){: .mx-auto .shadow .rounded-10 w="800" }
 
-``localh0ste@exception.local``
+```
+localh0ste@exception.local
+```
 
 While browsing, I intercepted requests with **Burp Suite** and noticed API calls in the background. I checked the version endpoint.
 
@@ -350,7 +352,9 @@ And yes, it came from the script that was generated earlier.
 
 To trigger it, I saved it first and used curl on the webhook:
 
-``http://ip:3000/hooks/token``
+```bash
+http://ip:3000/hooks/token
+```
 
 But before that, I created a listener on port 4446.
 

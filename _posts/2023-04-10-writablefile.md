@@ -5,6 +5,9 @@ author: drewbyte
 date: 2023-04-10 00:00:00 +0800
 categories: [linux, privilege-escalation]
 tags: [privesc, linux, passwd, misconfiguration]
+image:
+  path: /assets/img/writeable.jpg
+  alt: img
 pin: true
 ---
 

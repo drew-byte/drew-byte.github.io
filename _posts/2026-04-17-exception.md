@@ -6,6 +6,9 @@ date: 2026-04-17 00:00:00 +0800
 categories: [writeup, lab]
 tags: [writeup, lab]
 pin: true
+image:
+  path: /assets/img/exceptionNomination.png
+  alt: img
 ---
 
 > **Description**

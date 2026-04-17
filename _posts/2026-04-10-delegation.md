@@ -5,10 +5,10 @@ author: drewbyte
 date: 2026-04-10 00:00:00 +0800
 categories: [active-directory, enumeration]
 tags: [kerberos, delegation, ldapsearch, rbcd]
+pin: true
 image:
   path: /assets/img/delegation.jpg
   alt: img
-pin: true
 ---
 
 **Kerberos Delegation = high-value targets for privilege escalation**

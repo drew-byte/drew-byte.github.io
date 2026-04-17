@@ -5,7 +5,7 @@ author: drewbyte
 date: 2026-04-17 00:00:00 +0800
 categories: [writeup, lab]
 tags: [writeup, lab]
-pin: false
+pin: true
 ---
 
 > **Description**

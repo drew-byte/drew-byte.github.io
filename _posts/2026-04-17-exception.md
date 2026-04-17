@@ -7,7 +7,7 @@ categories: [writeup, lab]
 tags: [writeup, lab]
 pin: true
 image:
-  path: /assets/img/exceptionNomination.png
+  path: /assets/img/exception.png
   alt: img
 ---
 

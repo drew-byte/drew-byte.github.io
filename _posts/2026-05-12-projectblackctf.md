@@ -240,8 +240,6 @@ jason     kgf7ac69WDojJW5MNA2  ADMIN
 mal       ipYs5gLyFe4V2ctFbpE  USER
 ```
 
-![](/assets/img/chortle-db.png){: .mx-auto.d-block :}
-
 Eddie was **fully redacted** in all API responses but his credentials are exposed in the database. The consultant logged in as eddie (SUPER_ADMIN) and applied the same IDOR technique against `/api/profile/`, then called `/api/alerts/` with eddie's token.
 
 ```bash

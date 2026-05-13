@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Project Black Challenge #6 Writeup
+title: Project Black Challenge 6 Writeup
 description: Project Black is an online CTF series. Challenge 6 is a multi-stage web challenge involving steganography, API exploitation, IDOR, and database forensics.
 author: drewbyte
 date: 2026-05-12 00:00:00 +0800
 categories: [writeup, ctf]
 tags: [writeup, ctf]
-pin: false
+pin: true
 image:
-  path: /assets/img/cyberpunk.jpg
+  path: /assets/img/ghost.jpg
   alt: img
 ---
 
@@ -87,6 +87,8 @@ Continue here:
 https://chortle.0hl.cc
 ```
 
+![image](/assets/img/pic1.png){: .mx-auto .shadow .rounded-10 w="800" }
+
 > **Flag 1/6:** `PRJBLK{1/6:_U_@R3_0FF_2_A_f1YInG_$t@rT}`
 
 ---
@@ -116,6 +118,8 @@ The consultant intercepted browser traffic using the developer tools Network tab
 ```
 
 Flag 2 is sitting in `mal`'s description field. The response also leaks every user's UUID, privilege level, and MD5 password hash — valuable for later stages.
+
+![image](/assets/img/pic2.jfif){: .mx-auto .shadow .rounded-10 w="800" }
 
 > **Flag 2/6:** `PRJBLK{2/6:_We_nE3d_0uR_@PP_t3sT3D._c@N_y0u_$T@rT_t0m0rR0W?}`
 
@@ -162,6 +166,8 @@ Calling `POST /api/alerts/` with a valid token returned flag 3.
 [{"id":"a53e8b0c-...","message":"PRJBLK{3/6:_Ye@H,_w3_@lr3ady_Kn3w_@b0ut_Th@t_cr1t1c@1_I$$u3}"}]
 ```
 
+![image](/assets/img/pic3.jfif){: .mx-auto .shadow .rounded-10 w="800" }
+
 > **Flag 3/6:** `PRJBLK{3/6:_Ye@H,_w3_@lr3ady_Kn3w_@b0ut_Th@t_cr1t1c@1_I$$u3}`
 
 ---
@@ -195,6 +201,8 @@ print(hashlib.md5((KEY+body).encode()).hexdigest())
 
 The response returns jason's full profile including his **plaintext password** and flag 4.
 
+![image](/assets/img/pic4.jfif){: .mx-auto .shadow .rounded-10 w="800" }
+
 > **Flag 4/6:** `PRJBLK{4/6:_DEV3l0pEr_t00l$!?_Y0u_must_be_@_Ma$t3r_h@ck3r}`
 
 ---
@@ -206,6 +214,8 @@ Using the plaintext password recovered from the IDOR, the consultant logged in a
 ![](/assets/img/chortle-dashboard.png){: .mx-auto.d-block :}
 
 The dashboard also exposes three admin tools — **Database Backup**, **Locate File**, and **Read File**. Clicking Database Backup downloads `file.db`, the live Django SQLite database (132 KB).
+
+![image](/assets/img/pic5.jfif){: .mx-auto .shadow .rounded-10 w="800" }
 
 > **Flag 5/6:** `PRJBLK{5/6:_Br0k3n_Acc3$$_c0nTR01_KeEp$_M3_EMpL0y3D}`
 
@@ -250,6 +260,8 @@ Eddie was **fully redacted** in all API responses but his credentials are expose
   -H "Content-Length: 0"
 [{"id":"211fe1cb-...","message":"PRJBLK{6/6:_w0W,_d@tAb@s3_M1Gr@Ti0n$_R_s0_E@$y!!1!}"}]
 ```
+
+![image](/assets/img/pic6.jfif){: .mx-auto .shadow .rounded-10 w="800" }
 
 > **Flag 6/6:** `PRJBLK{6/6:_w0W,_d@tAb@s3_M1Gr@Ti0n$_R_s0_E@$y!!1!}`
 

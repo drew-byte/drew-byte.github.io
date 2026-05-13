@@ -97,8 +97,6 @@ https://chortle.0hl.cc
 
 The first flag points to `https://chortle.0hl.cc` — a React SPA login page for **Project Black Challenge #6**. Attempting to log in with a made-up username returns "Username does not exist", confirming the app validates usernames separately.
 
-![](/assets/img/chortle-login.png){: .mx-auto.d-block :}
-
 The consultant intercepted browser traffic using the developer tools Network tab. The app calls `GET /api/users/` on page load — with `Authorization: Bearer null`. The endpoint is completely unauthenticated.
 
 ```bash
@@ -210,8 +208,6 @@ The response returns jason's full profile including his **plaintext password** a
 ## Stage 5 — Broken Access Control / Admin Dashboard {#stage-5}
 
 Using the plaintext password recovered from the IDOR, the consultant logged in as jason (ADMIN) at `chortle.0hl.cc/login`. The admin dashboard displays flag 5 directly as an alert on the page.
-
-![](/assets/img/chortle-dashboard.png){: .mx-auto.d-block :}
 
 The dashboard also exposes three admin tools — **Database Backup**, **Locate File**, and **Read File**. Clicking Database Backup downloads `file.db`, the live Django SQLite database (132 KB).
 

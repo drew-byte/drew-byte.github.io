@@ -233,7 +233,7 @@ username  clear_text_password  privilege_level
 --------  -------------------  ---------------
 eddie     bvhkVv8UnebiTSvRBYa  SUPER_ADMIN
 jarrod    K9D9saKbWsnLnByacXs  USER
-nikolai   password123           USER
+nikolai   password123          USER
 jay       MdHffRZoiMPHFsTw4j5  USER
 sayuri    QXwTm43pkDEtCdRfCiz  USER
 jason     kgf7ac69WDojJW5MNA2  ADMIN

